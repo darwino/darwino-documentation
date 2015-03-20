@@ -62,9 +62,9 @@ Note: using the stock Android emulator, it is likely that the internal web serve
 Eclipse Import
 --------------
 
-Using "Import -> Maven -> Existing Maven Projects", import the projects from the dwo-android folder and then the darwino-demo folder.
+Using "Import -> Maven -> Existing Maven Projects", import the projects from the darwino-demo folder.
 
-After initial import, run a basic Maven build (for example, Run As -> Maven build -> goal "compile") on the dwo-android project to make sure all of the dependencies from the Darwino Maven repository are put in place.
+In a new Eclipse installation, Eclipse will generate some errors about "Plugin execution not covered by lifecycle configuration" referring to several of the pom files. To fix this, choose the Quick Fix for the error that discovers new m2e connectors. After going through this process and installing the connectors, Eclipse will stop complaining.
 
 J2EE Projects
 -------------
