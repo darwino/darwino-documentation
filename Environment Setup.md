@@ -24,7 +24,7 @@ Note: using the stock Android emulator, it is likely that the internal web serve
 Eclipse Import
 --------------
 
-Using "Import -> Maven -> Existing Maven Projects", import the projects from the darwino-demo folder.
+Using "Import &rarr; Maven &rarr; Existing Maven Projects", import the projects from the darwino-demo folder.
 
 In a new Eclipse installation, Eclipse will generate some errors about "Plugin execution not covered by lifecycle configuration" referring to several of the pom files. To fix this, choose the Quick Fix for the error that discovers new m2e connectors. After going through this process and installing the connectors, Eclipse will stop complaining.
 
@@ -56,7 +56,7 @@ PostgreSQL
 
 By default, the demo projects look for a [PostgreSQL](http://www.postgresql.org) database on the local host using:
 
-Post: 5434
+Port: 5434
 Database: dwodemo
 Username: postgres
 Password: postgres
