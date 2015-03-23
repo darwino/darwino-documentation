@@ -12,8 +12,13 @@ Maven Configuration
 
 The Maven settings differ based on whether you're using a [local repository](Maven Settings - Local Repo) or a [remote repository](Maven Settings - Remote Repo).
 
-Android SDKs
-------------
+iOS
+---
+
+To build the iOS applications, you will need a Mac with Xcode installed. To run them inside Eclipse, you will also need the [RoboVM for Eclipse plugin](http://marketplace.eclipse.org/content/robovm-eclipse).
+
+Android
+-------
 
 The Android projects use the ADT plugins for Eclipse, available from http://developer.android.com/sdk/installing/installing-adt.html . Using the SDK manager (Window -> Android SDK Manager), select and install at least the entire "Android 4.2.2 (API 17)" folder.
 
