@@ -8,7 +8,7 @@ Darwino currently supports the following target platforms:
 - Android applications
 - Apple iOS applications
 
-Notes: Based on Apple requirements, an Apple Mac running OSX is required for developing Apple iOS applications. Currently, only Android applications can be developed and tested using Microsoft Windows or Linux.
+Notes: Based on Apple requirements, an Apple Mac running OS X is required for developing Apple iOS applications. Currently, only Android applications can be developed and tested using Microsoft Windows or Linux.
 
 Unless specified otherwise, all the installation instructions assume a Microsoft Windows environment, with the software being installed on `c:\Darwino`.
 
@@ -55,7 +55,7 @@ Note: using the stock Android emulator, it is likely that the applications will 
 Installing the iOS application development tools
 ------------------------------------------------
 
-As stated earlier, developing for iOS requires an Apple Mac computer running OSX. To compile, run in a simulator or deploy the application, the the Apple Xcode development environment is required. It is available freely from the Mac App Store ([https://itunes.apple.com/us/app/xcode/id497799835?mt=12](https://itunes.apple.com/us/app/xcode/id497799835?mt=12 "Xcode")).
+As stated earlier, developing for iOS requires an Apple Mac computer running OS X. To compile, run in a simulator or deploy the application, the the Apple Xcode development environment is required. It is available freely from the Mac App Store ([https://itunes.apple.com/us/app/xcode/id497799835?mt=12](https://itunes.apple.com/us/app/xcode/id497799835?mt=12 "Xcode")).
 
 
 
@@ -63,7 +63,7 @@ PostgreSQL
 ----------
 
 By default, the demo projects look for a [PostgreSQL](http://www.postgresql.org) database on the local host using:
-Port: 5434- 
+- Port: 5434
 - Database: dwodemo
 - Username: postgres
 - Password: postgres
