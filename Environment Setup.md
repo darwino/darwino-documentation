@@ -12,8 +12,8 @@ Notes: Based on Apple requirements, an Apple Mac running OS X is required for de
 
 Unless specified otherwise, all the installation instructions assume a Microsoft Windows environment, with the software being installed on `c:\Darwino`.
 
-Darwino prerequites
--------------------
+Darwino prerequisites
+---------------------
 
 A Java environment must be installed on your machine. The minimum version is Java 7, but it is advised to use the latest one (Java 8 as of today).
 
