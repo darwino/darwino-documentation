@@ -1,13 +1,16 @@
-Darwino Demo Environment Setup for Eclipse
-==========================================
+Installing and setting up Eclipse for Darwino
+=============================================
 
-The included projects are intended for use with Eclipse Kepler and above (Luna recommended as of now). 
 
-In order to configure web servers and get the best web development experience, please download and install the 'Eclipse IDE for Java EE Developers'.
-[https://eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunar](https://eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunar "Download Eclipse")
+Installing the Eclipse IDE
+-----------------------------
+Although the use of an IDE, and in particular Eclipse, is not a requirement, it certainly eases the development of Darwino applications.
+
+
+In order to configure web servers and get the best web development experience, please download and install the latest version of '**Eclipse IDE for Java EE Developers**'.
+[http://www.eclipse.org/downloads/](http://www.eclipse.org/downloads/ "Eclipse Download")
 
 Installing Eclipse is achieved by unzipping the archive in its target directory:
-
 ![](install-eclipse.png)
 
 Launching Eclipse for the first time
@@ -19,74 +22,39 @@ When Eclipse is launched for the first time, it prompts for a workspace director
 Configuring Eclipse
 -------------------
 
-Darwino requires the plug-ins bellow to be installed on top of the version of Eclipse. These plug-ins can generally be installed from the Eclipse Marketplace or by selecting `Help->Install New Software...`, then use the provided update site URL
+Darwino requires some extra plug-ins bellow to be installed on top of the version of Eclipse. These plug-ins can generally be installed from the Eclipse Marketplace or by selecting `Help->Install New Software...`, then use the provided update site URL
 
 - For developing Web (J2EE) applications
 	- M2E WTP
+**Note**: your version of Eclipse, if it is recent enough, might already have this feature installed. In this case, just skip this step.
 Select `Help->Eclipse Marketplace...` and search for `m2e wtp`. Be careful to install m2e-wtp matching your Eclipse version and *not* m2eclipse-wtp, which is deprecated.
 - If Android is a desired target platform
 	- Android development toolkit (aka ADT), 
-See: [http://developer.android.com/sdk/installing/installing-adt.html](http://developer.android.com/sdk/installing/installing-adt.html)
+Follow the instructions under "*Download the ADT Plugin*" from [http://developer.android.com/sdk/installing/installing-adt.html](http://developer.android.com/sdk/installing/installing-adt.html)
+Update site URL, [https://dl-ssl.google.com/android/eclipse/](https://dl-ssl.google.com/android/eclipse/ "Update Site")
 	- Android for Maven Eclipse ([http://rgladwell.github.io/m2e-android/](http://rgladwell.github.io/m2e-android/))
 Select `Help->Eclipse Marketplace...` and search for `android m2e`.
 - If iOS is a desired target platform
-	- RoboVM, 
-See: [http://robovm.com/develop/documentation/](http://robovm.com/develop/documentation/)
+	- RoboVM
+Follow the instructions under "*RoboVM for Eclipse*" from [http://robovm.com/develop/documentation/](http://robovm.com/develop/documentation/)
+	- Update site URL, [http://download.robovm.org/eclipse/](http://download.robovm.org/eclipse/ "Update Site")
+- In case you want to use WRO4J to optimize your JavaScript/CSS code, it is advised to install the m2e-wro4j connector
+	- WRO4J Connector, 
+Follow these instructions: [https://github.com/jbosstools/m2e-wro4j](https://github.com/jbosstools/m2e-wro4j "M2E-WRO4J")
+	- Update site URL, [http://download.jboss.org/jbosstools/updates/m2e-wro4j/](http://download.jboss.org/jbosstools/updates/m2e-wro4j/ "Update Site")
 
 
-Maven Configuration
--------------------
+Installing the Darwino Studio add-on
+------------------------------------
+The Darwino studio provides a set of tools and wizards. It is available from an Eclipse update site located at: [http://builds.darwino.com/studio/nightly](http://builds.darwino.com/studio/nightly "Darwino Update Site"). *("nightly" is temporary and subject to change soon)*
 
-The Maven settings differ based on whether you're using a [local repository](Maven Settings - Local Repo) or a [remote repository](Maven Settings - Remote Repo).
-
-Android SDKs
-------------
-
-The Android projects use the ADT plugins for Eclipse, available from http://developer.android.com/sdk/installing/installing-adt.html. On Windows, it is advised to install it on: `c:\Android\SDK`
-Using the SDK manager (Window -> Android SDK Manager), select and install at least the entire "Android 4.4.2 (API 19)" folder. Also, 
-
-Additionally, set the path to the Android SDK root (e.g. c:\android-sdks) in an environment variable named ANDROID_HOME as well as in the Maven settings.xml above.
-
-Note: using the stock Android emulator, it is likely that the internal web server for the Hybrid application will be too slow to launch for the app to work correctly, leading to a connection-failure dialog. It is better to run this application on real hardware or in a faster emulator/virtual machine.
-
-Eclipse Import
---------------
-
-Using "Import &rarr; Maven &rarr; Existing Maven Projects", import the projects from the darwino-demo folder.
-
-In a new Eclipse installation, Eclipse will generate some errors about "Plugin execution not covered by lifecycle configuration" referring to several of the pom files. To fix this, choose the Quick Fix for the error that discovers new m2e connectors. After going through this process and installing the connectors, Eclipse will stop complaining.
-
-J2EE Projects
--------------
-
-The "dwo-demo-news-j2ee" and "dwo-jre-j2ee-devtools" apps are written to be run on [Tomcat](http://tomcat.apache.org), though would likely be fine on other servers as well.
-
-The demo projects use a static list of users, defined in the dwo-demo-commons-triloggroup project, in the `com.triloggroup.demo.users.StaticTomcatUserService` class. To work with this default user pool, add at least the following users to the Tomcat server's tomcat-users.xml file:
-
-	<role name="user"/>
-	<user password="floflo" roles="user" username="atinov"/>
-	<user password="floflo" roles="user" username="amass"/>
-	<user password="floflo" roles="user" username="aboucher"/>
-	<user password="floflo" roles="user" username="acalder"/>
-	<user password="floflo" roles="user" username="agardner"/>
-	<user password="floflo" roles="user" username="bchapot"/>
-	<user password="floflo" roles="user" username="blemercier"/>
-	<user password="floflo" roles="user" username="bchris"/>
-	<user password="floflo" roles="user" username="bbright"/>
-	<user password="floflo" roles="user" username="larmatti"/>
-	<user password="floflo" roles="user" username="lbros"/>
-	<user password="floflo" roles="user" username="mdavis"/>
-	<user password="floflo" roles="user" username="pcollins"/>
-	<user password="floflo" roles="user" username="rjordan"/>
-
-PostgreSQL
-----------
-
-By default, the demo projects look for a [PostgreSQL](http://www.postgresql.org) database on the local host using:
-
-Port: 5434
-Database: dwodemo
-Username: postgres
-Password: postgres
-
-These parameters are defined in the dwo-demo-commons-triloggroup project, in the `com.triloggroup.demo.users.DemoSqlContext` class.
+Bellow are the instructions:
+1. Select Help > Install New Software.
+1. In the "Wok With:" field, enter the following URL:
+	[http://builds.darwino.com/studio/nightly](http://builds.darwino.com/studio/nightly "Darwino Update Site")
+1. When prompted, enter your Darwino user and password.
+1. In the Available Software dialog, select the Darwino Studio checkbox.
+1. In the next window, you'll see a list of the tools to be downloaded. Click Next.
+1. Read and accept the license agreements, then click Finish.
+1. If you get a security warning saying that the authenticity or validity of the software can't be established, click OK.
+1. When the installation completes, restart Eclipse.

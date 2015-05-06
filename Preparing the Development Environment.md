@@ -1,5 +1,5 @@
-Darwino Demo Environment Setup
-==============================
+Darwino Development Environment Setup
+====================================
 
 Darwino is a very flexible platform that supports IDE or command line based development. The platform itself is built using [Apache Maven](http://maven.apache.org/ "Apache Maven"). If Maven is also the recommended build tool for Darwino applications, other systems can also be used, including Gradle, Eclipse PDE...
 
@@ -9,9 +9,11 @@ Darwino currently supports the following target platforms:
 - Apple iOS applications
 - OSGi environments, like Eclipse rich client or IBM Domino
 
-Notes: Based on Apple requirements, an Apple Mac running OS X is required for developing Apple iOS applications. Currently, only Android applications can be developed and tested using Microsoft Windows or Linux.
 
-Unless specified otherwise, all the installation instructions assume a Microsoft Windows environment, with the software being installed on `c:\Darwino`.
+Unless specified otherwise, all the installation instructions assume a Microsoft Windows environment, with the software being installed on `c:\Darwino`. The instructions can easily be transposed to another OS, like Apple OSX or Linux.
+
+Notes: Based on Apple requirements, an Apple Mac computer running OS X is required for developing Apple iOS applications. Currently, only Android applications can be developed and tested using Microsoft Windows or Linux.
+
 
 Darwino prerequisites
 ---------------------
@@ -28,7 +30,7 @@ Installing the Java JRE/JDK
 
 If you plan to use Eclipse as the main development environment, then a Java JRE is sufficient. If you plan to use Maven from the command line, then you'll need a full JDK to be installed.
 
-Both the Java JRE and SDK can be downloaded from the Oracle web site: [http://www.oracle.com/technetwork/java/javase/downloads/index.html](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
+Both the Java JRE and SDK can be downloaded from the Oracle web site: [http://www.oracle.com/technetwork/java/javase/downloads/index.html](http://www.oracle.com/technetwork/java/javase/downloads/index.html). An IBM JDK will also work.
 Once installed, make sure that the development environment variable JAVA_HOME is pointing to you Java environment. Make also sure that you JVM is available from the command line by emitting `java -version`.
 ![](install-java-version.png)
 
@@ -38,6 +40,28 @@ Installing Apache TOMCAT
 Download the latest TOMCAT server (8.x) from the Apache Web Site: [https://tomcat.apache.org/download-80.cgi](https://tomcat.apache.org/download-80.cgi "Download Tomcat").
 Just unzip the server under your installation directory:
 ![](install-tomcat.png)
+
+If you plan to use the demo applications, then you need to add some demo users with roles in your tomcat environment. Add the following content to `{tomcat install dir}\conf\tomcat-users.xml` :
+    <!-- TOMCAT manager -->
+      <role rolename="admin-gui"/>
+      <role rolename="manager-gui"/>
+    
+      <role rolename="admin"/>
+      <role rolename="manager"/>
+      <role rolename="user"/>
+      <role rolename="peuser"/>
+      
+      <user password="passw0rd" roles="manager,admin,user,admin-gui,manager-gui" username="admin"/>
+      <user password="passw0rd" roles="user,admin-gui,manager-gui" username="phil"/>
+      <user password="passw0rd" roles="user" username="phil2"/>
+      <user password="passw0rd" roles="user" username="phil3"/>
+      <user password="passw0rd" roles="user" username="phil4"/>
+      <user password="passw0rd" roles="user" username="phil5"/>
+      
+      <user password="floflo" roles="peuser,user,admin" username="amass"/>
+      <user password="floflo" roles="peuser" username="pcollins"/>
+      <user password="floflo" roles="peuser" username="acalder"/>  
+    
 
 
 Installing the Android application development tools
@@ -72,58 +96,7 @@ By default, the demo projects look for a [PostgreSQL](http://www.postgresql.org)
 Please note the port 5434. You have to specify it when installing the server.
 
 
-----------
--------------
-
-
-
 Maven Configuration
 -------------------
 
 The Maven settings differ based on whether you're using a [local repository](Maven Settings - Local Repo) or a [remote repository](Maven Settings - Remote Repo).
-
-iOS
----
-
-To build the iOS applications, you will need a Mac with Xcode installed. To run them inside Eclipse, you will also need the [RoboVM for Eclipse plugin](http://marketplace.eclipse.org/content/robovm-eclipse).
-
-Android
--------
-
-The Android projects use the ADT plugins for Eclipse, available from http://developer.android.com/sdk/installing/installing-adt.html . Using the SDK manager (Window -> Android SDK Manager), select and install at least the entire "Android 4.2.2 (API 17)" folder.
-
-Additionally, set the path to the Android SDK root (e.g. c:\android-sdks) in an environment variable named ANDROID_HOME as well as in the Maven settings.xml above.
-
-Note: using the stock Android emulator, it is likely that the internal web server for the Hybrid application will be too slow to launch for the app to work correctly, leading to a connection-failure dialog. It is better to run this application on real hardware or in a faster emulator/virtual machine.
-
-Eclipse Import
---------------
-
-Using "Import &rarr; Maven &rarr; Existing Maven Projects", import the projects from the darwino-demo folder.
-
-In a new Eclipse installation, Eclipse will generate some errors about "Plugin execution not covered by lifecycle configuration" referring to several of the pom files. To fix this, choose the Quick Fix for the error that discovers new m2e connectors. After going through this process and installing the connectors, Eclipse will stop complaining.
-
-J2EE Projects
--------------
-
-The "dwo-demo-news-j2ee" and "dwo-jre-j2ee-devtools" apps are written to be run on [Tomcat](http://tomcat.apache.org), though would likely be fine on other servers as well.
-
-The demo projects use a static list of users, defined in the dwo-demo-commons-triloggroup project, in the `com.triloggroup.demo.users.StaticTomcatUserService` class. To work with this default user pool, add at least the following users to the Tomcat server's tomcat-users.xml file:
-
-	<role name="user"/>
-	<user password="floflo" roles="user" username="atinov"/>
-	<user password="floflo" roles="user" username="amass"/>
-	<user password="floflo" roles="user" username="aboucher"/>
-	<user password="floflo" roles="user" username="acalder"/>
-	<user password="floflo" roles="user" username="agardner"/>
-	<user password="floflo" roles="user" username="bchapot"/>
-	<user password="floflo" roles="user" username="blemercier"/>
-	<user password="floflo" roles="user" username="bchris"/>
-	<user password="floflo" roles="user" username="bbright"/>
-	<user password="floflo" roles="user" username="larmatti"/>
-	<user password="floflo" roles="user" username="lbros"/>
-	<user password="floflo" roles="user" username="mdavis"/>
-	<user password="floflo" roles="user" username="pcollins"/>
-	<user password="floflo" roles="user" username="rjordan"/>
-
-These parameters are defined in the dwo-demo-commons-triloggroup project, in the `com.triloggroup.demo.users.DemoSqlContext` class.
