@@ -96,4 +96,4 @@ Please note the port 5434. You have to specify it when installing the server.
 Maven Configuration
 -------------------
 
-Maven should be configured to point to the Darwino repository. See the following instructions: [local repository](Maven Settings).
+Maven should be configured to point to the Darwino repository. See the following instructions: [Setting Up Maven](Maven Settings).
