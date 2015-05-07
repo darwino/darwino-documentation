@@ -1,0 +1,1 @@
+The Domino Discussion applications are an example of replicating with a standard Domino NSF-based discussion database.

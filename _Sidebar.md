@@ -11,7 +11,8 @@
 
 **Getting Started**
 
-* [[Running the Sample Applications]]
+* [[Running the News Samples]]
+* [[Running the Domino Discussion Samples]]
 * [[Creating a new Darwino Project]]
 
 **Packaging Mobile Applications**
