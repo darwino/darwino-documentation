@@ -5,8 +5,9 @@
 **Installation**
 
 * [[Preparing the Development Environment]]
-* [[Maven Settings]]
+	* [[Installing and Configuring PostgreSQL]]
 * [[Eclipse Setup]]
+	* [[Maven Settings]]
 
 **Getting Started**
 
