@@ -16,7 +16,3 @@
 **Packaging Mobile Applications**
 
 * [[iOS Applications|Working With iOS Applications]]
-
-**Snapshot Builds**
-
-* [[Snapshot Builds]]
