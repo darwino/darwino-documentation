@@ -1,11 +1,17 @@
-Darwino projects require Maven to be properly configured to point to the Darwino repository.
+Darwino projects require Maven to be properly configured to point to the Darwino repository. This is best done by modifying Maven's settings file, which is a file called `settings.xml` located in the `.m2` directory in your home folder.
+
+If you're using Eclipse and this file already exists, you can open it for editing by going to the Maven &rarr; User Settings pane in Eclipse's Preferences and clicking "Open File":
+
+![](eclipse-mavenopenfile.png)
+
+If the file does not yet exist, this link will be absent. In that case, create a new file in a text editor and, when saving, browse to your home directory (e.g. C:\Users\yourname on Windows), create a folder named ".m2" (with the leading dot), and save the file as "settings.xml" within it.
 
 Setting up the Repository
 -------------------------
 
-Add the Darwino Maven repository to your settings.xml, along with your repo username and password.
+The important information to add to your Maven settings is the location of the Darwino repository, which contains the core Darwino components as well as needed third-party dependencies.
 
-Here is an example settings.xml containing the remote repository using the generic repo accessor username:
+Here is an example complete settings.xml containing the remote repository using the generic repo accessor username. If your settings.xml file didn't exist previously, you can use this as the file's contents.
 
 	<?xml version="1.0"?>
 	<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
