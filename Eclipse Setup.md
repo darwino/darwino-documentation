@@ -49,12 +49,13 @@ Installing the Darwino Studio add-on
 The Darwino studio provides a set of tools and wizards. It is available from an Eclipse update site located at: [http://builds.darwino.com/studio/nightly](http://builds.darwino.com/studio/nightly "Darwino Update Site"). *("nightly" is temporary and subject to change soon)*
 
 Bellow are the instructions:
+
 1. Select Help > Install New Software.
-1. In the "Wok With:" field, enter the following URL:
+2. In the "Wok With:" field, enter the following URL:
 	[http://builds.darwino.com/studio/nightly](http://builds.darwino.com/studio/nightly "Darwino Update Site")
-1. When prompted, enter your Darwino user and password.
-1. In the Available Software dialog, select the Darwino Studio checkbox.
-1. In the next window, you'll see a list of the tools to be downloaded. Click Next.
-1. Read and accept the license agreements, then click Finish.
-1. If you get a security warning saying that the authenticity or validity of the software can't be established, click OK.
-1. When the installation completes, restart Eclipse.
+3. When prompted, enter your Darwino user and password.
+4. In the Available Software dialog, select the Darwino Studio checkbox.
+5. In the next window, you'll see a list of the tools to be downloaded. Click Next.
+6. Read and accept the license agreements, then click Finish.
+7. If you get a security warning saying that the authenticity or validity of the software can't be established, click OK.
+8. When the installation completes, restart Eclipse.

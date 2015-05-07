@@ -42,6 +42,7 @@ Just unzip the server under your installation directory:
 ![](install-tomcat.png)
 
 If you plan to use the demo applications, then you need to add some demo users with roles in your tomcat environment. Add the following content to `{tomcat install dir}\conf\tomcat-users.xml` :
+
     <!-- TOMCAT manager -->
       <role rolename="admin-gui"/>
       <role rolename="manager-gui"/>
@@ -99,4 +100,4 @@ Please note the port 5434. You have to specify it when installing the server.
 Maven Configuration
 -------------------
 
-The Maven settings differ based on whether you're using a [local repository](Maven Settings - Local Repo) or a [remote repository](Maven Settings - Remote Repo).
+Maven should be configured to point to the Darwino repository. See the following instructions: [local repository](Maven Settings).
