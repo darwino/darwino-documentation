@@ -31,7 +31,7 @@ If you are running on a Mac, you can run the iOS applications, which are `dwo-de
 Connecting to the J2EE App from Mobile
 --------------------------------------
 
-To connect to a running instance of the J2EE application from either the Android or iOS applications, modify the connection settings in the `src/main/resources/predefined_connections_default.json` file in the `dwo-demo-commons-mobile` project, replacing `{0}` with the base URL of your Tomcat server in the first settings block. For example:
+To connect to a running instance of the J2EE application from either the Android or iOS applications, modify the connection settings in the `src/main/resources/predefined_connections_default.json` file in the `dwo-demo-commons-mobile` project, replacing `{0}` with the base URL of your Tomcat server in the first settings block. For example, where the Tomcat server is "10.0.1.8" and running on port 8081:
 
     {
         "enabled": true,
@@ -44,3 +44,6 @@ To connect to a running instance of the J2EE application from either the Android
         "cn": "Al Mass"
     }
 
+These settings can also be modified from within the mobile applications when running by going to the settings for the app, which is available by tapping "Settings" in the bottom-right corner of the iOS native app and in the top-right drop-down menu otherwise:
+
+![](android-settings.png)
