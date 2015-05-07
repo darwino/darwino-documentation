@@ -1,4 +1,4 @@
-Welcome to the Darwino wiki!
+Welcome to the Darwino Wiki!
 ============================
 
 

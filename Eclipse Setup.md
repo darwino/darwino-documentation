@@ -1,7 +1,3 @@
-Installing and setting up Eclipse for Darwino
-=============================================
-
-
 Installing the Eclipse IDE
 -----------------------------
 Although the use of an IDE, and in particular Eclipse, is not a requirement, it certainly eases the development of Darwino applications.

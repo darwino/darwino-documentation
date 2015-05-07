@@ -1,6 +1,3 @@
-Maven Settings
-==============
-
 Darwino projects require Maven to be properly configured to point to the Darwino repository. This repository can be local, or remote
 
 

@@ -1,6 +1,3 @@
-Working With iOS Applications
------------------------------
-
 Building the iOS demo application requires a Mac with a valid iOS developer profile registered via Xcode's Accounts preference panel. To see if your computer has any active profiles, run:
 
 	security find-identity -v -p codesigning

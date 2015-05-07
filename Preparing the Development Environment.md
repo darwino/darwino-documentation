@@ -1,6 +1,3 @@
-Darwino Development Environment Setup
-====================================
-
 Darwino is a very flexible platform that supports IDE or command line based development. The platform itself is built using [Apache Maven](http://maven.apache.org/ "Apache Maven"). If Maven is also the recommended build tool for Darwino applications, other systems can also be used, including Gradle, Eclipse PDE...
 
 Darwino currently supports the following target platforms:
@@ -82,7 +79,6 @@ Installing the iOS application development tools
 ------------------------------------------------
 
 As stated earlier, developing for iOS requires an Apple Mac computer running OS X. To compile, run in a simulator or deploy the application, the Apple Xcode development environment is required. It is available freely from the Mac App Store ([https://itunes.apple.com/us/app/xcode/id497799835?mt=12](https://itunes.apple.com/us/app/xcode/id497799835?mt=12 "Xcode")).
-
 
 
 PostgreSQL
