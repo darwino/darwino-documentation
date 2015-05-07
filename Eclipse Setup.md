@@ -22,22 +22,20 @@ Darwino requires some extra plug-ins bellow to be installed on top of the versio
 
 - For developing Web (J2EE) applications
 	- M2E WTP
-**Note**: your version of Eclipse, if it is recent enough, might already have this feature installed. In this case, just skip this step.
-Select `Help->Eclipse Marketplace...` and search for `m2e wtp`. Be careful to install m2e-wtp matching your Eclipse version and *not* m2eclipse-wtp, which is deprecated.
+	**Note**: your version of Eclipse, if it is recent enough, might already have this feature installed. In this case, just skip this step.
+	Select `Help->Eclipse Marketplace...` and search for `m2e wtp`. Be careful to install m2e-wtp matching your Eclipse version and *not* m2eclipse-wtp, which is deprecated.
 - If Android is a desired target platform
-	- Android development toolkit (aka ADT), 
-Follow the instructions under "*Download the ADT Plugin*" from [http://developer.android.com/sdk/installing/installing-adt.html](http://developer.android.com/sdk/installing/installing-adt.html)
-Update site URL, [https://dl-ssl.google.com/android/eclipse/](https://dl-ssl.google.com/android/eclipse/ "Update Site")
-	- Android for Maven Eclipse ([http://rgladwell.github.io/m2e-android/](http://rgladwell.github.io/m2e-android/))
-Select `Help->Eclipse Marketplace...` and search for `android m2e`.
+	- Android Development Tools (aka ADT), 
+	Select `Help->Eclipse Marketplace...` and search for `android adt`.
+	- Android for Maven Eclipse
+	Select `Help->Eclipse Marketplace...` and search for `m2e android`.
 - If iOS is a desired target platform
 	- RoboVM
-Follow the instructions under "*RoboVM for Eclipse*" from [http://robovm.com/develop/documentation/](http://robovm.com/develop/documentation/)
+	Follow the instructions under "*RoboVM for Eclipse*" from [http://robovm.com/develop/documentation/](http://robovm.com/develop/documentation/)
 	- Update site URL, [http://download.robovm.org/eclipse/](http://download.robovm.org/eclipse/ "Update Site")
 - In case you want to use WRO4J to optimize your JavaScript/CSS code, it is advised to install the m2e-wro4j connector
 	- WRO4J Connector, 
-Follow these instructions: [https://github.com/jbosstools/m2e-wro4j](https://github.com/jbosstools/m2e-wro4j "M2E-WRO4J")
-	- Update site URL, [http://download.jboss.org/jbosstools/updates/m2e-wro4j/](http://download.jboss.org/jbosstools/updates/m2e-wro4j/ "Update Site")
+	Select `Help->Eclipse Marketplace...` and search for `m2e wro4j`.
 
 
 Installing the Darwino Studio add-on
@@ -55,3 +53,19 @@ Bellow are the instructions:
 6. Read and accept the license agreements, then click Finish.
 7. If you get a security warning saying that the authenticity or validity of the software can't be established, click OK.
 8. When the installation completes, restart Eclipse.
+
+
+
+Eclipse Add-ons information
+---------------------------
+- Android Development Tools
+	- Instructions: [http://developer.android.com/sdk/installing/installing-adt.html](http://developer.android.com/sdk/installing/installing-adt.html)
+	- Update site URL: [https://dl-ssl.google.com/android/eclipse/](https://dl-ssl.google.com/android/eclipse/ "Update Site")
+- Android for Maven Eclipse 
+	[http://rgladwell.github.io/m2e-android/](http://rgladwell.github.io/m2e-android/)
+- RoboVM
+	- Instructions: [http://robovm.com/develop/documentation/](http://robovm.com/develop/documentation/)
+	- Update site URL: [http://download.robovm.org/eclipse/](http://download.robovm.org/eclipse/ "Update Site")
+- m2e-wro4j connector
+	- Web site: [https://github.com/jbosstools/m2e-wro4j](https://github.com/jbosstools/m2e-wro4j "M2E-WRO4J").
+	- Update site URL: [http://download.jboss.org/jbosstools/updates/m2e-wro4j/](http://download.jboss.org/jbosstools/updates/m2e-wro4j/ "Update Site")
