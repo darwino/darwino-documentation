@@ -30,9 +30,7 @@ Darwino requires some extra plug-ins bellow to be installed on top of the versio
 	- Android for Maven Eclipse
 	Select `Help->Eclipse Marketplace...` and search for `m2e android`.
 - If iOS is a desired target platform
-	- RoboVM
-	Follow the instructions under "*RoboVM for Eclipse*" from [http://robovm.com/develop/documentation/](http://robovm.com/develop/documentation/)
-	- Update site URL, [http://download.robovm.org/eclipse/](http://download.robovm.org/eclipse/ "Update Site")
+	- RoboVM, Follow the instructions under "*RoboVM for Eclipse*" from [http://robovm.com/develop/documentation/](http://robovm.com/develop/documentation/)
 - In case you want to use WRO4J to optimize your JavaScript/CSS code, it is advised to install the m2e-wro4j connector
 	- WRO4J Connector, 
 	Select `Help->Eclipse Marketplace...` and search for `m2e wro4j`.
@@ -45,9 +43,10 @@ The Darwino studio provides a set of tools and wizards. It is available from an 
 Bellow are the instructions:
 
 1. Select Help > Install New Software.
-2. In the "Wok With:" field, enter the following URL:
+2. In the "Work With:" field, enter the following URL:
 	[http://builds.darwino.com/studio/nightly](http://builds.darwino.com/studio/nightly "Darwino Update Site")
 3. When prompted, enter your Darwino user and password.
+	*Use repo/darwinorepo if you don't have a specific one*
 4. In the Available Software dialog, select the Darwino Studio checkbox.
 5. In the next window, you'll see a list of the tools to be downloaded. Click Next.
 6. Read and accept the license agreements, then click Finish.
@@ -56,13 +55,13 @@ Bellow are the instructions:
 
 
 
-Eclipse Add-ons information
+Eclipse Add-ons Information
 ---------------------------
 - Android Development Tools
 	- Instructions: [http://developer.android.com/sdk/installing/installing-adt.html](http://developer.android.com/sdk/installing/installing-adt.html)
 	- Update site URL: [https://dl-ssl.google.com/android/eclipse/](https://dl-ssl.google.com/android/eclipse/ "Update Site")
 - Android for Maven Eclipse 
-	[http://rgladwell.github.io/m2e-android/](http://rgladwell.github.io/m2e-android/)
+	- Instructions: [http://rgladwell.github.io/m2e-android/](http://rgladwell.github.io/m2e-android/)
 - RoboVM
 	- Instructions: [http://robovm.com/develop/documentation/](http://robovm.com/develop/documentation/)
 	- Update site URL: [http://download.robovm.org/eclipse/](http://download.robovm.org/eclipse/ "Update Site")
