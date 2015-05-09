@@ -5,7 +5,8 @@
 **Installation**
 
 * [[Preparing the Development Environment]]
-	* [[Installing and Configuring PostgreSQL]]
+	* [[Configuring TOMCAT]]
+	* [[Configuring PostgreSQL]]
 * [[Eclipse Setup]]
 	* [[Maven Settings]]
 

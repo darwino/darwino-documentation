@@ -31,36 +31,6 @@ Both the Java JRE and SDK can be downloaded from the Oracle web site: [http://ww
 Once installed, make sure that the development environment variable JAVA_HOME is pointing to you Java environment. Make also sure that you JVM is available from the command line by emitting `java -version`.
 ![](install-java-version.png)
 
-Installing Apache TOMCAT
-------------------------
-
-Download the latest TOMCAT server (8.x) from the Apache Web Site: [https://tomcat.apache.org/download-80.cgi](https://tomcat.apache.org/download-80.cgi "Download Tomcat").
-Just unzip the server under your installation directory:
-![](install-tomcat.png)
-
-If you plan to use the demo applications, then you need to add some demo users with roles in your tomcat environment. Add the following content to `{tomcat install dir}\conf\tomcat-users.xml` :
-
-    <!-- TOMCAT manager -->
-      <role rolename="admin-gui"/>
-      <role rolename="manager-gui"/>
-    
-      <role rolename="admin"/>
-      <role rolename="manager"/>
-      <role rolename="user"/>
-      <role rolename="peuser"/>
-      
-      <user password="passw0rd" roles="manager,admin,user,admin-gui,manager-gui" username="admin"/>
-      <user password="passw0rd" roles="user,admin-gui,manager-gui" username="phil"/>
-      <user password="passw0rd" roles="user" username="phil2"/>
-      <user password="passw0rd" roles="user" username="phil3"/>
-      <user password="passw0rd" roles="user" username="phil4"/>
-      <user password="passw0rd" roles="user" username="phil5"/>
-      
-      <user password="floflo" roles="peuser,user,admin" username="amass"/>
-      <user password="floflo" roles="peuser" username="pcollins"/>
-      <user password="floflo" roles="peuser" username="acalder"/>  
-    
-
 
 Installing the Android application development tools
 ----------------------------------------------------
@@ -81,16 +51,14 @@ Installing the iOS application development tools
 As stated earlier, developing for iOS requires an Apple Mac computer running OS X. To compile, run in a simulator or deploy the application, the Apple Xcode development environment is required. It is available freely from the Mac App Store ([https://itunes.apple.com/us/app/xcode/id497799835?mt=12](https://itunes.apple.com/us/app/xcode/id497799835?mt=12 "Xcode")).
 
 
+Apache TOMCAT
+-------------
+See: [[Configuring TOMCAT]]
+
+
 PostgreSQL
 ----------
-
-By default, the demo projects look for a [PostgreSQL](http://www.postgresql.org) database on the local host using:
-- Port: 5434
-- Database: dwodemo
-- Username: postgres
-- Password: postgres
-
-Please note the port 5434. You have to specify it when installing the server.
+See: [[Configuring PostgreSQL]]
 
 
 Maven Configuration
