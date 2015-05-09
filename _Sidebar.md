@@ -4,10 +4,10 @@
 
 **Installation**
 
-* [[Preparing the Development Environment]]
+* [[Setting Up]]
 	* [[Configuring TOMCAT]]
 	* [[Configuring PostgreSQL]]
-* [[Eclipse Setup]]
+* [[Installing Eclipse]]
 	* [[Maven Settings]]
 
 **Getting Started**

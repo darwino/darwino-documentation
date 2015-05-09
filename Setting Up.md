@@ -32,6 +32,14 @@ Once installed, make sure that the development environment variable JAVA_HOME is
 ![](install-java-version.png)
 
 
+Maven Configuration
+-------------------
+
+Maven should be configured to point to the Darwino repository. If your using Eclipse, please see the following instructions after installing Eclipse: [Setting Up Maven](Maven Settings).
+
+If your using the command line tools, then you should first install maven (latest recommended) and configure it like exposed above.
+
+
 Installing the Android application development tools
 ----------------------------------------------------
 
@@ -60,8 +68,3 @@ PostgreSQL
 ----------
 See: [[Configuring PostgreSQL]]
 
-
-Maven Configuration
--------------------
-
-Maven should be configured to point to the Darwino repository. See the following instructions: [Setting Up Maven](Maven Settings).
