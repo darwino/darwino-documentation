@@ -6,6 +6,8 @@ If you're using Eclipse and this file already exists, you can open it for editin
 
 If the file does not yet exist, this link will be absent. In that case, create a new file in a text editor and, when saving, browse to your home directory (e.g. C:\Users\yourname on Windows), create a folder named ".m2" (with the leading dot), and save the file as "settings.xml" within it.
 
+Depending on your system, it may be difficult to create a new folder named ".m2". If that is the case, it may be necessary to open a Command Prompt or Terminal window, which should default to your home directory, and type `mkdir .m2`.
+
 Setting up the Repository
 -------------------------
 
