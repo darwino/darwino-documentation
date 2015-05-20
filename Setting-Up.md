@@ -21,6 +21,10 @@ A web application server is required to run the web applications. Although any s
 
 A Postgres 9.4.x database server. Other databases may be used, but the demo applications are pre-configured to work with PostgreSQL. Note that a future version of Darwino might use a embedded database and thus this step won't be necessary.
 
+Installing Eclipse
+---------------------------
+
+If you plan to use Eclipse, or already do, please ensure that you first ensure that you follow the [instructions] (Installing Eclipse) for downloading and configuring Eclipse, and the Darwino Studio Eclipse add-on component.
 
 Installing the Java JRE/JDK
 ---------------------------
