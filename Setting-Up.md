@@ -6,9 +6,8 @@ assume that you are using:
 
 [1]: <http://maven.apache.org/>
 
-    \- Eclipse J2EE as your IDE
-
-    \- Maven as your build tool.
+\- Eclipse J2EE as your IDE  
+- Maven as your build tool.
 
 Unless specified otherwise, all the installation instructions assume a Microsoft
 Windows environment, with the software being installed on `c:\Darwino`. However,
@@ -17,13 +16,10 @@ or Linux.
 
 Darwino currently supports the following target platforms:
 
-    \-Web applications through a Java EE server
-
-    \- Android applications
-
-    \- Apple iOS applications
-
-    \- OSGi environments, like Eclipse rich client or IBM Domino
+\-Web applications through a Java EE server  
+- Android applications  
+- Apple iOS applications  
+- OSGi environments, like Eclipse rich client or IBM Domino
 
 Notes: Based on Apple requirements, an Apple Mac computer running OS X is
 required for developing Apple iOS applications. Currently, only Android
@@ -35,20 +31,16 @@ Darwino Installation
 In order to develop with the Darwino Studio, the following components should be
 installed:
 
-    \- Java JRE/JDK: The minimum version is Java 7, but it is advised to use the
-    latest one (Java 8 as of today).
-
-    \- Eclipse for J2EE or other IDE
-
-    \- Web application server is required to run the web applications. Although
-    any servlet container 2.5+ would work, these instructions show how to
-    install/run the demo projects using Apache TOMCAT
-
-    \- Database server: These instructions document the use of Postgres 9.4.x
-    database server. Although other databases may be used, the demo applications
-    are pre-configured to work with PostgreSQL. (Note that a future version of
-    Darwino might use a embedded database and thus this step won't be
-    necessary.)
+\- Java JRE/JDK: The minimum version is Java 7, but it is advised to use the
+latest one (Java 8 as of today).  
+- Eclipse for J2EE or other IDE  
+- Web application server is required to run the web applications. Although any
+servlet container 2.5+ would work, these instructions show how to install/run
+the demo projects using Apache TOMCAT  
+- Database server: These instructions document the use of Postgres 9.4.x
+database server. Although other databases may be used, the demo applications are
+pre-configured to work with PostgreSQL. (Note that a future version of Darwino
+might use a embedded database and thus this step won't be necessary.)
 
 The following instructions describe the installation of each component.
 
