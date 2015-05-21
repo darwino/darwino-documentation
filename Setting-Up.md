@@ -1,74 +1,136 @@
-Darwino is a very flexible platform that supports IDE or command line based development. The platform itself is built using [Apache Maven](http://maven.apache.org/ "Apache Maven"). If Maven is also the recommended build tool for Darwino applications, other systems can also be used, including Gradle, Eclipse PDE...
+Darwino is a flexible development platform that supports IDE or command line
+based development. The platform itself is built using [Apache Maven][1]. Maven
+is also the recommended build tool for Darwino applications, but other systems
+can also be used, including Gradle, Eclipse PDE, etc. The following instructions
+assume that you are using:
+
+[1]: <http://maven.apache.org/>
+
+    \- Eclipse J2EE as your IDE
+
+    \- Maven as your build tool.
+
+Unless specified otherwise, all the installation instructions assume a Microsoft
+Windows environment, with the software being installed on `c:\Darwino`. However,
+most of the instructions work identically on other platforms such as Apple OSX
+or Linux.
 
 Darwino currently supports the following target platforms:
-- Web applications through a Java EE server
-- Android applications
-- Apple iOS applications
-- OSGi environments, like Eclipse rich client or IBM Domino
 
+    \-Web applications through a Java EE server
 
-Unless specified otherwise, all the installation instructions assume a Microsoft Windows environment, with the software being installed on `c:\Darwino`. The instructions can easily be transposed to another OS, like Apple OSX or Linux.
+    \- Android applications
 
-Notes: Based on Apple requirements, an Apple Mac computer running OS X is required for developing Apple iOS applications. Currently, only Android applications can be developed and tested using Microsoft Windows or Linux.
+    \- Apple iOS applications
 
+    \- OSGi environments, like Eclipse rich client or IBM Domino
 
-Darwino prerequisites
----------------------
+Notes: Based on Apple requirements, an Apple Mac computer running OS X is
+required for developing Apple iOS applications. Currently, only Android
+applications can be developed and tested using Microsoft Windows or Linux.
 
-A Java environment must be installed on your machine. The minimum version is Java 7, but it is advised to use the latest one (Java 8 as of today).
+Darwino Installation
+--------------------
 
-A web application server is required to run the web applications. Although any servlet container 2.5+ would work, these instructions show how to install/run the demo projects using Apache TOMCAT
+In order to develop with the Darwino Studio, the following components should be
+installed:
 
-A Postgres 9.4.x database server. Other databases may be used, but the demo applications are pre-configured to work with PostgreSQL. Note that a future version of Darwino might use a embedded database and thus this step won't be necessary.
+    \- Java JRE/JDK: The minimum version is Java 7, but it is advised to use the
+    latest one (Java 8 as of today).
 
-Installing Eclipse
----------------------------
+    \- Eclipse for J2EE or other IDE
 
-If you plan to use Eclipse, or already do, please ensure that you first ensure that you follow the [instructions] (Installing Eclipse) for downloading and configuring Eclipse, and the Darwino Studio Eclipse add-on component.
+    \- Web application server is required to run the web applications. Although
+    any servlet container 2.5+ would work, these instructions show how to
+    install/run the demo projects using Apache TOMCAT
+
+    \- Database server: These instructions document the use of Postgres 9.4.x
+    database server. Although other databases may be used, the demo applications
+    are pre-configured to work with PostgreSQL. (Note that a future version of
+    Darwino might use a embedded database and thus this step won't be
+    necessary.)
+
+The following instructions describe the installation of each component.
 
 Installing the Java JRE/JDK
 ---------------------------
 
-If you plan to use Eclipse as the main development environment, then a Java JRE is sufficient. If you plan to use Maven from the command line, then you'll need a full JDK to be installed.
+*If you already have Java 7 or higher installed (Java 8 is highly recommended),
+you can skip this step.*
 
-Both the Java JRE and SDK can be downloaded from the Oracle web site: [http://www.oracle.com/technetwork/java/javase/downloads/index.html](http://www.oracle.com/technetwork/java/javase/downloads/index.html). An IBM JDK will also work.
-Once installed, make sure that the development environment variable JAVA_HOME is pointing to you Java environment. Make also sure that you JVM is available from the command line by emitting `java -version`.
-![](install-java-version.png)
+If you plan to use Eclipse as the main development environment, then a Java JRE
+is sufficient. If you plan to use Maven from the command line, then you'll need
+a full JDK to be installed.
 
+Both the Java JRE and SDK can be downloaded from the Oracle web site:
+<http://www.oracle.com/technetwork/java/javase/downloads/index.html>. An IBM JDK
+will also work. Once installed, make sure that the development environment
+variable JAVA\_HOME is pointing to you Java environment. Make also sure that the
+JVM is available from the command line (terminal on OSX) by using the command
+`java -version`.
+
+![](<install-java-version.png>)
+
+Installing Eclipse for J2EE
+---------------------------
+
+If you plan to use Eclipse, or already do, please ensure that you first ensure
+that you follow the [instructions] (Installing Eclipse) for downloading and
+configuring Eclipse, a**nd the Darwino Studio Eclipse add-on component**. These
+instructions assume that you will use the Eclipse for J2EE version (Not Eclipse
+for Java).
 
 Maven Configuration
 -------------------
 
-Maven should be configured to point to the Darwino repository. If your using Eclipse, please see the following instructions after installing Eclipse: [Setting Up Maven](Maven Settings).
+Maven should be configured to point to the Darwino repository for Darwino
+libraries. If you are using Eclipse, please see the following instructions after
+installing Eclipse: [Setting Up Maven][2].
 
-If your using the command line tools, then you should first install maven (latest recommended) and configure it like exposed above.
+[2]: <Maven%20Settings>
 
+(If you are using the command line tools, then you should first install maven
+(latest recommended) and configure it as described in the instructions.)
 
 Installing the Android application development tools
 ----------------------------------------------------
 
-Developing for the Android platform requires the Android Software Development Kit to be installed. It is available from: [http://developer.android.com/sdk/index.html#Other](http://developer.android.com/sdk/index.html#Other "Android SDK"). The 'SDK Tools only' package is sufficient if you plan to use Eclipse or Maven from the command line.
+Developing for the Android platform requires the Android Software Development
+Kit to be installed. It is available from:
+<http://developer.android.com/sdk/index.html#Other>. The 'SDK Tools only'
+package is sufficient if you plan to use Eclipse or Maven from the command line.
 
-Using the SDK manager [Android SDK manager](http://developer.android.com/tools/help/sdk-manager.html), select and install at least the entire "Android 4.2.2 (API 17)" & "Android 4.4.2 (API 19)" folders.
-![](install-android-pkg.png)
+Using the SDK manager [Android SDK manager][3], select and install at least the
+entire "Android 4.2.2 (API 17)" & "Android 4.4.2 (API 19)" folders.
 
-Additionally, set the path to the Android SDK root (e.g. `c:\Android\SDK`) in an environment variable named `ANDROID_HOME` as well as in the Maven `settings.xml` (see the documentation on installing Maven).
+[3]: <http://developer.android.com/tools/help/sdk-manager.html>
 
-Note: using the stock Android emulator, it is likely that the applications will be too slow to provide a great developer experience. This is particularly true if you launch the emulator from a virtual machine. It is then better to run the demo applications on real hardware or in a faster emulator/virtual machine. See: [http://blog.riand.com/2014/08/running-android-apps-for-development.html](http://blog.riand.com/2014/08/running-android-apps-for-development.html)
+![](<install-android-pkg.png>)
 
+Additionally, set the path to the Android SDK root (e.g. `c:\Android\SDK`) in an
+environment variable named `ANDROID_HOME` as well as in the Maven `settings.xml`
+(see the documentation on installing Maven).
+
+Note: using the stock Android emulator, it is likely that the applications will
+be too slow to provide a great developer experience. This is particularly true
+if you launch the emulator from a virtual machine. It is then better to run the
+demo applications on real hardware or in a faster emulator/virtual machine. See:
+<http://blog.riand.com/2014/08/running-android-apps-for-development.html>
 
 Installing the iOS application development tools
 ------------------------------------------------
 
-As stated earlier, developing for iOS requires an Apple Mac computer running OS X. To compile, run in a simulator or deploy the application, the Apple Xcode development environment is required. It is available freely from the Mac App Store ([https://itunes.apple.com/us/app/xcode/id497799835?mt=12](https://itunes.apple.com/us/app/xcode/id497799835?mt=12 "Xcode")).
-
+As stated earlier, developing for iOS requires an Apple Mac computer running OS
+X. To compile, run in a simulator or deploy the application, the Apple Xcode
+development environment is required. It is available freely from the Mac App
+Store (<https://itunes.apple.com/us/app/xcode/id497799835?mt=12>).
 
 Apache TOMCAT
 -------------
-See: [[Configuring TOMCAT]]
 
+See: [[Configuring TOMCAT]]
 
 PostgreSQL
 ----------
-See: [[Configuring PostgreSQL]]
 
+See: [[Configuring PostgreSQL]]
