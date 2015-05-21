@@ -6,8 +6,9 @@ assume that you are using:
 
 [1]: <http://maven.apache.org/>
 
-\- Eclipse J2EE as your IDE  
-- Maven as your build tool.
+-   Eclipse J2EE as your IDE
+
+-   Maven as your build tool.
 
 Unless specified otherwise, all the installation instructions assume a Microsoft
 Windows environment, with the software being installed on `c:\Darwino`. However,
@@ -16,10 +17,13 @@ or Linux.
 
 Darwino currently supports the following target platforms:
 
-\-Web applications through a Java EE server  
-- Android applications  
-- Apple iOS applications  
-- OSGi environments, like Eclipse rich client or IBM Domino
+-   Web applications through a Java EE server
+
+-   Android applications
+
+-   Apple iOS applications
+
+-   OSGi environments, like Eclipse rich client or IBM Domino
 
 Notes: Based on Apple requirements, an Apple Mac computer running OS X is
 required for developing Apple iOS applications. Currently, only Android
