@@ -6,7 +6,7 @@ Installing PostgreSQL
 If you just started with PostgreSQL, the we strongly advise you to run one of the predefined installers. See: [http://www.postgresql.org/download/](http://www.postgresql.org/download/ "Download PostgreSQL").
 Please, choose at least version 9.4
 
-By default, the pre-packaged Darwino projects look for a PostgreSQL database on the local host using the user/passwor and port bellow: 
+By default, the pre-packaged Darwino projects look for a PostgreSQL database on the local host using the user/password and port below: 
 - Port: **5434**
 	Please note the port `5434`, whle the default is `5432`. You have to specify it when installing the server.
 - Username: `postgres`
