@@ -1,3 +1,5 @@
+Introduction to Darwino
+=======================
 Darwino is a flexible development platform that supports IDE or command line
 based development. The platform itself is built using [Apache Maven][1]. Maven
 is also the recommended build tool for Darwino applications, but other systems
