@@ -42,7 +42,8 @@ In the server view, create a new server by hitting the link bellow. If the view 
 Select your TOMCAT environment and eventually change the server name, and hit 'Finish'
 ![](eclipse_tomcat4.png)
 
-Download the [darwino-beans.xml](file://github.com/darwino/darwino-demo/wiki/darwino-beans.xml) and [darwino.properties](file://github.com/darwino/darwino-demo/wiki/darwino.properties) files to the Tomcat install directory.
+Download the [darwino-beans.xml](http://github.com/darwino/darwino-demo/wiki/darwino-beans.xml) and [darwino.properties](http://github.com/darwino/darwino-demo/wiki/darwino.properties) files to the Tomcat install directory.
+
 ![](eclipse_tomcat6.png)
 
 Now you have your server ready for the Darwino applications
