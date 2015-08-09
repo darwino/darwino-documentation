@@ -8,7 +8,7 @@ Just unzip the server under your installation directory:
 ![](install-tomcat.png)
 
 
-If you plan to use the demo applications, then you need to add some demo users with roles in your tomcat environment. xAdd the following content to `{tomcat install dir}\conf\tomcat-users.xml` :
+If you plan to use the demo applications, then you need to add some demo users with roles in your tomcat environment. Add the following content to `{tomcat install dir}\conf\tomcat-users.xml` :
 
 	<role name="user"/>
 	  <user password="darwino" roles="user" username="atinov"/>
