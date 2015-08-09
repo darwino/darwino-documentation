@@ -10,25 +10,21 @@ Just unzip the server under your installation directory:
 
 If you plan to use the demo applications, then you need to add some demo users with roles in your tomcat environment. Add the following content to `{tomcat install dir}\conf\tomcat-users.xml` :
 
-    <!-- TOMCAT manager -->
-      <role rolename="admin-gui"/>
-      <role rolename="manager-gui"/>
-    
-      <role rolename="admin"/>
-      <role rolename="manager"/>
-      <role rolename="user"/>
-      <role rolename="peuser"/>
-      
-      <user password="passw0rd" roles="manager,admin,user,admin-gui,manager-gui" username="admin"/>
-      <user password="passw0rd" roles="user,admin-gui,manager-gui" username="phil"/>
-      <user password="passw0rd" roles="user" username="phil2"/>
-      <user password="passw0rd" roles="user" username="phil3"/>
-      <user password="passw0rd" roles="user" username="phil4"/>
-      <user password="passw0rd" roles="user" username="phil5"/>
-      
-      <user password="floflo" roles="peuser,user,admin" username="amass"/>
-      <user password="floflo" roles="peuser" username="pcollins"/>
-      <user password="floflo" roles="peuser" username="acalder"/>  
+	<role name="user"/>
+	  <user password="darwino" roles="user" username="atinov"/>
+	  <user password="darwino" roles="user" username="amass"/>
+	  <user password="darwino" roles="user" username="aboucher"/>
+	  <user password="darwino" roles="user" username="acalder"/>
+	  <user password="darwino" roles="user" username="agardner"/>
+	  <user password="darwino" roles="user" username="bchapot"/>
+	  <user password="darwino" roles="user" username="blemercier"/>
+	  <user password="darwino" roles="user" username="bchris"/>
+	  <user password="darwino" roles="user" username="bbright"/>
+	  <user password="darwino" roles="user" username="larmatti"/>
+	  <user password="darwino" roles="user" username="lbros"/>
+	  <user password="darwino" roles="user" username="mdavis"/>
+	  <user password="darwino" roles="user" username="pcollins"/>
+	  <user password="darwino" roles="user" username="rjordan"/>
     
 
 
