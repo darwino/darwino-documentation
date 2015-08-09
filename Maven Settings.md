@@ -8,18 +8,35 @@ If the file does not yet exist, this link will be absent. In that case, create a
 
 Depending on your system, it may be difficult to create a new folder named ".m2". If that is the case, it may be necessary to open a Command Prompt or Terminal window, which should default to your home directory, and type `mkdir .m2`.
 
+If you will be working on Domino-related projects, it is necessary to download and install and reference the IBM Domino Update Site for Build Management from openntf.org. It contains the OSGi plugins required by Domino.
+
+The Update Site can be downloaded [here](http://www.openntf.org/main.nsf/project.xsp?r=project/IBM%20Domino%20Update%20Site%20for%20Build%20Management). Expand the download zip file and place the contents in the Java install directory.
+
+![](Install_Domino_Update_Site1.png)
+
+In Eclipse Preferences, add the Update Site to the target platform. To do this, under 'Plug-in Development\Target Platform' select the Running Platform and choose 'Edit...'. In the resulting dialog, choose 'Add...', then 'Directory', then point to the Update Site directory and click 'Finish'. 
+
+![](Install_Domino_Update_Site2.png)
+
+
+
 Setting up the Repository
 -------------------------
 
 The important information to add to your Maven settings is the location of the Darwino repository, which contains the core Darwino components as well as needed third-party dependencies.
 
-Here is an example complete settings.xml containing the remote repository using the generic repo accessor username. If your settings.xml file didn't exist previously, you can use this as the file's contents.
+Here is an example of a complete settings.xml containing the remote repository using the generic repo accessor username. If your settings.xml file didn't exist previously, you can use this as the file's contents. If you will be working on Domino-related projects, change the file path specified in the notes-platform property to your Java directory. If you will NOT be working on Domino-related projects, you can delete the notes-platform property altogether.
 
 	<?xml version="1.0"?>
 	<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
 		<profiles>
 			<profile>
 				<id>darwino-repository-profile</id>
+                <properties>
+                	<notes-platform>
+                    	file:///*path to Java installation*/DominoBuildManagementUpdateSite/UpdateSite
+                	</notes-platform>
+            	</properties>
 				<repositories>
 					<repository>
 						<id>darwino-repository</id>
@@ -41,4 +58,4 @@ Here is an example complete settings.xml containing the remote repository using 
 		</servers>
 	</settings>
 
-To merge this into an existing settings.xml, the pertinent components are the `<profile>...</profile>` block, including the named profile in the `activeProfiles`, and specifying the credentials used when accessing the repository.
+To merge this into an existing settings.xml, the pertinent components are the `<profile>...</profile>` block, including the named profile in the `activeProfiles`, specifying the credentials used when accessing the repository, and adding the notes-platform property (if you will be working on Domino-related projects).
