@@ -11,7 +11,7 @@ This will launch the app in Tomcat and open up the default landing page for the 
 
 This application can serve as a central server for replication with the mobile demo apps.
 
-It connects to PostgreSQL for its data storage. By default, it uses the port and credentials specified on the [[Preparting the Development Environment]] page. If needed, this can be modified by changing either the `src/main/resources/darwino_default.properties` file in the `dwo-demo-commons` project (which affects the other demos as well) or by creating a copy of this file named `src/main/resources/darwino.properties` in the `dwo-demo-news-j2ee` project itself.
+It connects to PostgreSQL for its data storage. By default, it uses the port and credentials specified on the [[Preparing the Development Environment]] page. If needed, this can be modified by changing either the `src/main/resources/darwino_default.properties` file in the `dwo-demo-commons` project (which affects the other demos as well) or by creating a copy of this file named `src/main/resources/darwino.properties` in the `dwo-demo-news-j2ee` project itself.
 
 Android Applications
 --------------------
@@ -23,7 +23,7 @@ The two Android applications are `dwo-demo-news-android-hybrid` and `dwo-demo-ne
 iOS Applications
 ----------------
 
-If you are running on a Mac, you can run the iOS applications, which are `dwo-demo-news-robovm-native` and `dwo-demo-news-robovm-hybrid`. To do so, right-click on the project and choose one of the Run Ad &rarr; iOS Simulator App options:
+If you are running on a Mac, you can run the iOS applications, which are `dwo-demo-news-robovm-native` and `dwo-demo-news-robovm-hybrid`. To do so, right-click on the project and choose one of the Run As &rarr; iOS Simulator App options:
 
 ![](runas-ios.png)
 
