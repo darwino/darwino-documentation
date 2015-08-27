@@ -5,20 +5,16 @@ Creating your first Darwino application
 The Wizard generates a set of Maven projects (need screenshot). The top project is the container for the other projects
 
 Which projects are generated depends on the options that were selected in the wizard.
-- -shared: This project contains the Java code that is shared by all the platforms.
--- ++AppDatabaseDef.java++ defines the metadata of the JSON store. Since the store is located inside the database as a JSON file, you won’t need this Metadata definition, BUT
-The first time replication runs, the tables will optionally be created automatically.
-It can also check to ensure that the tables are at the required level. If the database and the DATABASE_VERSION are equal, it will proceed. If the table version is higher than expected, an error will be raised. It the table version is lower, you can upgrade the tables (if autodepoly was selected), or raise an error.
+- -shared: This project contains the Java code that is shared by all the platforms. 
+-- ++AppDatabaseDef.java++ defines the metadata of the JSON store. Since the store is located inside the database as a JSON file, you won’t need this Metadata definition (need to verify and elaborate on this).
+The first time replication runs, the tables will optionally be created automatically. It can also check to ensure that the tables are at the required level. If the database and the DATABASE_VERSION are equal, it will proceed. If the table version is higher than expected, an error will be raised. It the table version is lower, you can upgrade the tables (if autodepoly was selected), or raise an error.
 -- ++AppDBBusinessLogic.java++ provides the means to handle database events. Examples include the Document events (create, edit, delete) and database replication events.
--- ++AppManifest.java++ defines the options for the Darwino application layer.
-The options defined here are shared among all platforms
-Examples: the getDatabases method returns the database names used by the application, and getLabel returns the database label for J2EE
--- ++AppServiceFactory.java++ - In a Darwino app, all of the business logic is isolated into services that can be exposed as web services.
-By default it provides you with a set of services, such as the JSON store and (user services? Muffled) and others, but it also allows you to create your own services.
+-- ++AppManifest.java++ defines the options for the Darwino application layer. The options defined here are shared among all platforms. For examples, the getDatabases() method returns the database names used by the application, and getLabel() returns the database label for J2EE.
+-- ++AppServiceFactory.java++ - In a Darwino app, all of the business logic is isolated into services that can be exposed as web services. By default it provides you with a set of services, such as the JSON store, but it also allows you to create your own services. It is in AppServiceFactory where custom application services are defined.
  
  The wizard generates a very basic, example skeleton service that is ready to use.
  
- There is also the RestServiceBinder which is where we define which elements match to which services
+ There is also the RestServiceBinder which is where we define which elements match to which services.
 
 - -webui: This project is generated when the wizard is instructed to create a J2EE or hybrid app. It contains the web artifacts that are consumed by the web application. It’s not under “shared” because we can have apps that are not web apps, for example pure backend apps on the server, or native apps for mobile devices.
  
@@ -26,13 +22,13 @@ By default it provides you with a set of services, such as the JSON store and (u
  
  The web resources are packaged under a folder called darwino-inf under src/main/resources (a Maven convention for where to put resources). 
  
- Darwino comes with a custom service that is able to read the resources inside that directory and act as though they were part of your J2EE project and part of your mobile assets. (discussed at about 27 minutes in)
+ Darwino comes with a custom service that is able to read the resources inside that directory and act as though they were part of your J2EE project and part of your mobile assets.
 
 - -j2ee: This is a J2EE wrapper to this project. It includes the Java in the Java runtime and it includes the web resources in the runtime (must flesh this out).
  
  The pom.xml defines the dependencies of the project. In our case, it shows that we’re including the demo-app-shared and demo-app-webui, thus all the content in both projects will be included.
  
- In the web.xml, we can point to Darwino artifacts, which are either servlets or filters. Several of these are of particular importance. The DarwinoJ2EEFilter, that handle on-the-fly transformation of url requests, allowing us to alter our folder structure without having to modify code to accommodate the changes, and making our urls platform-independent). (this is 30 minutes in)
+ In the web.xml, we can point to Darwino artifacts, which are either servlets or filters. Several of these are of particular importance. The DarwinoJ2EEFilter, that handle on-the-fly transformation of url requests, allowing us to alter our folder structure without having to modify code to accommodate the changes, and making our urls platform-independent).
  
  Defined in web.xml:
 -- DarwinoAppResourcesServlet
@@ -86,7 +82,7 @@ DarwinoApplication.java: two very important objects:
 By default, all services are enabled, but with DarwinoServiceDispatcher we can selectively enable and disable services.
  
  MainActivity –creates the canvas on which the application runs.
-I couldn’t make this out AT ALL. It’s at 1:07 in.
+(I couldn’t make this out AT ALL. It’s at 1:07 in.)
  
  SplashScreenActivity provides the splash screen. Not much to say about this.
 
