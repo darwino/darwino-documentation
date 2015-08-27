@@ -62,7 +62,7 @@ Darwino comes with its own authentication filter than you can choose to use. Thi
  - darwino.properties
  There is an API in Darwino to get these property values.
 
-- -mobile: doesn’t run anywhere. Theis project is a container for resources that are common to both mobile platforms (iOS and Android).
+- -mobile: This project doesn’t run anywhere. It is is a container for resources that are common to both mobile platforms (iOS and Android).
 AppMobileManifest.java is like AppManifest, but specifically for mobile devices. It adds a set of options that are very specific to mobile devices. The wizard provides only the basic skeleton. The developer puts the common mobile code and resources here.
 
 - -android-hybrid: Depending on wizard choices, you can have an android-hybrid and/or and android native. Typically you’ll choose one and not both. We are not showing android native in the demos.
