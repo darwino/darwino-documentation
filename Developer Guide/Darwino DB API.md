@@ -181,7 +181,36 @@ optionally, transient property fields that can contain data we want to pass to d
 
 
 	
--- Managing attachments
+-- 	Managing attachments – Every document can have a set of attachments. The methods for working with attachments are at the document level. Working with attachments is optimized; the attachments are loaded only when needed. When you create or update an attachment, nothing actually happens until you save the document. If the document save is part of a global transaction, then the work is postponed until the transaction is executed.
+
+Document methods for Attachments:
+- getAttachmentCount() returns the number of Attachments
+- getAttachments() returns an array of Attachments
+- getAttachment() returns the Attachment
+- attachmentExists() – returns a boolean 
+- createAttachment(String name, Content content) – populates the content of the Attachment with the specified Content object, which can be Base64Content, ByteArrayContent, ByteBufferContent, EmptyContent, FileContent, InputStreamContent, or TextContent.
+- deleteAllAttachments() – removes all Attachments
+
+Attachment methods:
+- getName()
+- getLength()
+- getMimeType() returns the MIME type of the content. If it wasn’t set when it was created, the system will base the returned value on the extension of the attachment’s filename. If there is no interpretable extension, it will assume binary.
+- update(Content content) updates the content of the attachment
+- getContent() returns the content of the attachment as a Content object.
+- getInputStream() returns the content of the attachment as an InputStream
+There are three “readAs” methods intended for convenience, but are not meant to be used with large attachments. They are not as efficient as working with an InputStream:
+- readAsBase64() 
+- readAsString()
+- readAsString(String encoding)  
+
+The Content object has four methods:
+- getMimeType()
+- getLength()
+- createInputStream()
+- copyTo(OutputStream os)
+A Content object is an accessor to the data; it is not the data itself. This means that when creating attachments, the Content object does not actually load the data into memory until the document is being saved. Until then, it merely points to the data. This is an important performance consideration.
+
+
 --	Document Meta-data - System data in the JSON document
 --	Response documents – the parentid field contains the unid of a document’s parent, if there is one. This is how a hierarchy of documents if defined in Darwino. The data integrity of this relationship is not enforced; it is possible to have “orphan” documents– documents with a parentid that is not valid.
 	
@@ -190,11 +219,8 @@ optionally, transient property fields that can contain data we want to pass to d
  It is not necessary for a synchronization master to be an ancestor; other document relationships could benefit from the ability to so specifically define under what circumstances they will replicate as a group. (Expound on this.)
 
     
--- Access to the JSON content
-	-- Managing attachments
-	-- Document Metadata/System data in the JSON document
-	-- Response documents
-	-- Synchronization master document
+
+
 - 4	Cursors and queries
 	-- Query and extraction language
 	-- Executing a query
