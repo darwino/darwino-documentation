@@ -1,7 +1,7 @@
 Darwino DB API
 =======================
 
-- 1	Concepts
+## 1	Concepts
 The Darwino database is a NoSQL store for storing JSON documents and related attachments. It is actually a database of JSON documents, and you can attach binary pieces to any document. 
  
  Built on top of existing relational databases, it provides the benefits of a mature, well-established technology. Darwino takes advantage of the latest NoSQL additions, such as native JSON and data sharding. 
@@ -10,14 +10,14 @@ The Darwino database is a NoSQL store for storing JSON documents and related att
  
  One of the key points of the JSON store is that there is a single implementation that works everywhere: servers (Windows, Linux, OS X, etc…), and mobile devices. The same code runs in both environments. Moreover, these disparate environments can replicate data. 
 
-	-- Server, Session, Database, Store, Indexes
-    There are two concepts here. One of the concepts is the Server.  Even on a mobile device, you have the Server. The Server is, in effect, the database itself; the Server encapsulates the connection to a physical RDBMS.  It points to your DB2, your SQL Server, your PostgreSQL, or to your SQL Lite. When you connect to an RDBMS on the server, you will specify the JDBC path and user password that the runtime can use to access the data. 
-    
-    When you want to do this through a Darwino server, you have to do it through a Session object, and a Session object is related to a particular user.  The reason for the Session object is to allow different users to share the same server. The app itself will use one database server but multiple Sessions. The Session, created from the user’s ID, is what will be used by the runtime to apply security to the data. This is an important concept because the server connects to the physical relational database with one single user and password, which means that this user and password can access all of the data. The security is then applied by the Darwino runtime through the Session object.   
-    
-    Then comes the organization of the data.  The data are organized into databases; but we should not confuse that with the relational database file.  Here, it’s a document database.  A database is a set of stores with common characteristics. The store is a container for JSON documents.  This notion doesn’t exist in IBM Domino; in Domino, you have the NSF, and the NSF is a container for Notes documents. In Darwino, you have one extra level: The database is a set of stores, and each store is a container for documents. That allows you to put documents into different “buckets” that have different characteristics, such as different indexing strategies. For example, in a CRM application, you may have one document that is a Customer, and another that is a Product. You would not want to apply the same indexes to these documents.  You can specify further customization for a store, such as whether full-text search is enabled.
-     
-     Then, there is the document.  In Darwino, a document is four things:
+###Server
+   Even on a mobile device, you have the Server. The Server is, in effect, the database itself; the Server encapsulates the connection to a physical RDBMS.  It points to your DB2, your SQL Server, your PostgreSQL, or to your SQL Lite. When you connect to an RDBMS on the server, you will specify the JDBC path and user password that the runtime can use to access the data. 
+### Session
+   When you want to do this through a Darwino server, you have to do it through a Session object, and a Session object is related to a particular user.  The reason for the Session object is to allow different users to share the same server. The app itself will use one database server but multiple Sessions. The Session, created from the user’s ID, is what will be used by the runtime to apply security to the data. This is an important concept because the server connects to the physical relational database with one single user and password, which means that this user and password can access all of the data. The security is then applied by the Darwino runtime through the Session object.   
+### Database
+   Then comes the organization of the data.  The data are organized into databases; but we should not confuse that with the relational database file.  Here, it’s a document database.  A database is a set of stores with common characteristics. The store is a container for JSON documents.  This notion doesn’t exist in IBM Domino; in Domino, you have the NSF, and the NSF is a container for Notes documents. In Darwino, you have one extra level: The database is a set of stores, and each store is a container for documents. That allows you to put documents into different “buckets” that have different characteristics, such as different indexing strategies. For example, in a CRM application, you may have one document that is a Customer, and another that is a Product. You would not want to apply the same indexes to these documents.  You can specify further customization for a store, such as whether full-text search is enabled.
+### Document
+   Then, there is the document.  In Darwino, a document is four things:
 -- JSON data. It’s not necessarily a JSON object; it could be a JSON array. Most of the time it will be a JSON object; making it a JSON object is a best practice, because doing so is necessary to allow use of features such as ?????? (inaudible, about 17minutes in.)Reader/writer fields, maybe?
 -- metadata.: the UNID, creation date, last modification date, creator name, last modifier name. There are also several replication-related metadata items, but these are generally not of interest to the developer. These include the last replicated time and the sequence ID used in detecting replication conflicts. 
 -- A potential set of binary attachments. The attachments consist of binary data identified by name, and with an associated MIME type so that consumers can know what to do with the data. A single Darwino document can have multiple attachments, but the attachment name is the key so there cannot be two attachments with the same name in a single document. (Question: what other data is stored regarding the attachment? Is there a date and size?)
@@ -28,16 +28,16 @@ The Darwino database is a NoSQL store for storing JSON documents and related att
  Database security
 Darwino implements multi-level security. You can assign security to the Server object; you can control who can and cannot access the server. At the database level, you can assign an ACL. In the ACL, you can define who can access the database, manage the database, read documents, create documents, delete documents, and edit documents. At the Document level, you can maintain a list of users who can read or read/write the document.
 
-	-- UNID, DocId
-    Documents have two identifiers: the UNID, which is a string provided either by the API when creating the document or, if it’s empty, then it is generated automatically by the system. When you create the document, you can pass the ID or allow it to be generated. A UNID must be unique per store. When there are two replicas, for example one on the server and one on a mobile device, the UNIDs will match. 
+###	UNID
+   Documents have two identifiers: the UNID, which is a string provided either by the API when creating the document or, if it’s empty, then it is generated automatically by the system. When you create the document, you can pass the ID or allow it to be generated. A UNID must be unique per store. When there are two replicas, for example one on the server and one on a mobile device, the UNIDs will match. 
     
-    (Aside: The parentID is used to identity the document’s parent. It is the UNID of the parent. ) 
+   (Aside: The parentID is used to identity the document’s parent. It is the UNID of the parent. ) 
+### NoteID
+   The NoteID is an integer that is unique inside the database. It is generated by the system; you cannot specify it when you create the document, and it cannot be changed. Being an integer makes it much more efficient in database operations than a string such as the UNID. 
     
-    The NoteID is an integer that is unique inside the database. It is generated by the system; you cannot specify it when you create the document, and it cannot be changed. Being an integer makes it much more efficient in database operations than a string such as the UNID. 
-    
-    However, the NoteID is not universal; it won’t be the same in two different replicas. Because of this, you should not store it for programmatic use and try to rely on its always applying to that document. NoteIDs are used internally because in the database each document maps to a set of relational tables; the relations between these tables are expressed most of the time through the NoteID because it’s much more efficient than the UNID.
+   However, the NoteID is not universal; it won’t be the same in two different replicas. Because of this, you should not store it for programmatic use and try to rely on its always applying to that document. NoteIDs are used internally because in the database each document maps to a set of relational tables; the relations between these tables are expressed most of the time through the NoteID because it’s much more efficient than the UNID.
 
-- 2	Defining and deploying the database
+##  2	Defining and deploying the database
  A Darwino database is actually a set of tables within a relational database. The schema of these tables does not depend on the Darwino application. You can create tables, for example, at the application level–at the logical level–and the schema will always be the same. (Question: REALLY??? How does this work?) The schema if defined by Darwino. This is important because in some organizations altering tables’ schema is strictly controlled. They require that a new DDL be submitted for the administrator to apply. Darwino make sit so that no new table definitions are necessary… UNLESS you want to add additional indexes.
 
  The prefix of the table names is the name of the Darwino database. This restricts us to names that are compatible with the rules of the relational database system. The suffix is always an underscore followed by three characters. Let’s take a look (need screen shot):
@@ -100,7 +100,7 @@ If the runtime itself has been updated,  the “tableVersion” in the database 
 
 
 
--- Database definition class
+### Database definition class
  (dbnameDatabaseDef.java)
 - setACL() is used to set the access levels of people, groups, and roles (who can read, edit, create documents, etc…). These access rights can be resolved dynamically. In particular, they can be resolved for an Instance.
 - setDocumentSecurity(int documentSecurity) determines how readers and writers filed will be handled. Choices include no reader/writer security, reader only, writer only, etc (need full list)
@@ -151,8 +151,8 @@ index.valuesExtract(“\”$\””) will specify the root of the JSON value as 
 setUpdateWithUserData() specifies whether the index should be undated when a document’s social data, which is stored outside of the document, is changed, even if the document itself has not been changed. An example of this would be if you are tracking ratings for documents and you wish to display the average rating for each document. Rather than recalculate the average every time you query the index, you would store the rating average every time the ratings are changed. By default, the index is not updated when the social data changes.
 
 
--- Configuring the database using managed beans
-    There are two very important points in the Darwino philosophy here.
+###Configuring the database using managed beans
+   There are two very important points in the Darwino philosophy here.
  
  One is that Darwino is built in layers, and you pick the the layer you want to use.  It’s better and more effective when you pick the highest-level one.
  
@@ -160,8 +160,9 @@ setUpdateWithUserData() specifies whether the index should be undated when a doc
 
 
 
-- 3	Documents
-	-- CRUD operations – It is possible to do create, read, update, and delete operations on documents.
+## Documents
+### CRUD operations
+It is possible to perform create, read, update, and delete operations on documents.
 	At the base, the Darwino API is a Java API. There is also a JavaScript API which is a JavaScript flavor of the Java API.  To do CRUD operations, you get the session and from that the database and store, and there you create, read, update, and delete documents. As long as you’re using the Java API locally, you can execute a series of operations within a transaction. At the session level, you can query whether the session supports transactions. If it does, you can start a transaction, perform a set of operations on documents, and then roll back the changes if needed. This is familiar to users of many relational databases, but is alien to Domino and mongoDB.
 
  There are three ways, in Darwino, to access documents:
@@ -172,7 +173,8 @@ The Java wrapper is the Java API, but instead of being implemented to deal direc
 The JavaScript wrapper in intended for use in a JavaScript environment such as a browser or a server-side JavaScript environment like node.js.
 In the future there could be other wrappers, just as PHP bindings, Ruby binding, etc…
 
- Access to the JSON content – The JSON document in Darwino is more than a JSON object; it has several components:
+ ### Access to the JSON content
+ The JSON document in Darwino is more than a JSON object; it has several components:
  - JSON content – typically a JSON object, but it could also be a JSON array. IT is unusual for it to be anything other than a JSON object, because only the JSON object supports use of system data that can be of use to Darwino.
  - optionally, attachments
  - metadata – For example, the unid and the docid, modification date and modification user, etc… These metadata are not modifiable manually by normal operations. 
@@ -186,7 +188,8 @@ optionally, transient property fields that can contain data we want to pass to d
  - jsonPath(Object path)
 
 	
--- 	Managing attachments – Every document can have a set of attachments. The methods for working with attachments are at the document level. Working with attachments is optimized; the attachments are loaded only when needed. When you create or update an attachment, nothing actually happens until you save the document. If the document save is part of a global transaction, then the work is postponed until the transaction is executed.
+###	Managing attachments
+Every document can have a set of attachments. The methods for working with attachments are at the document level. Working with attachments is optimized; the attachments are loaded only when needed. When you create or update an attachment, nothing actually happens until you save the document. If the document save is part of a global transaction, then the work is postponed until the transaction is executed.
 
 Document methods for Attachments:
 - getAttachmentCount() returns the number of Attachments
@@ -216,24 +219,26 @@ The Content object has four methods:
 A Content object is an accessor to the data; it is not the data itself. This means that when creating attachments, the Content object does not actually load the data into memory until the document is being saved. Until then, it merely points to the data. This is an important performance consideration.
 
 
---	Document Meta-data - System data in the JSON document
---	Response documents – the parentid field contains the unid of a document’s parent, if there is one. This is how a hierarchy of documents if defined in Darwino. The data integrity of this relationship is not enforced; it is possible to have “orphan” documents– documents with a parentid that is not valid.
+##	Document Meta-data - System data in the JSON document
+##	Response documents
+The parentid field contains the unid of a document’s parent, if there is one. This is how a hierarchy of documents if defined in Darwino. The data integrity of this relationship is not enforced; it is possible to have “orphan” documents– documents with a parentid that is not valid.
 	
- -- Synchronization master document – Darwino implements “functional replication”. This means that selective replication can be based on changes to an ancestor document, as opposed to the current document. The synchronization master for a document is the document that is checked for changes when the replicator is testing for selective replication eligibility. For example, child document might use the root parent document as their synchronization master. Then, when the root document changes, and only when it changes, will the child documents replicate as well. 
+### Synchronization master document
+Darwino implements “functional replication”. This means that selective replication can be based on changes to an ancestor document, as opposed to the current document. The synchronization master for a document is the document that is checked for changes when the replicator is testing for selective replication eligibility. For example, child document might use the root parent document as their synchronization master. Then, when the root document changes, and only when it changes, will the child documents replicate as well. 
     
  It is not necessary for a synchronization master to be an ancestor; other document relationships could benefit from the ability to so specifically define under what circumstances they will replicate as a group. (Expound on this.)
 
     
 
 
-- 4	Cursors and queries
-	-- Query and extraction language
-	-- Executing a query
-	-- Optimizing queries
-- 5	Accessing and storing social data
-- 6	Data synchronization
-- 7	Registering and handling events
-- 8	Security 
+## Cursors and queries
+### Query and extraction language
+### Executing a query
+### Optimizing queries
+## 5	Accessing and storing social data
+## 6	Data synchronization
+## 7	Registering and handling events
+## 8	Security 
 - Database security
 Darwino implements multi-level security. You can assign security to the Server object; you can control who can and cannot access the server. At the database level, you can assign an ACL. In the ACL, you can define who can access the database, manage the database, read documents, create documents, delete documents, and edit documents. At the Document level, you can maintain a list of users who can read or read/write the document. 
  
@@ -278,6 +283,6 @@ There is a Java class, SecurityHelper, that can be used to manipulate the these 
  
  Regarding ereaders and ewriters: Darwino, when composing a SQL query, adds a subquery to exclude what is not allowed to be seen. This incurs a cost. To avoid this when possible, there is a database property indicating whether document security should be enabled. When it is not enabled, generated queries can avoid the step of running the subquery. A result of this is that if the flag is not set, readers and writers on documents will be ignored in all of the database’s stores. Options for this property are: no document security, reader/writer security only, ereader/ewriter security only, and all security features.
 
-- 
-- 9	REST API
-- 10	Darwino API over HTTP
+
+##9 REST API
+## 10 Darwino API over HTTP
