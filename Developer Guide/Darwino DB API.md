@@ -239,7 +239,7 @@ Darwino implements “functional replication”. This means that selective repli
 ## 6	Data synchronization
 ## 7	Registering and handling events
 ## 8	Security 
-- Database security
+ Database security
 Darwino implements multi-level security. You can assign security to the Server object; you can control who can and cannot access the server. At the database level, you can assign an ACL. In the ACL, you can define who can access the database, manage the database, read documents, create documents, delete documents, and edit documents. At the Document level, you can maintain a list of users who can read or read/write the document. 
  
  The same principles apply to both readers/writers, and excluded-readers/excluded-writers. 
