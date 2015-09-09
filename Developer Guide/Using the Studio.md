@@ -1,6 +1,9 @@
 Using the Studio
 =======================
-Creating your first Darwino application
+
+This section requires some serious structure and some fleshing-out... and, of course, screen shots galore.
+
+# Creating your first Darwino application
 
 The Wizard generates a set of Maven projects (need screenshot). The top project is the container for the other projects
 
@@ -38,8 +41,7 @@ The first time replication runs, the tables will optionally be created automatic
  
  In order for the highest level, the Darwino app, to have the context it needs available, at application initialization the com.demo.app.AppContextListener is triggered before anything else.
  
- It provides the application with access to all of its environment information
-As a listener, it cannot pass parameters, but the application can have global parameters, so the listener uses global parameters to pass context information
+ It provides the application with access to all of its environment information. As a listener, it cannot pass parameters, but the application can have global parameters, so the listener uses global parameters to pass context information
  
  Authentication
 The wizard generates code allowing the use of J2EE authentication, but that requires the J2EE server to be connected to your directory of users and every web application server has its own mechanism for doing that; this does not lend itself to true portability. Also, J2EE authentication lacks granularity.
