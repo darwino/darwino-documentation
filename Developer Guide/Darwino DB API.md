@@ -340,8 +340,42 @@ There are two ways to access this social data. The methods at the store level re
 
 
 
-## 6	Data synchronization
+## 6	Data synchronization (extract this to its own chapter – maybe to just before the Domino piece)
+
 ## 7	Registering and handling events
+At the server level, you can register an ExtensionRegistry. This registry provides a set of functions – currently a set of five:
+-	BinaryStore: When Darwino stores attachments, they can be stored inside the database, or apart from the database. The BinaryStore is an interface that facilitates storing the attachments outside of the database by providing a set a CRUD methods.
+-	DocumentEvents: When an operation is being performed on a document, the runtime will call the methods in the DocumentEvents:
+--	postNewDocument – called right after a document has been created, so that you can, for example, change document values.
+--	postLoadDocument – called right after a document has been loaded.
+--	querySaveDocument– called immediately before a document has been saved. It is possible to cancel the save from within this event simply by throwing an exception. The exception can include the reason for the save cancellation.
+--	postSaveDocument – called immediately after a document has been saved.
+--	queryDeleteDocument – called before a document is deleted, EXCEPT when a group of documents is being deleted. Group deletes are performed directly by a SQL statement, and for performance reasons, and so this event is not raised.
+--	postDeleteDocument – called after a document delete, except, as with queryDocumentDelete, when a group of documents has been deleted.
+ 
+ Note that these events are also raised when called via HTTP. 
+ 
+ Transient properties set at the document level can be accessed from within these events, despite the fact that these properties are never saved.
+
+-	SynchronizationEvents: As synchronization is taking place, this set of events will be raised, allowing customization of the synchronization actions. Like the DocumentEvents, code here can manipulate values or cancel the action altogether.
+--	queryCreateDocument
+--	postCreateDocument
+--	queryUpdateDocument
+--	postUpdateDocument
+--	queryDeleteDocument
+--	postDeleteDocument
+
+ In addition, there are events related specifically to synchronization conflicts. Code here can customize the action to be taken during conflicts.
+
+ conflictAction – raised when the runtime has detected a synchronization conflict, this event provides information about the conflict, including what changed in the source document and what is in the target document. Code here will return an ConflictAction, which will be one of the following: 
+ --	DEFAULT – the default handler should be applied
+ --	SOURCE – the source should win
+ --	TARGET – the target should win
+ --	CUSTOM – call the handleConflict method, where the conflict can be handled by custom business logic. For example, in an HR application where several people interviewing an applicant each have access to a different section of the document. In this case, you would choose to merge the different sections.
+-	FieldFunction: Functions used when extracting fields from documents or computing indexes are registered here.
+-	InstanceFactoryImpl: 
+
+
 ## 8	Security 
  Database security
 Darwino implements multi-level security. You can assign security to the Server object; you can control who can and cannot access the server. At the database level, you can assign an ACL. In the ACL, you can define who can access the database, manage the database, read documents, create documents, delete documents, and edit documents. At the Document level, you can maintain a list of users who can read or read/write the document. 
