@@ -373,10 +373,30 @@ At the server level, you can register an ExtensionRegistry. This registry provid
  --	TARGET – the target should win
  --	CUSTOM – call the handleConflict method, where the conflict can be handled by custom business logic. For example, in an HR application where several people interviewing an applicant each have access to a different section of the document. In this case, you would choose to merge the different sections.
 -	FieldFunction: Functions used when extracting fields from documents or computing indexes are registered here.
--	InstanceFactoryImpl: 
+-	InstanceFactoryImpl: A database can have multiple instances, each with its own security configuration; in other words, there is per-instance security. That instance security is dynamic, based on business logic.
+
+ By default, a database has just one instance; the instance factory is the means to create more. Once the instance factory has been implemented and the instance is created based on the database and the instance name, the contribute() method of the instance is the mechanism for adding roles and groups to the user context.
+
+ For example, the ACL of a database, and the reader/writer fields in the documents, may specify that only the members of a particular group may have access to the data. It is the job of the instance’s contribute() method to add to the current user their list of roles and groups; this list is determined dynamically depending on business logic, and that logic is free to make use of any directories and database data available to it. 
+
+ There is a default implementation of the ExtensionRegistry called DefaultExtensionRegistry. Use this to associate particular document event handlers with specific database stores. Once you create an instance of the DefaultExtensionRegistry, its registerDocumentEvents() method can be used to define specific cases of the document events. By specifying the database and store, you define which document events you want to override; for example here you would code your custom querySaveDocument event.
+```
+Public class AppDBBusinessLogic extends DefaultExtensionRegistry {
+	registerDocumentEvents(“<My Database Id>”, “<My Store Id>”, new DocumentEvents() {
+		@Override
+		public void querySaveDocument(Document doc) throws JsonException {
+		}
+	});
+}
+```
+
+ You can register events globally, and at the at the database level, and at the store level. If an event is registered at the store level, that is one that will be called for documents in that store. If, instead, there is no event registered at the store but there is one registered at the database, then the database registration will be in effect. The most-local (most precise) registration is the one that is used.
+
+ This is also the case for registered field functions.
 
 
-## 8	Security 
+
+## 8	Security (security coverage is strewn about. Maybe this shouldn't be a seperate chapter here, or this chapter should be a grand overview)
  Database security
 Darwino implements multi-level security. You can assign security to the Server object; you can control who can and cannot access the server. At the database level, you can assign an ACL. In the ACL, you can define who can access the database, manage the database, read documents, create documents, delete documents, and edit documents. At the Document level, you can maintain a list of users who can read or read/write the document. 
  
