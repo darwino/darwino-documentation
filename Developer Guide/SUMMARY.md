@@ -10,7 +10,7 @@ This is the summary of my book.
       * [2 Web server](section1/example2.md)
       * [3 Cloud](section1/example2.md)
       * [4 Mobile](section1/example2.md)
-* [Installing a development environment (Current wiki content)](section2/README.md)
+* [Installing a development environment (Current wiki content)](section2/README.md)
 * [Using the studio](section2/README.md)
     * [Creating your first Darwino application](section2/example1.md)
 * [Important concepts](section2/README.md)
@@ -64,7 +64,7 @@ Darwino DB API
 	CRUD operations
 	Access to the JSON content
 	Managing attachments
-	Document Meta-data System data in the JSON document
+	Document Meta-data - System data in the JSON document
 	Response documents
 	Synchronization master document
 4	Cursors and queries
