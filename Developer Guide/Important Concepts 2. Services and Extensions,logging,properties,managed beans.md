@@ -14,7 +14,7 @@ Darwino uses managed beans primarily as a generic way to configure the platform.
 
 ### Configuring Managed Beans
 ------
-Managed beans are provided by extension points, several of which are provided. By default, the platform looks for managed beans configured in a file called darwino-beans.xml in the Tomcat server home/conf directory. However, you can define your managed beans location as a [custom extension] (blank).
+Managed beans are provided by extension points, several of which are provided. By default, the platform looks for managed beans configured in a file called darwino-beans.xml in the Tomcat server home/conf directory. However, you can define your managed beans location as a custom extension.
 
 The set of managed beans is typically configured using the darwino-beans.xml file, but can also be provided from other sources. Managed beans are configured using the following xml structure:
 ```xml
