@@ -1,14 +1,20 @@
 Using the Studio
 =======================
 
-This section requires some serious structure and some fleshing-out... and, of course, screen shots galore.
-
 # Creating your first Darwino application
 
-The Wizard generates a set of Maven projects (need screenshot). The top project is the container for the other projects.
+The Darwino application wizard is the first step in creating a Darwino application.
+
+![](<select-wizard.png>)
+
+The Wizard generates a set of Maven projects. The top project is the container for the other projects.
+
+![](<demo-app.png>)
 
 Which projects are generated depends on the options that were selected in the wizard.
+
 - -shared: This project contains the Java code that is shared by all the platforms. 
+![](<shared-contents.png>)
 -- ++AppDatabaseDef.java++ defines the metadata of the JSON store. Since the store is located inside the database as a JSON file, you won’t need this Metadata definition. (I need to verify and elaborate on this.)
 
  The first time replication runs, the tables will optionally be created automatically. It can also check to ensure that the tables are at the required level. If the database and the DATABASE_VERSION are equal, it will proceed. If the table version is higher than expected, an error will be raised. If the table version is lower, you can upgrade the tables (if autodepoly was selected), or raise an error.
@@ -25,13 +31,13 @@ Which projects are generated depends on the options that were selected in the wi
 
 - -webui: This project is generated when the wizard is instructed to create a J2EE or hybrid app. It contains the web artifacts that are consumed by the web application. It’s not under “shared” because we can have apps that are not web apps, for example pure backend apps on the server, or native apps for mobile devices.
  
- It is a basic skeleton using web technologies and angular.js. angular.js is not a requirement, but it is recommended. The index.html file that’s generated includes angular code, but you can delete it and use whatever framework you like.
+ It is a basic skeleton using web technologies and AngularJS. AngularJS is not a requirement, but it is recommended. The index.html file that’s generated includes AngularJS code, but you can delete it and use whatever framework you like.
  
  The web resources are packaged under a folder called darwino-inf under src/main/resources (a Maven convention for where to put resources). 
  
  Darwino comes with a custom service that is able to read the resources inside that directory and act as though they were part of your J2EE project and part of your mobile assets.
 
-- -j2ee: This is a J2EE wrapper to this project. It includes the Java in the Java runtime and it includes the web resources in the runtime (must flesh this out).
+- -j2ee: This is a J2EE wrapper to this project. It includes the Java in the Java runtime and it includes the web resources in the runtime.
  
  The pom.xml defines the dependencies of the project. In our case, it shows that we’re including the demo-app-shared and demo-app-webui, thus all the content in both projects will be included.
  
@@ -41,9 +47,9 @@ Which projects are generated depends on the options that were selected in the wi
 -- DarwinoAppResourcesServlet
 -- DarwinoJ2EEFilter: When a request comes in, this is the first filter to be activated. It retrieves the current context and puts it on the stack so it becomes available to the application. It does this for every URL.
 -- DarwinoGlobalPathRewriterFilter serves to translate the $darwino-libs keyword in urls to the correct path, rewriting file system paths on the fly. This makes the url completely platform-independent.
--- Darwino services: for example, built-in like the JSON store, or custom (user-created) services served by the DarwinoServiceDispatcher filter.
+-- Darwino services: for example, built-in services like the JSON store, or custom (user-created) services served by the DarwinoServiceDispatcher filter.
  
- In order for the highest level, the Darwino app, to have the context it needs available, at application initialization the com.demo.app.AppContextListener is triggered before anything else. It provides the application with access to all of its environment information. As a listener, it cannot pass parameters, but the application can have global parameters, so the listener uses global parameters to pass context information
+ In order for the highest level, the Darwino application, to have the context it needs available, at application initialization the com.demo.app.AppContextListener is triggered before anything else. It provides the application with access to all of its environment information. As a listener, it cannot pass parameters, but the application can have global parameters, so the listener uses global parameters to pass context information
  
  Authentication
 The wizard generates code allowing the use of J2EE authentication, but that requires the J2EE server to be connected to your directory of users and every web application server has its own mechanism for doing that; this does not lend itself to true portability. Also, J2EE authentication lacks granularity.
@@ -54,14 +60,13 @@ The wizard generates code allowing the use of J2EE authentication, but that requ
  
  - darwino-beans.xml
   These are Java objects, and, as managed beans, the platform will automatically create instances of these objects when needed.
-  Contains sections for: (screenshots could help here)
+  Contains sections for:
   -- Database access
   -- IBM Connections endpoint
   -- HttpTracer – allows tracing of all aspects of the communication between client and server
   -- Static directory of users
    
    Each bean has a type and a name, and can have an alias list, which can include the alias “default”. 
-(include screen shot of contents of the Darwino-beans.xml file.
  
  - darwino.properties
  There is an API in Darwino to get these property values.
@@ -84,9 +89,8 @@ This project depends on all the others except the J2EE app. It includes all the 
  DarwinoServiceDispatcher: this is the class that is used by the HTTP Server to dispatch the services. By default, all services are enabled, but with DarwinoServiceDispatcher we can selectively enable and disable services.
  
  MainActivity –creates the canvas on which the application runs.
-(I couldn’t make this out AT ALL. It’s at 1:07 in.)
  
- SplashScreenActivity provides the splash screen. Not much to say about this.
+ SplashScreenActivity provides the splash screen.
 
 - -robovm-hybrid: This is the iOS version of the app.
 We’re writing Java for iOS, but Java is not supported natively by iOS, so we rely on 3rd-party frameworks. We currently support only RoboVM, but we may support more in the future, such as Intel INDE.
