@@ -14,17 +14,21 @@ Cursors facilitate the selection of document sets from the database, and the ext
 
 ## Query and extraction language
 To calculate aggregate data, such as average, minimum, and maximum, pass an aggregate query to the cursor. For example:
+```
 { Count {$count: @manufacturer”}, Sum: {$sum: “@released”}, Avg: {$avg: “@released”}, Min: {$min: “@released”}, Max: {$max: “@released”}}
+```
 
 When a cursor runs, it calls the cursor handler with all of the cursor entries. In the cursor entry are the key and the value, accessible via getKey() and getValue(). What these two represent depends on the source of the cursor. A cursor executed on a store will have documents as its result, the key will be the unids of the documents, and the value will be the JSON of the documents. If, instead, the cursor was executed on an index, then the key will be the key of the index, and the value will be either the value that’s stored in the index or the JSON value from the corresponding documents, depending on an option applied to the cursor.
 
-(Must provide examples of query options. Where is this best documented?)
+(Question: Must provide examples of query options. Where is this best documented?)
 
 
 ## Executing a query
 A cursor is created at either the store or the database level. The store’s openCursor() method returns a cursor on which you then apply the selection condition. The Cursor methods return the cursor itself, which means that the methods can be stacked. For example:
+```
 Cursor c = index.openCursor().ftSearch(“version”).orderByFtRank().range(0,5)
 
+```
 This will perform a fulltext search on “version”, order the result by rank, and return the first five entries.
 
 ###Cursor Options
