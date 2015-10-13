@@ -1,4 +1,4 @@
-Providers
+#User Service Providers
 Directories are made available to the UserService by registering them by name as providers. Registered providers are included when searching via the query() and typeAhead() functions.
 
 It is also possible to get user information from a specific provider. The User object’s getUserData method, given the name of a registered provider, will return a UserData object. The UserData object has a getAttribute() method for retrieving value of the specified attribute, and a getAttributes() method to return all of the User’s attributes.

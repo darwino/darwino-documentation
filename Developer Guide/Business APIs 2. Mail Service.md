@@ -1,4 +1,4 @@
-Mail Service
+#Mail Service
 
 The Mail Service is a basic interface for sending emails. There is currently no REST service support for the Mail Service, and it is not supported on mobile.
 

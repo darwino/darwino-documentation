@@ -1,11 +1,11 @@
 # Utility Libraries
 
-Darwino comes with a set of general utility classes. These classes are located in a variety of projects. A few of the most noteworthy aare described here.
+Darwino comes with a set of general utility classes. These classes are located in a variety of projects. A few of the most noteworthy are described here.
 
 ## StringUtil
 In dwo-commons is StringUtil. It consists of routines to simplify handling Strings.
 
-FOr example, throughout Darwino a null string and an empty value are considered as equivalent. This is similar to how JavaScript handles the two. For convenience and simplicity, Darwino brings this approach to Java via the isEmpty() and isNotEmpty() functions in StringUtil.
+For example, throughout Darwino a null string and an empty value are considered as equivalent. This is similar to how JavaScript handles the two. For convenience and simplicity, Darwino brings this approach to Java via the isEmpty() and isNotEmpty() functions in StringUtil.
 
 ## AbstractException and AbstractRuntimeException 
 All of the Java exceptions that are thrown by Darwino inherit directly or indirectly from these classes. Darwino’s exception classes provide additional features on top of the classes provided by Java, in particular for debugging.  They implement and enforce an exception-chaining pattern; every time an exception is caught in Darwino and another exception is thrown, the original exception is passed as a parameter to the new exception.
@@ -36,9 +36,9 @@ When code executes a Task, it has access to the TaskExecutorService. Which enabl
 
 If the platform’s task executor maintains progress information about its tasks, the Darwino’s TaskExecutorService can provide that progress information to the context. Darwino provides progress dialogs for the various platforms.
 
-The TaskExecutorContext includes an updateUi() method with a Runnable that allows the backend task to update the user interface as needed.
+The TaskExecutorContext includes an updateUi() method with a Runnable that allows the backend task to update the user interface as needed. The UI task is then executed in the UI thread, which is required on client apps.
 
-There is also a task scheduler. It allows one-time executions and scheduling by periodic intervals, and it supports time ranges (for example, “run hourly between 7:00am and :5:00pm”).
+There is also a task scheduler. It allows one-time executions and scheduling by periodic intervals, and it supports time ranges (for example, “run hourly between 7:00am and 5:00pm”).
 
 #3 Tracer
 The HttpTracerService can trace all of the requests that are coming to the server. As long as the requests are being served by the HttpService, the tracer (a managed bean) can be told precisely what should be traced. Tracing can be restricted to specific urls and particular types of data (headers, details, content)

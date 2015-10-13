@@ -5,7 +5,7 @@ The replication engine and its connectors are written entirely in Java, and are 
 
 
 ## Field Mapping (is there another, preferred term?)
-When replicating with Domino, it is necessary to map between Darwino concepts and Domino concepts. The NSF and the Darwino database fields are mapped one-to-one. Everything is configurable, but by default we replicate all of the documents from Domino into one store in Darwino. 
+When replicating with Domino, it is necessary to map between Darwino concepts and Domino concepts. The NSF and the Darwino database fields are mapped one-to-one. Everything is configurable, but by default we replicate all of the documents from Domino into one store in Darwino. The notion of a store doesn’t exist in IBM Domino; in Domino, you have the NSF, and the NSF is a container for Notes documents. In Darwino, you have one extra level: The database is a set of stores, and each store is a container for documents.
 
 Often multiple Domino NSFs will share a common design, inherited from a template. Darwino replication can be configured to replicate sync multiple such NSFs into one Darwino database. When doing this, each Domino database goes into one Darwino instance. A simple example is the discussion database, where the design is typically identical among all Domino instances. Several discussion databases could be replicated to a single Darwino database on a mobile device. The mobile user or application would simply select the appropriate instance from the database.
 

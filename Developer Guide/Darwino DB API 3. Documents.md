@@ -70,5 +70,5 @@ The parentid field contains the unid of a document’s parent, if there is one. 
 ## Synchronization master document
 Darwino implements “functional replication”. This means that selective replication can be based on changes to an ancestor document, as opposed to the current document. The synchronization master for a document is the document that is checked for changes when the replicator is testing for selective replication eligibility. For example, child document might use the root parent document as their synchronization master. Then, when the root document changes, and only when it changes, will the child documents replicate as well. 
     
- It is not necessary for a synchronization master to be an ancestor; other document relationships could benefit from the ability to so specifically define under what circumstances they will replicate as a group. (Expound on this.)
+ It is not necessary for a synchronization master to be an ancestor; other document relationships could benefit from the ability to so specifically define under what circumstances they will replicate as a group.
 

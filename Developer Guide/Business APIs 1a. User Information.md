@@ -2,16 +2,14 @@
 User information is generally not managed by Darwino; it is stored somewhere else, such as in an LDAP directory or, in the case of Domino, in the NAB. The User service provides access to the external, central directory. There may also be peripheral information about users. For example, the primary user directory may be in Domino, while other information, such as the user’s photograph, is stored in IBM Connections or Facebook. The User Service is architected to simplify working with such distributed user information. One directory is considered the main directory, and additional data can come from zero or more secondary directories.
 	
 
-The directories that work with the User Service are implemented as managed beans, and they are full extensible. Darwino provides beans for several LDAP directories and for the IBM Domino directory.
+The directories that work with the User Service are implemented as managed beans, and they are full extensible. Darwino provides beans for several LDAP directories, the IBM Domino directory, and a static directory for development purposes.
 
 User information takes two forms: information about a user, and a query.
 
 To work with the User Service:
 
 ```
-Public UserService.getUserService() {
 	return Platform.getService(UserService.class);
-}
 ```
 
 The User Service provides a set of function for finding users and retrieving details about users. Because multiple directories may be referenced, there could be multiple IDs for a single user. Nonetheless, there must be only one canonical distinguished name (DN). With this in mind, there are two operations available to find a particular user:
