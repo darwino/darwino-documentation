@@ -9,7 +9,7 @@ Darwino is built to be platform agnostic, and exposes everything in the architec
 Services
 --------
 
-The plaform object provides several [default services](Important Concepts 2. Services and Extensions,logging,properties,managed beans.md).
+The plaform object provides several [default services](Important Concepts 2. Services and Extensions.md).
 
 Developers can extend the platform object using custom services and extensions.
 

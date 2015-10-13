@@ -1,5 +1,3 @@
-# Summary
-
 * Introduction to Darwino
     * Darwino architecture
     * Hierarchy of libraries
@@ -12,7 +10,7 @@
 * [Using the studio](Using the Studio.md)
 * Important concepts
     * [1 Platform object](Important Concepts 1. Platform Object.md)
-    * [2 Services and extensions](section2/example1.md)
+    * [2 Services and extensions](Important Concepts 2. Services and Extensions.md)
       * [Logging](Important Concepts 2a. Logging.md)
       * Properties
       * [Managed Beans](Important Concepts 2c. Managed Beans.md)
