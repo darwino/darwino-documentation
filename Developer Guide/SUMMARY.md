@@ -1,112 +1,68 @@
 # Summary
 
-This is the summary of my book.
-
-* [Introduction to Darwino](section1/README.md)
-    * [Darwino architecture](section1/example1.md)
-    * [Hierarchy of libraries](section1/example2.md)
-    * [Requirements](section1/example2.md)
-      * [1 Relational database](section1/example2.md)
-      * [2 Web server](section1/example2.md)
-      * [3 Cloud](section1/example2.md)
-      * [4 Mobile](section1/example2.md)
-* [Installing a development environment (Current wiki content)](section2/README.md)
-* [Using the studio](section2/README.md)
-    * [Creating your first Darwino application](section2/example1.md)
-* [Important concepts](section2/README.md)
-    * [1 Platform object](section2/example1.md)
+* Introduction to Darwino
+    * Darwino architecture
+    * Hierarchy of libraries
+    * Requirements
+      * 1 Relational database
+      * 2 Web server
+      * 3 Cloud
+      * 4 Mobile
+* Installing a development environment (Current wiki content)
+* [Using the studio](Using the Studio.md)
+* Important concepts
+    * [1 Platform object](Important Concepts 1. Platform Object.md)
     * [2 Services and extensions](section2/example1.md)
-      * [Logging](section2/example1.md)
-      * [Properties](section2/example1.md)
-      * [Managed Beans](section2/example1.md)
-    * [3 JSON library and data binding](section2/example1.md)
-    * [4 HttpClient](section2/example1.md)
-    * [5 REST service APIs](section2/example1.md)
-    * [6 Darwino application objects](section2/example1.md)
-* [section 2](section2/README.md)
-    * [example 1](section2/example1.md)
-* [section 2](section2/README.md)
-    * [example 1](section2/example1.md)
-* [section 2](section2/README.md)
-    * [example 1](section2/example1.md)
-* [section 2](section2/README.md)
-    * [example 1](section2/example1.md)
-* [section 2](section2/README.md)
-    * [example 1](section2/example1.md)
-* [section 2](section2/README.md)
-    * [example 1](section2/example1.md)
-* [section 2](section2/README.md)
-    * [example 1](section2/example1.md)
-* [section 2](section2/README.md)
-    * [example 1](section2/example1.md)
-* [section 2](section2/README.md)
-    * [example 1](section2/example1.md)
-* [section 2](section2/README.md)
-    * [example 1](section2/example1.md)
-
-
-
-3	JSON library and data binding
-4	HttpClient
-5	REST service APIs
-6	Darwino application objects
-	Application
-	Manifest
-	Context
-Darwino DB API
-1	Concepts
-	Server, Session, Database, Store, Indexes
-	UNID, DocId
-2	Defining and deploying the database
-	Database definition class,
-	Configuring the database using managed beans
-3	Documents
-	CRUD operations
-	Access to the JSON content
-	Managing attachments
-	Document Meta-data - System data in the JSON document
-	Response documents
-	Synchronization master document
-4	Cursors and queries
-	Query and extraction language
-	Executing a query
-	Optimizing queries
-5	Accessing and storing social data
-6	Data synchronization (extract this to its own chapter – maybe to just before the Domino piece)
-7	Registering and handling events
-8	Security
-9	REST API
-10	Darwino API over HTTP
-Javascript APIs
-1	Loading the Javascript files
-2	Generic APIs
-3	Darwino DB
-Developing a web application
-1	Application initialization
-2	Darwino Application filter
-3	Serving application resources
-4	Darwino libs and URL rewriting
-5	Authentication and authorization
-6	Enabling CORS
-7	Enabling GZIP compression
-Developing a mobile application
-1	General information about mobile application
-	Mobile Manifest
-	Settings
-	Hybrid applications
-	Writing an Hybrid specific service
-2	Developing for Android
-3	Developing for iOS  --- RoboVM
-Business APIs
-1	User service  --- authentication authorization
-2	Social services
-3	Mail Service
-4	Storing social data in the JSON database
-Synchronizing Domino data
-1	Installing Darwino on a Domino server
-2	Creating and configuring the Synchronization database
-3	Customizing the data transformation
-Building and deploying Darwino applications
-Appendices   
-1	Utility libraries
-2	Mapping between a Darwino DB and a relational database
+      * [Logging](Important Concepts 2a. Logging.md)
+      * Properties
+      * [Managed Beans](Important Concepts 2c. Managed Beans.md)
+    * [3 JSON library and data binding](Important Concepts 3. JSON library and data binding.md)
+    * [4 HttpClient](Important Concepts 4. HttpClient.md)
+    * [5 REST service APIs](Important Concepts 5. REST Service APIs.md)
+    * [6 Darwino application objects](Important Concepts 6. Darwino Application Objects.md)
+      * [Application](Important Concepts 6. Darwino Application Objects a. Application.md)
+      * [Manifest](Important Concepts 6. Darwino Application Objects b. Manifest.md)
+      * [Context](Important Concepts 6. Darwino Application Objects c. Context.md)
+* Darwino DB API
+    * [Concepts](Darwino DB API 1. Concepts.md)
+    * [Defining and deploying the database](Darwino DB API 2. Defining and deploying the database.md)
+    * [Documents](Darwino DB API 3. Documents.md)
+    * [Cursors and Queries](Darwino DB API 4. Cursors and Queries.md)
+    * [Accessing and Storing Social Data](Darwino DB API 5. Accessing and Storing Social Data.md)
+    * [Registering and Handling Events](Darwino DB API 6. Registering and Handling Events.md)
+    * [Security](Darwino DB API 7. Security.md)
+    * [REST API](Darwino DB API 8. REST API.md)
+    * [Darwino API over HTTP](Darwino DB API 9. Darwino API over HTTP.md)
+* JavaScript APIs
+    * [Loading the JavaScript files](JavaScript APIs 1. Loading the JavaScript files.md)
+    * [Generic APIs](JavaScript APIs 2. Generic APIs.md)
+* [Developing a Darwino Web Application](Developing a Darwino Web Application.md)
+    * [Application Initialization](Developing a Darwino Web Application 1. Application Initialization.md)
+    * [Darwino Application Filter](Developing a Darwino Web Application 2. Darwino Application Filter.md)
+    * [Darwino libs and URL rewriting](Developing a Darwino Web Application 3. Darwino libs and URL rewriting.md)
+    * [Serving application resources](Developing a Darwino Web Application 4. Serving application resources.md)
+    * [Developing a Darwino Web Application 5. Enabling GZIP compression](Developing a Darwino Web Application 5. Enabling GZIP compression.md)
+    * [Developing a Darwino Web Application 6. Enabling CORS](Developing a Darwino Web Application 6. Enabling CORS.md)
+    * [Developing a Darwino Web Application 7. Authentication and Authorization](Developing a Darwino Web Application 7. Authentication and Authorization.md)
+* Developing a Darwino Mobile Application
+    * [General Information about Mobile Applications](Developing a Darwino Mobile Application 1. General Information.md)
+      * [Mobile Manifest](Developing a Darwino Mobile Application 1a. Mobile Manifest.md)
+      * [Hybrid Applications](Developing a Darwino Mobile Application 1b. Hybrid Applications.md)
+      * [Writing a Hybrid specific service](Developing a Darwino Mobile Application 1c. Writing a Hybrid specific service.md)
+      * [Settings](Developing a Darwino Mobile Application 1d. Settings.md)
+    * [Developing for Android](Developing a Darwino Mobile Application 2. Developing for Android.md)
+    * [Developing for iOS](Developing a Darwino Mobile Application 3. Developing for iOS.md)
+* [Business APIs](Business APIs General Information.md)
+    * [User Service](Business APIs 1. User Service Overview.md)
+      * [User Information](Business APIs 1a. User Information.md)
+      * [User Authentication](Business APIs 1b. User Authentication.md)
+      * [User Service Providers](Business APIs 1c. User Service Providers.md)
+* [Synchronizing Domino Data](Synchronizing Domino Data 1. Overview.md)
+    * [Installing Darwino on a Domino Server](Synchronizing Domino Data 1. Installing Darwino on a Domino Server.md)
+    * [Creating and Configuring the Synchronization database](Synchronizing Domino Data 2. Creating and configuring the Synchronization database.md)
+    * [Customizing the Data Transformation](Synchronizing Domino Data 3. Customizing the data transformation.md)
+* [Building and deploying Darwino applications]()
+* [Optimizing the Database]()
+* Appendices
+    * [Utility Libraries](Appendix 1. Utility Libraries.md)
+    * [Mapping between a Darwino DB and a relational database](Appendix 2. Mapping between a Darwino DB and a relational database.md)

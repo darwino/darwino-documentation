@@ -1,7 +1,5 @@
-Using the Studio
-=======================
-
-# Creating your first Darwino application
+Using the Studio - Creating your first Darwino application
+==========================================================
 
 The Darwino application wizard is the first step in creating a Darwino application.
 
