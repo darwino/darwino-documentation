@@ -21,10 +21,10 @@ In the future there could be other wrappers, just as PHP bindings, Ruby binding,
  - optionally, attachments
  - metadata – For example, the unid and the docid, modification date and modification user, etc… These metadata are not modifiable manually by normal operations. 
  - system data that can be modified – For example, a list of tags. System fields are actually fields in the root of the JSON content object, but their names start with an underscore.
-optionally, transient property fields that can contain data we want to pass to document events but never want to store in the document. They are never saved. They can be set and read at the document level, but they are never persistent.
+optionally, transient property fields that can contain data we want to pass to document events but never want to store in the document. They are never saved. They can be set and read at the document level, but they are never persistent. A typical use of this is when you want to pass information to an event handler without having this information be part of the document.
 
  Methods are provided for accessing the JSON content in all data types. They all take a String as their sole parameter, and return the value of the requested JSON field, assuming that the content is a JSON object. These methods cannot access hierarchical data, but they are very convenient for accessing fields that are at the root of the document.
- - getStr(), getInt(), getLong(), getDouble(), getBoolean(), and getDate()
+ - getString(), getInt(), getLong(), getDouble(), getBoolean(), and getDate()
 
  In addition, there is a method for executing JSONPath (XPath for JSON) expressions. JSONPath simplifies the extraction of data from JSON structures. It permits dot notation and bracket notation, and allows wildcard querying of member names and array indices. It is documented [here](http://goessner.net/articles/JsonPath/). JSONPath expressions can be executed in Darwino via the jsonPath method:
  - jsonPath(Object path)
@@ -62,13 +62,15 @@ A Content object is an accessor to the data; it is not the data itself. This mea
 
 
 ##	Document Metadata - System data in the JSON document
-(Question: I think this is covered in pieces elsewhere. What should we say specifically here?)
+Data describing the document itself, such as tags and other social data, and reader/editor names, are stored in system fields, the names of which start with an underscore character.
 
 ##	Response documents
 The parentid field contains the unid of a document’s parent, if there is one. This is how a hierarchy of documents if defined in Darwino. The data integrity of this relationship is not enforced; it is possible to have “orphan” documents– documents with a parentid that is not valid.
 	
 ## Synchronization master document
 Darwino implements “functional replication”. This means that selective replication can be based on changes to an ancestor document, as opposed to the current document. The synchronization master for a document is the document that is checked for changes when the replicator is testing for selective replication eligibility. For example, child document might use the root parent document as their synchronization master. Then, when the root document changes, and only when it changes, will the child documents replicate as well. 
+
+There is an option for the save() method that forces the master document to update when a document referring to it as master is updated. There are options at the Store definition level as well.
     
- It is not necessary for a synchronization master to be an ancestor; other document relationships could benefit from the ability to so specifically define under what circumstances they will replicate as a group.
+ It is not necessary for a synchronization master to be an ancestor; other document relationships could benefit from the ability to specifically define under what circumstances they will replicate as a group. For example: a customer and all the documents related to this customer, or all documents related to a particular project.
 

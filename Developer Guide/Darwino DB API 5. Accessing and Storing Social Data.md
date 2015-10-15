@@ -3,10 +3,10 @@ Darwino DB API
 
 #Accessing and storing social data
 There is a set of social data that can be associated with any document. There are three kinds of social data:
--	Comments: Darwino creates a default store for the comment data. Keeping comments out of the documents themselves prevents unnecessary updated to the documents which then must replicate and could result in conflicts.
+-	Comments: Darwino creates a default store for the comment data. Keeping comments out of the documents themselves prevents unnecessary updates to the documents which then must replicate and could result in conflicts. Moreover, comments can contain full JSON content with attachments.
 -	Tags: The tags are stored as an array in the _tags field in the document. The tags can be queried, and the store can return a list of tags that can be used, for example, to create a tag cloud.
-(Question: Private tags are not yet implemented. Should we include them here?)
-Private tags, visible only to their creator, can be stored as read-protected response documents associated with the document being tagged. Because they are read-protected, they will be private to that user. Because the store’s list of tags respects this security, only the private tag’s creator will see such a private tag in a tag cloud.
+
+ Private tags, visible only to their creator, can be stored as read-protected response documents associated with the document being tagged. Because they are read-protected, they will be private to that user. Because the store’s list of tags respects this security, only the private tag’s creator will see such a private tag in a tag cloud.
 -	User-dependent values, which are handled at the store level. These don’t require that the document be loaded for them to be applied, and they are stored externally to the documents in order to avoid unnecessary document modification, replication conflicts, and excessive data in the documents (there can be a lot of ratings and read flags):
 --	Ratings: With the rate() method, a document is assigned an integer value associated with a user. Appropriately, only one rating per document per user is stored. There are three methods for retrieving rating data:
  - getRate() – Given a unid and userName, returns that user’s rating for the document
@@ -17,8 +17,8 @@ Private tags, visible only to their creator, can be stored as read-protected res
  - isShared() – Returns a Boolean indicating whether the document is shared by a specified username
  - getShareCount() – returns the number of shares by all users as an integer
 
- -- Read: While not specifically social, the read flag is functionally similar to the other social data. At the store level, there is an option to enable the auto-flagging of documents as being read when they are loaded. (Question: Is this correct? What is that option?) This applied only to documents that are actually loaded; their being included is a query result is not sufficient to mark them as read.
-There are three methods  in the store to enable manipulation and querying of the read flags:
+ -- Read: While not specifically social, the read flag is functionally similar to the other social data. At the store level, the readMarkenabled option enables the auto-flagging of documents as being read when they are loaded. This applies only to documents that are actually loaded; their being included in a query result is not sufficient to mark them as read. A document load() option can also prevent the flag from being set, when necessary.
+There are three methods in the store to enable manipulation and querying of the read flags:
  -- isRead() returns the read value for the specified document and username
  -- markRead() - Given a unid, a Boolean, and a username, sets the read flag for that document and user.
  -- getReadCount() – returns the number of reads for the specified document.
