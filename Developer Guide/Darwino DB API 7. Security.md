@@ -15,7 +15,7 @@ There are four types of document security fields:
 
 The same principles apply to both readers/writers and excluded-readers/excluded-writers. 
  
-1- Entries 
+###1 - Entries 
 Each entry can be: 
 - a person 
 - a group 
@@ -25,16 +25,16 @@ Each entry can be:
 An entry can be read-only (reader field) or read/write (writer field). A writer entry is automatically a reader as well. 
 If an entry appears in both the readers and writers, then it is a writer.  
  
-2- Security behavior 
+###2 - Security behavior 
 If there are no entries attached to a document, then there is no document security. The user's access to the documents will be determined solely by the higher levels (database and server). 
 If there is at least one entry (reader or writer, or both), then there is document security. 
 If everybody should be a reader and while writers should be limited, the solution is the following: 
 - writers entries should contain the limited list 
 - reader should contain one entry: everybody * 
 
-3- Storing readers/writers 
+###3 - Storing readers/writers 
 Readers are stored in the _readers field, while writers are in _writers. 
-These fields can directly contain an array of entries (see 1-) or an object containing several arrays, one per property. 
+These fields can directly contain an array of entries (see "1 - Entries") or an object containing several arrays, one per property. 
 
 For example: 
 ```
@@ -52,7 +52,10 @@ _writers: ['alice']
 } 
 
 ```
-4- Helpers 
+
+Having sub-objects is the preferred method, as it allows a finer-grained management of the entries. For example, a workflow engine can add a field containing the participants for the current step, and this can be removed after the step is completed.
+
+###4 - Helpers 
 There is a Java class, SecurityHelper, that can be used to manipulate these fields. They are used, for example, in the CRUDSEC.java unit test. 
  
 Regarding excluded-readers and excluded-writers: Darwino, when composing a SQL query, adds a subquery to exclude what is not allowed to be seen. This incurs a cost. To avoid this when possible, there is a database property indicating whether document security should be enabled. When it is not enabled, generated queries can avoid the step of running the subquery. A result of this is that if the flag is not set, readers and writers on documents will be ignored in all of the database’s stores. Options for this property are: no document security, reader/writer security only, ereader/ewriter security only, and all security features.

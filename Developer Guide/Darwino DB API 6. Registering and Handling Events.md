@@ -2,7 +2,7 @@ Darwino DB API
 =======================
 
 # Registering and handling events
-At the server level, you can register an ExtensionRegistry. This registry provides a set of functions – currently a set of five:
+At the Server Object level, you can register an ExtensionRegistry. This registry provides a set of functions – currently a set of five:
 -	BinaryStore: When Darwino stores attachments, they can be stored inside the database, or apart from the database. The BinaryStore is an interface that facilitates storing the attachments outside of the database by providing a set a CRUD methods.
 -	DocumentEvents: When an operation is being performed on a document, the runtime will call the methods in the DocumentEvents:
 --	postNewDocument – called right after a document has been created, so that you can, for example, change document values.
@@ -10,7 +10,7 @@ At the server level, you can register an ExtensionRegistry. This registry provid
 --	querySaveDocument– called immediately before a document has been saved. It is possible to cancel the save from within this event simply by throwing an exception. The exception can include the reason for the save cancellation.
 --	postSaveDocument – called immediately after a document has been saved.
 --	queryDeleteDocument – called before a document is deleted, EXCEPT when a group of documents is being deleted. Group deletes are performed directly by a SQL statement, and for performance reasons, and so this event is not raised.
---	postDeleteDocument – called after a document delete, except, as with queryDocumentDelete, when a group of documents has been deleted.
+--	postDeleteDocument – called after a document delete, except, as with queryDocumentDelete, when a group of documents has been deleted. IN such a scase, you could add a trigger at the relational database level to, for example, log the deletion in a queue for processing.
  
  Note that these events are also raised when called via HTTP. 
  
@@ -34,7 +34,8 @@ At the server level, you can register an ExtensionRegistry. This registry provid
 -	FieldFunction: Functions used when extracting fields from documents or computing indexes are registered here.
 -	InstanceFactoryImpl: A database can have multiple instances, each with its own security configuration; in other words, there is per-instance security. That instance security is dynamic, based on business logic.
 
- By default, a database has just one instance; the instance factory is the means to create more. Once the instance factory has been implemented and the instance is created based on the database and the instance name, the contribute() method of the instance is the mechanism for adding roles and groups to the user context.
+>  NOT CORRECT! Must discuss:
+>  By default, a database has just one instance; the instance factory is the means to create more. Once the instance factory has been implemented and the instance is created based on the database and the instance name, the contribute() method of the instance is the mechanism for adding roles and groups to the user context.
 
  For example, the ACL of a database, and the reader/writer fields in the documents, may specify that only the members of a particular group may have access to the data. It is the job of the instance’s contribute() method to add to the current user their list of roles and groups; this list is determined dynamically depending on business logic, and that logic is free to make use of any directories and database data available to it. 
 
