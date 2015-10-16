@@ -5,12 +5,19 @@ The Darwino application object should be initialized before anything else. In or
 <!—Application initialization -->
 <listener>
 	<listener-class>
-		DWOTPL_PACKAGENAME.app.AppContextListener
+		demoApp.app.AppContextListener
 	</listener-class>
 </listener>
 ```
 
-The listener is called when the application is started, and again when it is stopped. The listener will create the application object, and destroy it when it is no longer needed.
+The listener is called when the application is started, and again when it is stopped. The listener will create the application object, and destroy it when it is no longer needed. It can also be used to initialize the relational database by creating the tables, assuming that th eRDBMS user has the rights to modify the database schema.
+```
+<context-param>
+     <param-name>dwo-auto-deploy-jsonstore</param-name>
+     <param-value>true</param-value>
+</context-param>
+```
+
 
 In practice, the developer will create their own class, extending AbstractDarwinoContextListener, where they will handle their application’s initialization needs, and refer to that class in the web.xml so that it is called.
 
@@ -25,4 +32,4 @@ Protected void initServicesFactories(HTTPServiceFactories factories) {
   addApplicationServiceFactories(factories);
 }
 ```
-
+It is also possible to register custom services by using an extension point.

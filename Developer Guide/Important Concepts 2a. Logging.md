@@ -6,3 +6,4 @@ Platform.log("Logging {0} unconditionally", "My Message");
 Platform.log(new Exception(),"Logging an Exception, {0}", "Here it is");
 
 ```
+Platfom.log is the basis, but it can also use the more powerful concept of log groups.

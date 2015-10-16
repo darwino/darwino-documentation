@@ -19,6 +19,8 @@ _formatText("JSON Object, pretty: {0}",f.toJson(jo,false));
  
 ###Command Insertion
 Standard JSON has no provision for inserting commands. While command insertion is available in JavaScript, it is not in JSON. The Darwino JSON parser permits commands when reading, but does not, by default, emit them.
+
+In Darwino, the JSON implementation supports JavaScript-style comments as an extension, and the parser can read inside these comments. This feauture enables embedding commands in the JSON.
  
 A typical use case for this is a progress bar. When the client tells the server that it supports commands, the server can emit comments in the JSON that describe activity progress. The client can use those progress comments to display a progress bar.
  

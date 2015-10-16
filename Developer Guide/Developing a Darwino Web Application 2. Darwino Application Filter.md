@@ -7,12 +7,6 @@
 <filter>
 	<filter-name>DarwinoApplication</filter-name>
 	<filter-class>com.darwino.j2ee.application.DarwinoJ2EEFilter</filter-class>
-	<--
-	<init-param>
-		<param-name>varName</param-name>
-		<param-value>__newsdatabase_session</param-value>
-	</init-param>
-	-->
 </filter>
 <filter-mapping>
 	<filter-name>DarwinoApplication</filter-name>
@@ -22,5 +16,4 @@
 
 The filter is executed before all else when a request comes, and last when a request is handled. Because this is first in line, it can do processing before the request is even seen by the servlet, and then again after the request is processed.
 
-The filter mapping exists to allow the filter to be executed conditionally.
-
+The filter is typically executed for all requests, but the filter mapping allows the filter to be executed conditionally.

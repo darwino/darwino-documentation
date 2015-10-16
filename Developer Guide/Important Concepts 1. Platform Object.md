@@ -6,12 +6,7 @@ Darwino is built to be platform agnostic, and exposes everything in the architec
 
 >NOTE: The Darwino platform (com.darwino.commons.Platform) is instantiated as a [singleton](https://en.wikipedia.org/wiki/Singleton_pattern) object.
 
-Services
---------
-
-The plaform object provides several [default services](Important Concepts 2. Services and Extensions.md).
-
-Developers can extend the platform object using custom services and extensions.
+The plaform object provides several [default services](Important Concepts 2. Services and Extensions.md). Developers can extend the platform object using custom services and extensions.
 
 >The Platform object is the entry point for all services, and the Platform object makes all services available from anywhere in your application. Further, any library can contribute services, as Darwino services are POJOs, and do not need to extend any particular interface.
 

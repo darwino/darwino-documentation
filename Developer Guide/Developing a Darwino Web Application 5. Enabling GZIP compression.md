@@ -1,5 +1,5 @@
 # Enabling GZIP compression
-Not all web servers implement GZIP. You can use this filter to have Darwino process GZIP requests and return GZIP content.
+Not all web servers implement GZIP. You can use this filter to have Darwino process GZIP requests and return GZIP content. This can work for requests as well as response content.
 
 ```
 <filter-name>GZipFilter</filter-name>

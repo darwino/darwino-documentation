@@ -1,5 +1,5 @@
 # Enabling CORS
-To have Darwino implement the CORS (Cross-Origin Resource Sharing) standard for the JSON store, enable this filter. This provides support for cross-site access controls.
+To have Darwino implement the CORS (Cross-Origin Resource Sharing) standard, enable this filter. This provides support for cross-site access controls.
 
 ```
 <filter-name>Cors</filter-name>
