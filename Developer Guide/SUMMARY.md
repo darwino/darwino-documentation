@@ -64,3 +64,4 @@
 * Appendices
     * [Utility Libraries](Appendix 1. Utility Libraries.md)
     * [Mapping between a Darwino DB and a relational database](Appendix 2. Mapping between a Darwino DB and a relational database.md)
+    * [The Query Language](Appendix 3. The Query Language.md)

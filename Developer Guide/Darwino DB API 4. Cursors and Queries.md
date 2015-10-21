@@ -23,7 +23,7 @@ To calculate aggregate data, such as average, minimum, and maximum, pass an aggr
 
 When a cursor runs, it calls the cursor handler with all of the cursor entries. In the cursor entry are the key and the value, accessible via getKey() and getValue(). What these two represent depends on the source of the cursor. A cursor executed on a store will have documents as its result, the key will be the unids of the documents, and the value will be the JSON of the documents. If, instead, the cursor was executed on an index, then the key will be the key of the index, and the value will be either the value that’s stored in the index or the JSON value from the corresponding documents, depending on an option applied to the cursor.
 
-> (Question: Must provide examples of query options. Where is this best documented?)
+For details on the query language, see [Appendix 3. The Query Language](Appendix 3. The Query Language).
 
 
 ## Executing a query
@@ -75,6 +75,4 @@ The count() method will return the number of entries in the cursor. Behind the s
 ## Optimizing queries
 The query language is robust, with a lot of operators, and is optimized for the underlying database system. It will attempt to use only native database functions when constructing its SQL; if necessary functions not supported by the database, it will still use those that ARE supported for parts of the query. For example, if there is an “AND” in the query, and only one condition is directly supported by the database, the query language will execute that part of the query first and only then iterate through the results one-by-one.
 
-The query language’s API makes it so the cursor can be queried to determine whether a particular query is supported by the database. It compiles the query and answers whether it can generate SQL for the query, or it can generate partial SQL, or it cannot generate SQL.
-
-> (Question: The data extraction language is important. Is there documentation available that would help me do it justice here?)
+The query language’s API allows the cursor to be checked to determine whether a particular query is supported by the database. It compiles the query and answers whether it can generate SQL for the query, or it can generate only partial SQL, or it cannot generate SQL at all.

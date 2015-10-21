@@ -28,6 +28,7 @@ A typical use case for this is a progress bar. When the client tells the server 
 We can also emit compressed, binary JSON in place of text. Darwino does not use this externally, as when writing to a file or to a database, but it can be used when communicating via HTTP. For example, when the client is replicating with the server, it uses a REST API that is based on JSON. If the client sends the server a header saying that the client understands the binary form of JSON, then it can compress the data. Values are compressed, and names can be sent once and subsequently only pointed to. Also, this removes the need for parsing the data.
  
  ###JSON Query Language
- There is a query language for JSON, so you can apply a query to a JSON document and get a result.
+ There is a query language for JSON, allowing you to quickly and easily query JSON data. This language is used throughout Darwino.
  
-## (Must expand on this topic with some details about the query language)
+ See [Appendix 3. The Query Language](Appendix 3. The Query Language) for details.
+

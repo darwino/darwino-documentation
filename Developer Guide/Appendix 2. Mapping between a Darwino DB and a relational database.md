@@ -83,44 +83,46 @@ If the runtime itself has been updated, the “tableVersion” in the database d
 - setTableVersion – internal
 - setTimeZone – Darwino stores dates in ISO 8601 format, by default using GMT as the time zone. Setting this value will override that default. Dates will be stored instead using the specified time zone. There is never a loss of certainty; Darwino always stores the values with a time zone; this merely determines with zone is used as the default.
 
-	Stores
-	Physically, a store is nothing; it is just a concept. It is actually just a logical collection of documents in a database. There is not one table per store; instead stores are implemented as a column value in each document. Every document in a database is identified by its UNID and its storeID; together, these two fields define the document’s key. This way of implementing stores limits the actions needed to maintain the database’s DDL.
-	Stores can have several options: 
-	- setAnonymousSocial(Boolean anonymousSocial) – Enabling this allows tracking of the social activities of the anonymous user; for example, tracking when anonymous reads a document. This defaults to false, since there are few cases where it would be desired.
-	- setBinaryStore(String binaryStore) – This is an extension point that determines how attachments in the store will be saved. By default, attachments are stored in the _att table, which has as its primary key the docid and the attachment name, and it has a column called “data” which is a byte array. Some database systems don’t perform well with large numbers of large byte arrays, so this setting exists to allow this default to be overridden, and a different binary store can be used, for example the file system. (In such a case, the binkey (binary key) column could be used to store the file system path that points to the attachment’s storage location.) Domino developers should recognize the similarity to DAOS in this example.
-	- setFTSearch(_FtSearch ftSearch) – Specifies which fields in the JSON document are being indexed.
+###Stores
+Physically, a store is nothing; it is just a concept. It is actually just a logical collection of documents in a database. There is not one table per store; instead stores are implemented as a column value in each document. Every document in a database is identified by its UNID and its storeID; together, these two fields define the document’s key. This way of implementing stores limits the actions needed to maintain the database’s DDL.
+
+Stores have several options: 
+ - setAnonymousSocial(Boolean anonymousSocial) – Enabling this allows tracking of the social activities of the anonymous user; for example, tracking when anonymous reads a document. This defaults to false, since there are few cases where it would be desired.
+ - setBinaryStore(String binaryStore) – This is an extension point that determines how attachments in the store will be saved. By default, attachments are stored in the _att table, which has as its primary key the docid and the attachment name, and it has a column called “data” which is a byte array. Some database systems don’t perform well with large numbers of large byte arrays, so this setting exists to allow this default to be overridden, and a different binary store can be used, for example the file system. (In such a case, the binkey (binary key) column could be used to store the file system path that points to the attachment’s storage location.) Domino developers should recognize the similarity to DAOS in this example.
+ - setFTSearch(_FtSearch ftSearch) – Specifies which fields in the JSON document are being indexed.
 	
-	- setFtSearchEnabled(Boolean fulltextEnabled) – Enables full text search of the documents in the store. Darwino uses the full text search engine provided by the host database. This results in maximum performance and low overhead.
+ - setFtSearchEnabled(Boolean fulltextEnabled) – Enables full text search of the documents in the store. Darwino uses the full text search engine provided by the host database. This results in maximum performance and low overhead.
 It is possible to test at run time, using the Store-level method isFtSearchEnabled(), whether the database supports full text search, so the UI can be adjusted accordingly.
 None of the databases know, now, how to do full text search on the JSON documents. The _fts table contains the names and values of the fields that you wish to fulltext index.
 	
-	- setLabel(String label) - User-friendly label displayed to the user.
-	- setPreventRestAccess(Boolean preventRestAccess) – If REST access is enabled at the database level, it can be prevented at the store level.
+ - setLabel(String label) - User-friendly label displayed to the user.
+ - setPreventRestAccess(Boolean preventRestAccess) – If REST access is enabled at the database level, it can be prevented at the store level.
 	
-	- setReadMarkEnabled(Boolean readMarkEnabled) – This applies to the social data read marks, and is set to false by default.  If enabled, when a document is read by a user who is not anonymous (unless setAnonymousSocial is enabled), that document is marked as read by that user. This option exists so that the write operation required at every read to support read makrs can be avoided.
+ - setReadMarkEnabled(Boolean readMarkEnabled) – This applies to the social data read marks, and is set to false by default.  If enabled, when a document is read by a user who is not anonymous (unless setAnonymousSocial is enabled), that document is marked as read by that user. This option exists so that the write operation required at every read to support read makrs can be avoided.
 	
-	- setTaggingEnabled(Boolean taggingEnabled) – Enabling this allows Darwino to maintain an array of tags for each document. You can search documents a tag or a combination of tags. There is also a well-optimized function at the store level that returns a tag cloud.  
+ - setTaggingEnabled(Boolean taggingEnabled) – Enabling this allows Darwino to maintain an array of tags for each document. You can search documents a tag or a combination of tags. There is also a well-optimized function at the store level that returns a tag cloud.  
 
-	- The addField() method adds fields that can be extracted for querying. 
+ - The addField() method adds fields that can be extracted for querying. 
 
-	- setFields() has two forms. The simple form takes the name of a field as its parameter and it indexes that field. The other form takes an array of FieldNodes. 
->     (Question: when to use addField() vs. setFields()? This whole section is pretty thin; I need more detail.)
+ - setFields() has two forms. The simple form takes the name of a field as its parameter and it indexes that field. The other form takes an array of FieldNodes. 
 
-	- addQueryField() has five forms. The first takes one parameter, that being that name of the field. It will use that value both as the field name and as the path to the data. The next takes three parameters: the field name, the data type, and a Boolean determining whether the field is multiple. The third adds a specification of the path in the JSON. The fourth form takes a single parameter, this being a callback fieldFunction, which itself has several parameters: the field name, the data type, the multi Boolean, the name of a registered callback function and a JSON path to the data in the JSON document which acts as the parameter to the referenced callback function. The fifth form is like form #4, but uses a Darwino query language statement in place of the function name and parameter. 
+ - addQueryField() has five forms. The first takes one parameter, that being that name of the field. It will use that value both as the field name and as the path to the data. The next takes three parameters: the field name, the data type, and a Boolean determining whether the field is multiple. The third adds a specification of the path in the JSON. The fourth form takes a single parameter, this being a callback fieldFunction, which itself has several parameters: the field name, the data type, the multi Boolean, the name of a registered callback function and a JSON path to the data in the JSON document which acts as the parameter to the referenced callback function. The fifth form is like form #4, but uses a Darwino query language statement in place of the function name and parameter. 
+ 
  By allowing a callback function or query result, the function allows sophisticated processing to be called when creating the field value, which can then be used in a query.
 
- INDEXES
+###INDEXES
 In Darwino, an index is the MAP action in MAP/REDUCE. It allows fast access to data, as well as pre-computing of some data (ex: number of children, social data...) and then querying these data. It associates a key with a value for a selected set of documents. The value can be computed from the actual JSON document.
 
  The store.addIndex() method creates an index based on a subset of the data in the JSON documents. Once you add the index, you define the keys and the values to extract fmor the JSON document. 
      
- When you execute a query on the index using the Darwino API, you can choose either to return the values in the index, or the JSON value in the document itself. 
+ When you execute a query on the index using the Darwino API, you can choose to return either the values in the index, or the JSON value in the document itself. 
       
  For example, index.keys(“_unid”) will set the unid as the key.
-index.valuesExtract(“\”$\””) will specify the root of the JSON value as the value to extract. This is using the the query language (or “extraction language”). 
+index.valuesExtract(“\”$\””) will specify the root of the JSON value as the value to extract. This is using the the Darwino query language. 
  
- When specifying the keys, you can say whether the keys are unique or not. This is done by calling the setUniqueKey(Boolean uniqueKey) method.
+ When specifying the keys, you can specify whether the keys are unique or not. This is done by calling the setUniqueKey(Boolean uniqueKey) method.
+ 
 setUpdateWithUserData() specifies whether the index should be undated when a document’s social data, which is stored outside of the document, is changed, even if the document itself has not been changed. An example of this would be if you are tracking ratings for documents and you wish to display the average rating for each document. Rather than recalculate the average every time you query the index, you would store the rating average every time the ratings are changed. By default, the index is not updated when the social data changes.
 
- setUpdateWithUserData() can also be used to store the number of response documents (children) in a parent document. But this is like recalculating the index of a parent document, while a child is updated (parentId). So there is an option to the save() method that forces the parent document, or the sync master, to update as well.
+setUpdateWithUserData() can also be used to store the number of response documents (children) in a parent document. But this is like recalculating the index of a parent document, while a child is updated (parentId). So there is an option to the save() method that forces the parent document, or the sync master, to update as well.
 
