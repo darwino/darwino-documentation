@@ -105,3 +105,17 @@ All of the query operators and functions can be used here, and it is also possib
 
 The extraction takes place server-side. While this clearly has the performance benefit that comes from not transmitting unneeded data to the client, it also allows your functions to utilize server resources, such as the cache and connections–such as to LDAP directories for lookups.
 
+##Aggregation
+There is a set of aggregation operators in the query language, permitting actions such as counting and summing and categorization of query results. SImilar to the extraction language, the syntax is a JSON document in which every entry is a column. Also similar to extraction, the order of the entries doesn't matter.
+
+The aggregate operators ($count, $sum, $avg, $min, and $max) use a JSON path as a parameter.
+
+```
+{Count: {$count: "@manufacturer"}, Sum: {$sum: "@released"}, Avg: {$avg: "@released"}, Min: {$min: "@released"}, Max: {$max: "@released"}}
+```
+
+Behind the scenes, Darwino constructs a SQL query that uses the database's native aggregation operators. This is good in terms of efficiency: the document selection, value extraction, and aggregation is done server-side using efficient SQL statements. The database does the work.
+
+
+
+
