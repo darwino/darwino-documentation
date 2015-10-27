@@ -54,14 +54,12 @@ The fulltext rank can also be used for specifying the order in a cursor, by use 
 
 The ascending() and descending() methods can be applied to both the orderBy() and the orderByFtRank() method results.
 
+If no order is specified, and if there is no index, documents will appear in a cursor ordered by unid.
+
 ### Categorization
-In a cursor, categorization is based on the sort order. If no order is specified, and if there is no index, the unid is used. Categorization is completely dynamic, being based on the sort order which is not fixed.
+Categorization is a means to group documents, and, secondarily, to calculate or aggregate on the groups.
 
-The .categories(int nCat) method takes as its parameter the number of category levels to apply.
-
-It is also possible to request that the documents not be extracted in the cursor; in this case, the result will consist only of the categories. This is equivalent to "GROUP BY" in SQL.
-
-Another option is to extract categories while skipping the highest level categories. For example, extract two categories, but start at the second-level category, returning levels two and three.
+See [Appendix 3. The Query Language](Appendix 3. The Query Language) for details on categorization in Darwino.
 
 ####Browsing the entries:
 There are two ways to execute a cursor:

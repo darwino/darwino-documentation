@@ -5,9 +5,51 @@ Darwino DB API
 # Documents
 ## CRUD operations
 It is possible to perform create, read, update, and delete operations on documents.
-	At the base, the Darwino API is a Java API. There is also a JavaScript API which is a JavaScript flavor of the Java API.  To do CRUD operations, you get the session and from that the database and store, and there you create, read, update, and delete documents. As long as you’re using the Java API locally, you can execute a series of operations within a transaction. At the session level, you can query whether the session supports transactions. If it does, you can start a transaction, perform a set of operations on documents, and then roll back the changes if needed. This is familiar to users of many relational databases, but is alien to Domino and mongoDB.
 
- There are three ways, in Darwino, to access documents:
+At the base, the Darwino API is a Java API. There is also a JavaScript API which is a JavaScript flavor of the Java API.
+
+You can load and create documents either from the database or from the store. Remember that the UNID is unique per store and the DocID is unique per database.
+
+```
+Document d1 = store.newDocument(); d1.save();
+Document d2 = store.newDocument(); d2.save();
+Document d3 = store.newDocument(); d3.save();
+
+// Call remove() from the Document object
+d1.deleteDocument();
+
+// Call delete() from the Store, using a UNID
+store.deleteDocument(d2.getUnid());
+
+// Call delete() from the Database, using a DocID
+store.getDatabase().deleteDocumentById(d3.getDocId());
+```
+
+When loading an existing document, there are a number of options you can pass.
+
+```
+Document doc = store.loadDocument(unid, options); // the unid and options are ints.
+```
+Document loading options:
+- DOCUMENT_NOREADMARK - This will load the document but not mark it as read. Normally, the read mark is checked when using the loadDocument() method, but not when the document is accessed via a query. Examples of when you might want to supress the read mark include:
+ - when it is a background process loading the document, and thus the user is not personally reading the document
+ - when there is no solid reason to mark the document read, and you want to save the database write that marking the flag entails
+- DOCUMENT_CREATE - By default, when you attempt to load a document that does not exist, you will throw an exception. If you pass this flag, then if the document does not exist a document will be created in memory and no exception will be thrown. The new document will not appear in the database until you explicitly save it.
+
+There are also options available when saving a document:
+- SAVE_NOREAD - Do not mark the document as read.
+- SAVE_NOTOUCH - It is possible to specify, at the store level, that parent or sync master documents, and, optionally, their indexes and all progenitor documents, should be marked as modified ("touched") when one of their dependent documents is modified. Saving with the SAVE_NOTOUCH option will prevent the touch actions from occuring.
+- SAVE_CHECKCONFLICT - If enabled, the save will not occur and an exception will be raised if the document's last modification date doesn't match what it was when the document was loaded.
+
+Delete document options:
+- DELETE_ERASE - When replication is enabled for a database, deleting a document will, by default, create a deletion stub to represent a deleted document so that the document will be deleted in replicas of the database during replication. Using the DELETE_ERASE flag during deletion will delete the document without leaving a deletion stub. Thus, the deletion will not replicate out, and the document will return the next time the database replicates with a copy of the database in which the document exists.
+- DELETE_NOTOUCH - Like SAVE_NOTOUCH, this will leave related documents unnotified of the deletion.
+- DELETE_CHILDREN - The option will recursively delete all descendents of the document along with the document itself. Since these deletions are performed within a transaction, it's all-or-nothing. You will not be left with a partially-intact document family. Also, they are all done within the same network process, so there's no wasteful back-and-forth that would be required if the deletes were done one at a time.
+- DELETE_SYNCSLAVES - This is like DELETE_CHILDREN, but applies when you are deleting a sync master document. It and all of its sync slaves will be deleted.
+
+To do CRUD operations, you get the session and from that the database and store, and there you create, read, update, and delete documents. As long as you’re using the Java API locally, you can execute a series of operations within a transaction. At the session level, you can query whether the session supports transactions. If it does, you can start a transaction, perform a set of operations on documents, and then roll back the changes if needed. This is familiar to users of many relational databases, but is alien to Domino and mongoDB.
+
+There are three ways, in Darwino, to access documents:
  - The Java API. This API talks directly to the database whenever it is a JDBC-based database, or is SQLite.
  - REST services, which operate on top of the Java API. The set of REST services in Darwino support everything the Java API allows in regard to document operations EXCEPT transactions. Because REST is stateless, transactions, which are stateful, cannot be supported.
  - REST services wrapped for particular languages. Darwino provides two wrappers to assist in REST service work: a Java wrapper and a JavaScript wrapper.
