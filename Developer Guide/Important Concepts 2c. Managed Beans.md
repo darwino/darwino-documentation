@@ -8,9 +8,22 @@ Darwino uses managed beans primarily as a generic way to configure the platform.
 
 ### Configuring Managed Beans
 ------
-Managed beans are provided by extension points. By default, the platform looks for managed beans configured in a file called darwino-beans.xml in the Tomcat server home/conf directory. However, you can define your managed beans location as a custom extension.
+Managed beans are provided by extension points. You can define your managed beans location as a custom extension. Where managed means are loaded from depends on the DefaultWebBeanExtension class. The class looks for beans in various places.
 
-The set of managed beans is typically configured using the darwino-beans.xml file, but can also be provided from other sources. Managed beans are configured using the following xml structure:
+It first looks using JNDI. It looks for and entry in the path java:/comp/env/darwino-beans. If it finds one, it will either be a text file or a url pointing to a file. Either way, it will interpret the XML found there and load the bean accordingly.
+
+Next it looks to the web application server, following the conventions for the various application servers.
+
+After that, it looks in the classpath. It looks for a file called darwino-beans.xml within the current classpath.
+
+Then it looks in WEB_INF for a darwino-beans.xml file. In addition, it will search there for a darwino-beans file with a name determined by the application's configuration files suffix, such as "bluemix'. The resulting file that Darwino will look for would then, in this case, be "darwino-beans.bluemix.xml". Thus, specifying the suffix determines which darwino-beans files will or will not be loaded.
+
+After that, if there is a system property called "darwino-beans" containing either XML or a URL, then Darwino will load the beans spefified within.
+
+Finally, Darwino will look for an environment variable called "darwino-beans", and it wil process it just as it does the similarly-named system variable mentioned above.
+
+
+Managed beans are configured using the following xml structure:
 ```xml
 <bean type="[defined bean type]" name="[unique bean name]" class="[full class name]" alias "[optional alias names, separated by comma"/>  
 	<property name='[property name]'>[property value]</property> //list of properties  
