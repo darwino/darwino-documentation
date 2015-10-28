@@ -18,11 +18,13 @@ _formatText("JSON Object, pretty: {0}",f.toJson(jo,false));
 ```
  
 ###Command Insertion
-Standard JSON has no provision for inserting commands. While command insertion is available in JavaScript, it is not in JSON. The Darwino JSON parser permits commands when reading, but does not, by default, emit them.
+Standard JSON has no provision for inserting commands. Darwino's JSON implementation supports JavaScript-style comments as an extension, and the parser can read inside these comments. This feature enables reading and writing commands embedded in the JSON.
 
-In Darwino, the JSON implementation supports JavaScript-style comments as an extension, and the parser can read inside these comments. This feature enables reading and writing commands embedded in the JSON.
- 
-A typical use case for this is a progress bar. When the client tells the server that it supports commands, the server can emit comments in the JSON that describe activity progress. The client can use those progress comments to display a progress bar.
+When a comment in JSON starts with "/*%=", the Darwino JSON interpreter will interpret the JSON object that follows as a command. It will parse the contents and return the result to whatever called the parser. The parser will always be looking for inersted commands, but if you haven't registered a callback to handle the commands it will do nothing.
+
+A typical use case for this is a progress bar. Imagine that a very large JSON file is being returned to the client via REST services. When the client tells the server that it supports commands, the server can emit comments in the JSON that describe activity progress. The client can use those progress comments to display a progress bar.
+
+The Darwino JSON parser can interpret commands when reading, but does not, by default, emit them. To enable insertion of command in JSON output, specify OPTION_PARTIALPROGRESS when creating the JsonWriter. The JsonWriter will then look for a header with a value of "x-dwo-json-progress" from the caller, and only if it sees that header will it insert the commands in its output.
  
 ###JSON Compression
 We can also emit compressed, binary JSON in place of text. Darwino does not use this externally, as when writing to a file or to a database, but it can be used when communicating via HTTP. For example, when the client is replicating with the server, it uses a REST API that is based on JSON. If the client sends the server a header saying that the client understands the binary form of JSON, then it can compress the data. Values are compressed, and names can be sent once and subsequently only pointed to. Also, this removes the need for parsing the data.
