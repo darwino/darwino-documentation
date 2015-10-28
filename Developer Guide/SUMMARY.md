@@ -60,7 +60,7 @@
     * [Creating and Configuring the Synchronization Database](Synchronizing Domino Data 2. Creating and configuring the Synchronization database.md)
     * [Customizing the Data Transformation](Synchronizing Domino Data 3. Customizing the data transformation.md)
 * [Building and deploying Darwino applications]()
-* [Optimizing the Database]()
+* [Optimizing the Database](Optimizing the database.md)
 * Appendices
     * [Utility Libraries](Appendix 1. Utility Libraries.md)
     * [Mapping between a Darwino DB and a relational database](Appendix 2. Mapping between a Darwino DB and a relational database.md)

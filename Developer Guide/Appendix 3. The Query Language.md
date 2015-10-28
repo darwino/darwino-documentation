@@ -84,7 +84,7 @@ Darwino will take these queries and transform them to SQL as much as it can, giv
 
 In cases where only partial or no conversion is possible, Darwino will use the SQL that it CAN generate to first select from the database, and then it will "manually" filter the result fully to satisfy the query. It will do this by loading the resulting documents one at a time and then applying the remainder of the conditions against the in-memory document.
 
-It is good practice when querying large datasets to keep in mind the capabilities of the RDBMS, and to write your queries in such a way as to permit the query generator to do the best possible job in translating the query into SQL.
+It is good practice when querying large datasets to keep in mind the capabilities of the RDBMS, and to write your queries in such a way as to permit the query generator to do the best possible job in translating the query into SQL. See [Optimizing the database](Optimizing the database.md) for details.
 
 ##Extraction Language
 A query will return the entire document; you will often be interested in only certain values from the document. Darwino can apply an extraction to the result of a query.
