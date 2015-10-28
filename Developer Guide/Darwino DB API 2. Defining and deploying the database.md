@@ -2,7 +2,7 @@ Darwino DB API
 =======================
 
 # Defining and deploying the database
-A Darwino database is actually a set of tables within a relational database. The schema of these tables does not depend on the Darwino application. You can create tables, for example, at the application level and the actual database schema will always be the same. The schema is defined by Darwino. This is important because in some organizations altering tables’ schema is strictly controlled. They require that a new DDL be submitted for the administrator to apply. With Darwino, no new table definitions are necessary… UNLESS you want to add additional indexes.
+A Darwino database is actually a set of tables within a relational database. The schema of these tables does not depend on the Darwino application. You can create tables, for example, at the application level and the actual database schema will always be the same. The schema is defined by Darwino. This is important because in some organizations altering tables’ schema is strictly controlled. They require that a new DDL be submitted for the administrator to apply. With Darwino, no new table definitions are necessary… UNLESS you want to add additional indexes. See [Optimizing the database](Optimizing the database.md) for details on defining additional indexes. 
 
 
 ## Configuring the database using managed beans

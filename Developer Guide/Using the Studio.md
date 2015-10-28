@@ -14,7 +14,7 @@ Which projects are generated depends on the options that were selected in the wi
 - -shared: This project contains the Java code that is shared by all the platforms. 
 ![](<shared-contents.png>)
 
- -- AppDatabaseDef.java defines the metadata of the JSON store. Since the store is located inside the database as a JSON file, you won’t need this Metadata definition. (I need to verify and elaborate on this.)
+ -- AppDatabaseDef.java defines the metadata of the JSON store. Since the store is located inside the database as a JSON file, you won’t need this Metadata definition.
 
  The first time replication runs, the tables will optionally be created automatically. It can also check to ensure that the tables are at the required level. If the database and the DATABASE_VERSION are equal, it will proceed. If the table version is higher than expected, an error will be raised. If the table version is lower, you can upgrade the tables (if autodepoly was selected), or raise an error.
 

@@ -23,7 +23,7 @@ To calculate aggregate data, such as average, minimum, and maximum, pass an aggr
 
 When a cursor runs, it calls the cursor handler with all of the cursor entries. In the cursor entry are the key and the value, accessible via getKey() and getValue(). What these two represent depends on the source of the cursor. A cursor executed on a store will have documents as its result, the key will be the unids of the documents, and the value will be the JSON of the documents. If, instead, the cursor was executed on an index, then the key will be the key of the index, and the value will be either the value that’s stored in the index or the JSON value from the corresponding documents, depending on an option applied to the cursor.
 
-For details on the query language, see [Appendix 3. The Query Language](Appendix 3. The Query Language).
+For details on the query language, see [Appendix 3. The Query Language](Appendix 3. The Query Language.md).
 
 
 ## Executing a query
@@ -59,7 +59,7 @@ If no order is specified, and if there is no index, documents will appear in a c
 ### Categorization
 Categorization is a means to group documents, and, secondarily, to calculate or aggregate on the groups.
 
-See [Appendix 3. The Query Language](Appendix 3. The Query Language) for details on categorization in Darwino.
+See [Appendix 3. The Query Language](Appendix 3. The Query Language.md) for details on categorization in Darwino.
 
 ####Browsing the entries:
 There are two ways to execute a cursor:
