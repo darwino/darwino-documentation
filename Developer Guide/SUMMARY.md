@@ -55,11 +55,6 @@
       * [User Authentication](Business APIs 1b. User Authentication.md)
       * [User Service Providers](Business APIs 1c. User Service Providers.md)
     * [Mail Service](Business APIs 2. Mail Service.md)
-* [Synchronizing Domino Data](Synchronizing Domino Data 1. Overview.md)
-    * [Installing Darwino on a Domino Server](Synchronizing Domino Data 1. Installing Darwino on a Domino Server.md)
-    * [Creating and Configuring the Synchronization Database](Synchronizing Domino Data 2. Creating and configuring the Synchronization database.md)
-    * [Customizing the Data Transformation](Synchronizing Domino Data 3. Customizing the data transformation.md)
-* [Building and deploying Darwino applications]()
 * [Optimizing the Database](Optimizing the database.md)
 * Appendices
     * [Utility Libraries](Appendix 1. Utility Libraries.md)
