@@ -45,11 +45,11 @@ Documents can be organized hierarchically. Every document can have a reference t
 
 The parent document must be in the same database as the child. There is a specific syntax for this field: when the parent is in the same store, then the value is just the parent document UNID. When the parent is in a different store, then the syntax is UNID:STOREID.
 
-> Note: The system does not enforce the validity of the parent. This can lead to document pointing to non-existent parent. In this case, they are called "orphan" documents.
+> Note: The system does not enforce the validity of the parent. This can lead to documents pointing to a non-existent parent. In this case, they are called "orphan" documents.
 
-Darwino also has the concept of a "sync master" document. If a document has a sync master sdefined, then when that sync master is modified, and only when the sync master is modified, the child document will be subject to replication along with the sync master.
+Darwino also has the concept of a "sync master" document. If a document has a sync master defined, then when that sync master is modified, and only when the sync master is modified, the child document will be subject to replication along with the sync master.
 
-> Note: While typically it would be, a sync master does not have to be an ancestor of the documents that refer to it as their sync master. There are other relationships beside parent/child that can benefit from the sync master technology; for example, all documents associated with a particular project could be linked in thso way, whether or not they are hierarchically related.
+> Note: While typically it would be, a sync master does not have to be an ancestor of the documents that refer to it as their sync master. There are other relationships besides parent/child that can benefit from the sync master technology; for example, all documents associated with a particular project could be linked in thso way, whether or not they are hierarchically related.
 
  
 ####Document security
