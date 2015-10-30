@@ -12,7 +12,7 @@
     * [1 Platform object](Important Concepts 1. Platform Object.md)
     * [2 Services and extensions](Important Concepts 2. Services and Extensions.md)
       * [Logging](Important Concepts 2a. Logging.md)
-      * Properties
+      * [Properties](Important Concepts 2b. Properties.md)
       * [Managed Beans](Important Concepts 2c. Managed Beans.md)
     * [3 JSON library and data binding](Important Concepts 3. JSON library and data binding.md)
     * [4 HttpClient](Important Concepts 4. HttpClient.md)

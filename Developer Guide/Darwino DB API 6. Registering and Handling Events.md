@@ -32,14 +32,13 @@ At the Server Object level, you can register an ExtensionRegistry. This registry
  --	TARGET – the target should win
  --	CUSTOM – call the handleConflict method, where the conflict can be handled by custom business logic. For example, in an HR application where several people interviewing an applicant each have access to a different section of the document. In this case, you would choose to merge the different sections.
 -	FieldFunction: Functions used when extracting fields from documents or computing indexes are registered here.
--	InstanceFactoryImpl: A database can have multiple instances, each with its own security configuration; in other words, there is per-instance security. That instance security is dynamic, based on business logic.
+-	InstanceFactoryImpl: A database can have multiple instances, each with its own security configuration; in other words, there is per-instance security. That instance security is dynamic, based on business logic. 
 
->  NOT CORRECT! Must discuss:
->  By default, a database has just one instance; the instance factory is the means to create more. Once the instance factory has been implemented and the instance is created based on the database and the instance name, the contribute() method of the instance is the mechanism for adding roles and groups to the user context.
+ When a database is opened for a particular instance, then an instance object is created in memory through an instance factory. Once the instance factory has been implemented and the instance is created based on the database and the instance name, the contribute() method of the instance is the mechanism for adding roles and groups to the user context.
 
  For example, the ACL of a database, and the reader/writer fields in the documents, may specify that only the members of a particular group may have access to the data. It is the job of the instance’s contribute() method to add to the current user their list of roles and groups; this list is determined dynamically depending on business logic, and that logic is free to make use of any directories and database data available to it. 
 
- There is a default implementation of the ExtensionRegistry called DefaultExtensionRegistry. Use this to associate particular document event handlers with specific database stores. Once you create an instance of the DefaultExtensionRegistry, its registerDocumentEvents() method can be used to define specific cases of the document events. By specifying the database and store, you define which document events you want to override; for example here you would code your custom querySaveDocument event.
+There is a default implementation of the ExtensionRegistry called DefaultExtensionRegistry. Use this to associate particular document event handlers with specific database stores. Once you create an instance of the DefaultExtensionRegistry, its registerDocumentEvents() method can be used to define specific cases of the document events. By specifying the database and store, you define which document events you want to override; for example here you would code your custom querySaveDocument event.
 ```
 Public class AppDBBusinessLogic extends DefaultExtensionRegistry {
 	registerDocumentEvents(“<My Database Id>”, “<My Store Id>”, new DocumentEvents() {
