@@ -41,7 +41,7 @@ Here is an example of a complete settings.xml containing the remote repository u
 					<repository>
 						<id>darwino-repository</id>
 						<name>Darwino Platform</name>
-						<url>http://builds.darwino.com/artifactory/repo/</url>
+						<url>https://builds.darwino.com/artifactory/repo/</url>
 					</repository>
 				</repositories>
 			</profile>
