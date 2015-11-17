@@ -4,7 +4,12 @@
 
 A key component of the Darwino Architecture is the concept of managed beans. This concept is borrowed from, although different from, Spring and JSF. Managed beans are manageable resources – java objects that are instantiated by the platform when needed, and destroyed when they go out of scope.
 
+Common managed beans include database connections, user directory connectors, and several services, such as the mail service.
+
 Darwino uses managed beans primarily as a generic way to configure the platform.
+
+### Accessing a managed bean
+A managed bean is defined by a type, a name, and, eventually, aliases. For example, when the JSON store runtime looks for a database connection, it searches for a bean of type 'darwino/jsondb', with a specific name. The name generally comes from the Application object which defines the names to use by this application. When multiple names are used, then the runtime searches for a bean with the first name and, if it is not found, it tries the other names in order until it finds a bean that matches.
 
 ### Configuring Managed Beans
 ------
@@ -16,7 +21,7 @@ Next it looks to the web application server, following the conventions for the v
 
 After that, it looks in the classpath. It looks for a file called darwino-beans.xml within the current classpath.
 
-Then it looks in WEB_INF for a darwino-beans.xml file. In addition, it will search there for a darwino-beans file with a name determined by the application's configuration files suffix, such as "bluemix'. The resulting file that Darwino will look for would then, in this case, be "darwino-beans.bluemix.xml". Thus, specifying the suffix determines which darwino-beans files will or will not be loaded.
+Then it looks in WEB-INF for a darwino-beans.xml file. In addition, it will search there for a darwino-beans file with a name determined by the application's configuration files suffix, such as "bluemix'. The resulting file that Darwino will look for would then, in this case, be "darwino-beans.bluemix.xml". Thus, specifying the suffix determines which darwino-beans files will or will not be loaded.
 
 After that, if there is a system property called "darwino-beans" containing either XML or a URL, then Darwino will load the beans spefified within.
 
@@ -49,10 +54,24 @@ Managed bean configurations can instantiate multiple sets of bean objects lists 
 </bean>
 ```
 
+A list can also match a Java array, and Maps can be used as well:
+ ```xml
+<map name="properties">
+	<entry key='....'>...value...</entry>
+	<entry key='....'>...value...</entry>
+</map>   
+```
 
 As you can see, this structure is intentionally generic. While the bean type must be defined based upon a definition, the remainder of the definition is completely generic. This allow for any type of object to be defined as a bean, and managed by the platform.
 
 If a call is made to a managed bean, the platform checks to see if the object exists and, if not, it instantiates the object according to this definition file, using the class name and configured property definitions. This leads to a very flexible and generic manner in which Darwino applications can be defined.
+
+###Property references in managed bean definitions
+When the Darwino code that parses managed bean definitions encounters a property name, it looks first to see if it is defined in the file as a local property. If it is not defined locally, it will then look to the platform for a property of that name. Finding it, it will use its value in the managed bean definition.
+
+This allows you to drive the creation of the managed beans from outside the application.
+
+The goal with all of this is to have a WAR file that is customizable from outside the application, without having to repackage the application.
 
 ### Scope of Managed Beans
 ------

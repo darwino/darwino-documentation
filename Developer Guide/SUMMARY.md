@@ -8,7 +8,7 @@
       * 4 Mobile
 * Installing a development environment (Current wiki content)
 * [Using the studio](Using the Studio.md)
-* Important concepts
+* [Important concepts](Important concepts intro.md)
     * [1 Platform object](Important Concepts 1. Platform Object.md)
     * [2 Services and extensions](Important Concepts 2. Services and Extensions.md)
       * [Logging](Important Concepts 2a. Logging.md)
