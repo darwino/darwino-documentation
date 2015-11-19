@@ -10,3 +10,4 @@ _formatText("Main Database: {0}",mf.getMainDatabase());
 
 ```
 
+In addition to the global manifest, common to all of the platforms, there are per-platform manifests (J2EE, Mobile). These manifests hold the options specific to their particular platform.

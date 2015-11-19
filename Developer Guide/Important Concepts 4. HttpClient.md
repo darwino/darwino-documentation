@@ -1,5 +1,5 @@
 # HttpClient
-Because a lot of activities in a Darwino are based on services, we need a means to connect to those services. We need to connect to them from Java, and not only from the browser. The Darwino HttpClient is very easy to use. It has classes for authentication and for handling JSON. For example, to call a REST service, pass some parameters, and get a result back, all that is required is to call getAsJson(). It will handle the job of composing the proper URL and processing the result.
+Because a lot of activities in a Darwino are based on REST services, we need a means to connect to those services. We need to connect to them from Java, and not only from the browser. The Darwino HttpClient is very easy to use. It has classes for authentication and for handling JSON. For example, to call a REST service, pass some parameters, and get a result back, all that is required is to call getAsJson(). It will handle the job of composing the proper URL and processing the result. In Java, the HTTP calls are executed synchronously.
 
 ```
 String url = "http://localhost/playground.nsf/playground/$darwino-jstore";
