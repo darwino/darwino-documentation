@@ -12,7 +12,7 @@ A cursor consumes a database connection; thus, it has to be recycled when it’s
  
  There are methods designed for dealing with the subset of documents that are represented in the collection. For example:
 - deleteAllDocuments(int options) – Will delete all of the documents not by iterating through and deleting each one-by-one, but instead will generate a SQL query to do the job in one fell swoop.
-- markAllRead(Boolean read) and markAllRead(Boolean read, String username) will mark the cursors documents as read, either by the current user of by a particular username.
+- markAllRead(boolean read) and markAllRead(boolean read, String username) will mark the cursors documents as read, either by the current user of by a particular username.
 
 
 ## Query and extraction language
@@ -29,7 +29,7 @@ For details on the query language, see [Appendix 3. The Query Language](Appendix
 ## Executing a query
 A cursor is created at either the store or the database level. The store’s openCursor() method returns a cursor on which you then apply the selection condition. The Cursor methods return the cursor itself, which means that the methods can be stacked. For example:
 ```
-Cursor c = index.openCursor().ftSearch(“version”).orderByFtRank().range(0,5)
+Cursor c = store.openCursor().ftSearch(“version”).orderByFtRank().range(0,5)
 
 ```
 This will perform a fulltext search on “version”, order the result by rank, and return the first five entries.
@@ -44,17 +44,18 @@ DATA_WRITEACC adds a flag indicating whether the current user can edit the docum
 ###Hierarchies in Cursors
 The query engine natively understands Darwino document hierarchies, and the Cursor takes advantage of that by allowing cursor queries to apply to only root documents and not the associated response documents. In other words, a cursor query can test for values in the root documents, and then return the matching root documents along with their responses, regardless of whether the responses match the query condition or not. The CursorEntry objects returned by the cursor will have an indentLevel property (an int) that identifies where they lie in the hierarchy, with 0 indicating a root document.
 
-The range() method which, given a number to skip and a number to return, will return a subset of a curser’s entries, can be controlled via the Cursor options (by specifying RANGE_ROOT) to apply the skip and limit parameters only to the root documents, and to then return all associated response documents, without regard to the limit parameter.
+### The range() method
+The range() method, given a number to skip and a number to return, will return a subset of a curser’s entries, can be controlled via the Cursor options (by specifying RANGE_ROOT) to apply the skip and limit parameters only to the root documents, and to then return all associated response documents, without regard to the limit parameter.
 
 ### Cursor Sorting Options
-orderBy(String…fields) sorts cursor results by field. This can be an extracted field or a system field (for example, _unid or cuser). If the RDBMS supports JSONQuery, then a JSON reference can be used can be used, such as a JSON field name or a direct path to a JSON field. Optionally, the sort order can be specified by appending a space and the text “asc” or “desc” to each field/path value. For example:
+orderBy(String…fields) sorts cursor results by field. This can be an extracted field (for example, @myfield) or a system field (such as _unid or cuser). If the RDBMS supports JSONQuery, then a JSON reference can be used can be used, such as a JSON field name or a direct path to a JSON field. Optionally, the sort order can be specified by appending a space and the text “asc” or “desc” to each field/path value. For example:
 .orderBy(“@state desc”, “unid”) will sort by state descending, then by unid ascending (that being the default).
 
-The fulltext rank can also be used for specifying the order in a cursor, by use of the orderByFtRank() method.
+The fulltext rank can also be used for specifying the order in a cursor, by use of the orderByFtRank() method. This is a short cut to .orderBy("_ftRank"). orderByFtRank() is always descending, with the best best match first.
 
-The ascending() and descending() methods can be applied to both the orderBy() and the orderByFtRank() method results.
+The ascending() and descending() global options apply to the orderBy() method results, but are overriden by orderBy() when "asc" or "desc" is specified.
 
-If no order is specified, and if there is no index, documents will appear in a cursor ordered by unid.
+If no order is specified, and if there is no index, documents will appear in a cursor ordered by unid. WHen there IS an index, the default order is the index key.
 
 ### Categorization
 Categorization is a means to group documents, and, secondarily, to calculate or aggregate on the groups.

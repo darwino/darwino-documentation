@@ -39,7 +39,15 @@ The parent document must be in the same database as the child. There is a specif
 
 > Note: The system does not enforce the validity of the parent. This can lead to documents pointing to a non-existent parent. In this case, they are called "orphan" documents.
 
-Darwino also has the concept of a "sync master" document. A sync master is used to logically group a set of documents together so they get replicated as a whole. When a replication formula is applied on a document for selective replication, it actually applies to the sync master if one is defined.
+#### Synchronization master documents
+Darwino implements “functional replication”. This means that selective replication can be based on changes to an ancestor document, as opposed to the current document.
+
+The synchronization master for a document is the document that is checked for changes when the replicator is testing for selective replication eligibility. When a replication formula is applied on a document for selective replication, it actually applies to the sync master if one is defined. When the sync master document changes, and only when it changes, will the child documents replicate as well. This is how a sync master is used to logically group a set of documents together, so that they get replicated as a whole. For example, child documents might use the root parent document as their synchronization master.  
+
+There is an option for the save() method that forces the master document to update when a document referring to it as master is updated. There are options at the Store definition level as well.
+    
+ It is not necessary for a synchronization master to be an ancestor; other document relationships could benefit from the ability to specifically define under what circumstances they will replicate as a group. For example: a customer and all the documents related to this customer, or all documents related to a particular project.
+ 
 
 > Note: While typically it would be, a sync master does not have to be an ancestor of the documents that refer to it as their sync master. There are other relationships besides parent/child that can benefit from the sync master technology; for example, all documents associated with a particular project could be linked in this way, whether or not they are hierarchically related.
 

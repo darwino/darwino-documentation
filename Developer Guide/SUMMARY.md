@@ -20,7 +20,7 @@
       * [Application](Important Concepts 5. Darwino Application Objects a. Application.md)
       * [Manifest](Important Concepts 5. Darwino Application Objects b. Manifest.md)
       * [Context](Important Concepts 5. Darwino Application Objects c. Context.md)
-* Darwino DB API
+* [Darwino DB API](Darwino DB API intro.md)
     * [Concepts](Darwino DB API 1. Concepts.md)
     * [Defining and deploying the database](Darwino DB API 2. Defining and deploying the database.md)
     * [Documents](Darwino DB API 3. Documents.md)
