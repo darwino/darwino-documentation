@@ -60,9 +60,51 @@ Delete document options:
 - DELETE_CHILDREN - The option will recursively delete all descendents of the document along with the document itself. Since these deletions are performed within a transaction, it's all-or-nothing. You will not be left with a partially-intact document family. Also, they are all done within the same network process, so there's no wasteful back-and-forth that would be required if the deletes were done one at a time.
 - DELETE_SYNCSLAVES - This is like DELETE_CHILDREN, but applies when you are deleting a sync master document. It and all of its sync slaves will be deleted.
 
-To do CRUD operations, you get the session and from that the database and store, and there you create, read, update, and delete documents. As long as you’re using the Java API locally, you can execute a series of operations within a transaction. At the session level, you can query whether the session supports transactions. If it does, you can start a transaction, perform a set of operations on documents, and then roll back the changes if needed. Moreover, transactions can be nested; the data is then only saved when the top-level transaction is committed. This is familiar to users of many relational databases, but is alien to Domino and mongoDB.
+## Transactions
+To do CRUD operations, you get the session and, from that, the database and store, and there you create, read, update, and delete documents. As long as you’re using the Java API locally, you can execute a series of operations within a transaction. At the session level, you can query whether the session supports transactions. If it does, you can start a transaction, perform a set of operations on documents, and then roll back the changes if needed. 
 
-There are three ways, in Darwino, to access documents:
+A transaction must be started (startTransaction()) and ended (endTransaction()). To get the transaction committed, one must call commitTransaction() in between start and end. Failing to do so, or explicitly calling abortTransaction(), will result in no changes being committted to the database. 
+
+```
+// Simple transaction
+session.startTransaction();
+try {
+	Document d1 = store.newDocument(); 
+	id1 = d1.getUnid(); 
+    d1.save();
+  	session.commitTransaction();
+} finally {
+	session.endTransaction();
+}  
+```
+Moreover, transactions can be stacked. In order to be committed, all the sub-transactions of the main transaction must be committed, else the entire top transaction will roll back. 
+
+```
+session.startTransaction();
+try {
+	Document d1 = store.newDocument(); 
+	id1 = d1.getUnid(); 
+    d1.save();
+  
+  	// Aborting a nested transaction will abort the whole transaction!
+	session.startTransaction();
+  	try {
+		Document d2 = store.newDocument(); 
+		id2 = d2.getUnid(); 
+    	d2.save();
+		session.abortTransaction();
+	} finally {
+		session.endTransaction();
+	}  
+  
+  	session.commitTransaction();
+} finally {
+	session.endTransaction();
+}  
+```
+
+## Access to the documents
+There are three ways in Darwino to access documents:
  - The Java API. This API talks directly to the database whenever it is a JDBC-based database, or is SQLite.
  - REST services, which operate on top of the Java API. The set of REST services in Darwino support everything the Java API allows in regard to document operations EXCEPT transactions. Because REST is stateless, transactions, which are stateful, cannot be supported.
  - REST services wrapped for particular languages. Darwino provides two wrappers to assist in REST service work: a Java wrapper and a JavaScript wrapper.

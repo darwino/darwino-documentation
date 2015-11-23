@@ -42,7 +42,9 @@ The parent document must be in the same database as the child. There is a specif
 #### Synchronization master documents
 Darwino implements “functional replication”. This means that selective replication can be based on changes to an ancestor document, as opposed to the current document.
 
-The synchronization master for a document is the document that is checked for changes when the replicator is testing for selective replication eligibility. When a replication formula is applied on a document for selective replication, it actually applies to the sync master if one is defined. When the sync master document changes, and only when it changes, will the child documents replicate as well. This is how a sync master is used to logically group a set of documents together, so that they get replicated as a whole. For example, child documents might use the root parent document as their synchronization master.  
+The synchronization master for a document is the document that is checked for changes when the replicator is testing for selective replication eligibility. When a replication formula is applied on a document for selective replication, it actually applies to the sync master if one is defined. When the sync master document changes, and only when it changes, will the child documents replicate as well. This is how a sync master is used to logically group a set of documents together, so that they get replicated as a whole. For example, child documents might use the root parent document as their synchronization master.
+
+Sync master documents are identified using the same convention as parent documents: when the sync master is in the same store, then the value is its UNID. When the sync master is in a different store, then it is UNID:STOREID.
 
 There is an option for the save() method that forces the master document to update when a document referring to it as master is updated. There are options at the Store definition level as well.
     

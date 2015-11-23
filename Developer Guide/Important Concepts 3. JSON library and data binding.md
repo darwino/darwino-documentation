@@ -1,13 +1,27 @@
 # JSON library and data binding
-A lot of Darwino is based on top of JSON, and particularly the JSON store. Darwino uses its own library for JSON because there is no standard JSON library in Java. There are libraries available, but they tend to be poor performers,  cumbersome, or just heavy-weight. Their dependencies make for heavy mobile app code. The Darwino library is based on top of one written at IBM. It is 100% compatible with the JSON standard, and has been optimized for JSON parsing, and it includes JSON extensions. 
+A lot of Darwino is based on top of JSON, and particularly the JSON store. There is no standard JSON library in Java, and the ones that are available can be inconsistent and incompatable with one-another; Darwino deals with this in two ways:
 
- In standard JSON, we have key/value pairs. Keys must be wrapped in double quotes. JavaScript, though, allows single quotes or key names with no quotes at all. The Darwino JSON parser is permissive and allows those. When it serializes, it does so according to JSON standard, but when it reads, it is permissive.
+- The Darwino library provides a JSON Factory, which sits atop your libraries of choice and encapsulates all the features you need to manipulate JSON.  It provides a uniform view of JSON - a common API on top of disparate API implementations.
+
+- Darwino also provides its own library for JSON. While other libraries can be used via the factory described above, these libraries tend to be poor performers, cumbersome, or just heavy-weight. Their dependencies make for heavy mobile app code. Also, it is not always convenient to have to work though the extra layer provided by the Darwino-provided adaptor.
+
+The Darwino library is based on top of one written at IBM. It is 100% compatible with the JSON standard, and has been optimized for JSON parsing, and it includes JSON extensions. This library is used all over the Darwino product, and it makes it easy to deal with and consume JSON objects and arrays.
+  
+Because of this, best practice when manipulating JSON in your Darwino application is to use the default JsonJavaFactory instance and its JsonObject and JsonArray classes.
+
+The JsonObject is a Map of string/object; the keys are strings and the values are objects. This means that if you have a function that is expecting a Map as a parameter, you can pass it a JsonObject.
+
+The JsonArray object is a list of values implemented as a Java List. It is a List of objects. IT has all of the methids you'd expect from a JSON array, but it is also a List, so if you have a function expecting a List of objects, you can pass it a JsonArray as a parameter.
+
+To make JSON values easily consumable in Java, a string inside a JsonObject is a Java String, a number is a Java Number, and a boolean is a Java Boolean.
+
+In standard JSON, we have key/value pairs. Keys must be wrapped in double quotes. JavaScript, though, allows single quotes or key names with no quotes at all. The Darwino JSON parser is permissive and allows those. When it serializes, it does so according to JSON standard, but when it reads, it is permissive.
 ```
  // A JSON parser is available through a Factory
 JsonFactory f = JsonJavaFactory.instance;
 JsonObject jo = (JsonObject)f.fromJson("{a:11, b:12, c: 13}");
 
-// Json objects/arrays have easy to use methods
+// Json objects/arrays have easy-to-use methods
 _formatText("JSON Object, compact: {0}",jo.toJson());
 _formatText("JSON Object, pretty: {0}",jo.toJson(false));
 

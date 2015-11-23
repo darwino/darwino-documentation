@@ -4,7 +4,9 @@ It's good to be able to externalize some application properties. You can pass pr
 The properties are defined in a manner similar to how [managed beans](Important Concepts 2c. Managed Beans.md) are defined, except instead of being in the darwino-beans.xml file, properties are in the darwino.properties file. The properties file can be at the same file system paths as the darwino-beans.xml, and can be available through a JNDI call.
 
 ####Property references in web.xml
-In Darwino, it's possible to reference properties from within the web.xml file. Here, we see a paramater value being extracted from a named property:
+It's possible to reference Darwino-related properties, defined within the web.xml file, via the Darwino Application Listener.
+
+Here, we see a paramater value being extracted from a named property:
 
 ```
 <context-param>
