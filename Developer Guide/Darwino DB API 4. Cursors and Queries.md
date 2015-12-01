@@ -64,8 +64,28 @@ If no order is specified, and if there is no index, documents will appear in a c
 
 ###Browsing the entries:
 There are two ways to execute a cursor:
-- Call find(), passing a Cursorhandler. It will execute the query, returning the entries one-by-one and calling the Cursorhandler for each.
+- Call find(), passing a CursorHandler. It will execute the query, returning the entries one-by-one and calling the CursorHandler for each.
+
+```
+	final StringBuilder b = new StringBuilder();
+	c = store.openCursor().range(0,10);
+	b.setLength(0);
+	c.find(new CursorHandler() {
+	  public boolean handle(CursorEntry e) throws JsonException {  
+	    b.append("  "+e.getString("firstName")+" "+e.getString("lastName")+"\n");
+	    return true;
+	  }
+	});
+```
+
 - Call findOne(), if you are sure there will be only one entry returned, or if you are interested only in the first. There is no need to pass the callback Cursorhandler.
+
+```
+	c = store.openCursor();
+	CursorEntry e = c.findOne();
+
+```
+
 
 There are equivalent methods, different in that they extract the document object, allowing it to be updated and saved back to the database. Extracting a whole document has an extra cost compared to just loading the cursor entries.
 
@@ -73,6 +93,8 @@ The count() method will return the number of entries in the cursor. Behind the s
 
 ### Categorization and Aggregation
 Categorization is a means to group documents, and, secondarily, to calculate or aggregate on the groups.
+
+Categorization is based on the ORDER BY clause that produced the result set. There can be up to as many categories as there are sorted fields in the ORDER BY. If you have four levels in the sorting, then you can categorize on the first, or the first and second, or the first three, and so on. When categorizing, it isn't required that you start with the first sorted field; you can start with a subsequent sorted field instead. However, once you've started categorizing on multiple fields you cannot skip a sorted field and continue. That is to say, it is possible to categorize on the second, third, and fourth sorted fields, but not on just the second and fourth.
 
 To calculate aggregate data, such as average, minimum, and maximum, pass an aggregate query to the cursor. For example:
 ```
