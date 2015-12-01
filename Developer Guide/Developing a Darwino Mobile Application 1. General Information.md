@@ -1,5 +1,3 @@
-Developing a Darwino Mobile Application
-=======================
 # General information about mobile application
 Creating a mobile application in Darwino is like creating a J2EE application, except that instead of building a project that generates a WAR, you build a project that generates whatever the mobile device is expecting: an APK in the case of Android, or an IPA for iOS.
 

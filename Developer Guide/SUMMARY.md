@@ -1,4 +1,5 @@
-* Introduction to Darwino
+# Darwino User's Guide
+* [Introduction to Darwino](Introduction to Darwino.md)
     * Darwino architecture
     * Hierarchy of libraries
     * Requirements
@@ -8,15 +9,15 @@
       * 4 Mobile
 * Installing a development environment (Current wiki content)
 * [Using the studio](Using the Studio.md)
-* [Important concepts](Important concepts intro.md)
-    * [1 Platform object](Important Concepts 1. Platform Object.md)
-    * [2 Services and extensions](Important Concepts 2. Services and Extensions.md)
+* [Important concepts](Important Concepts intro.md)
+    * [Platform object](Important Concepts 1. Platform Object.md)
+    * [Services and extensions](Important Concepts 2. Services and Extensions.md)
       * [Logging](Important Concepts 2a. Logging.md)
       * [Properties](Important Concepts 2b. Properties.md)
       * [Managed Beans](Important Concepts 2c. Managed Beans.md)
-    * [3 JSON library and data binding](Important Concepts 3. JSON library and data binding.md)
-    * [4 HttpClient](Important Concepts 4. HttpClient.md)
-    * [5 Darwino application objects](Important Concepts 5. Darwino Application Objects.md)
+    * [JSON library and data binding](Important Concepts 3. JSON library and data binding.md)
+    * [HttpClient](Important Concepts 4. HttpClient.md)
+    * [Darwino application objects](Important Concepts 5. Darwino Application Objects.md)
       * [Application](Important Concepts 5. Darwino Application Objects a. Application.md)
       * [Manifest](Important Concepts 5. Darwino Application Objects b. Manifest.md)
       * [Context](Important Concepts 5. Darwino Application Objects c. Context.md)
@@ -30,7 +31,7 @@
     * [Security](Darwino DB API 7. Security.md)
     * [REST API](Darwino DB API 8. REST API.md)
     * [Darwino API over HTTP](Darwino DB API 9. Darwino API over HTTP.md)
-* JavaScript APIs
+* [JavaScript APIs](JavaScript APIs.md)
     * [Loading the JavaScript files](JavaScript APIs 1. Loading the JavaScript files.md)
     * [Generic APIs](JavaScript APIs 2. Generic APIs.md)
 * [Developing a Darwino Web Application](Developing a Darwino Web Application.md)
@@ -41,7 +42,7 @@
     * [Developing a Darwino Web Application 5. Enabling GZIP compression](Developing a Darwino Web Application 5. Enabling GZIP compression.md)
     * [Developing a Darwino Web Application 6. Enabling CORS](Developing a Darwino Web Application 6. Enabling CORS.md)
     * [Developing a Darwino Web Application 7. Authentication and Authorization](Developing a Darwino Web Application 7. Authentication and Authorization.md)
-* Developing a Darwino Mobile Application
+* [Developing a Darwino Mobile Application](Developing a Darwino Mobile Application.md)
     * [General Information about Mobile Applications](Developing a Darwino Mobile Application 1. General Information.md)
       * [Mobile Manifest](Developing a Darwino Mobile Application 1a. Mobile Manifest.md)
       * [Hybrid Applications](Developing a Darwino Mobile Application 1b. Hybrid Applications.md)
@@ -56,7 +57,7 @@
       * [User Service Providers](Business APIs 1c. User Service Providers.md)
     * [Mail Service](Business APIs 2. Mail Service.md)
 * [Optimizing the Database](Optimizing the database.md)
-* Appendices
+* [Appendices](Appendices.md)
     * [Utility Libraries](Appendix 1. Utility Libraries.md)
     * [Mapping between a Darwino DB and a relational database](Appendix 2. Mapping between a Darwino DB and a relational database.md)
     * [The Query Language](Appendix 3. The Query Language.md)
