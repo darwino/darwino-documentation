@@ -25,5 +25,5 @@ There are three methods in the store to enable manipulation and querying of the 
 
 There are two ways to access this social data. The methods at the store level require the unid and the username, in addition to any flags being set, to identify the document. The same methods are available in the Document object, where they do not require those two identifying parameters. Which set of methods you choose will depend on the context. If you have the document loaded, then use the Document methods, if just for simplicity. If you’re in a view, use the Store methods since they will be significantly more efficient (they will not require loading the documents).
 
- This social data can be used in extracted fields in the documents, making it easy to created indexes based on their values for querying and sorting.
+ This social data can be used in extracted fields in the documents, making it easy to create indexes based on their values for querying and sorting.
 
