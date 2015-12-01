@@ -86,9 +86,9 @@ try {
 	id1 = d1.getUnid(); 
     d1.save();
   
-  	// Aborting a nested transaction will abort the whole transaction!
-	session.startTransaction();
-  	try {
+    // Aborting a nested transaction will abort the whole transaction!
+    session.startTransaction();
+    try {
 		Document d2 = store.newDocument(); 
 		id2 = d2.getUnid(); 
     	d2.save();
@@ -97,7 +97,7 @@ try {
 		session.endTransaction();
 	}  
   
-  	session.commitTransaction();
+    session.commitTransaction();
 } finally {
 	session.endTransaction();
 }  
