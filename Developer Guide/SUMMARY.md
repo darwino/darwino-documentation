@@ -1,12 +1,8 @@
 # Darwino User's Guide
-* [Introduction to Darwino](Introduction to Darwino.md)
-    * Darwino architecture
-    * Hierarchy of libraries
-    * Requirements
-      * 1 Relational database
-      * 2 Web server
-      * 3 Cloud
-      * 4 Mobile
+* [Introduction to Darwino](Introduction to Darwino Intro.md)
+    * [Darwino architecture](Introduction to Darwino 1. Darwino Architecture.md)
+    * [Hierarchy of libraries](Introduction to Darwino 2. HIerarchy of Libraries.md)
+    * [Requiremed Infrastructure](Introduction to Darwino 3. Required Infrastructure.md)
 * Installing a development environment (Current wiki content)
 * [Using the studio](Using the Studio.md)
 * [Important concepts](Important Concepts intro.md)
