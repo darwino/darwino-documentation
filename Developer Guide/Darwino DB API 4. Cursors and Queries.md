@@ -44,13 +44,13 @@ DATA_WRITEACC adds a flag indicating whether the current user can edit the docum
 
 
 
-###Hierarchies in Cursors
-The query engine natively understands Darwino document hierarchies, and the Cursor takes advantage of that by allowing cursor queries to return not only the matching root documents but also their associated response documents. In other words, a cursor query can test for values in the root documents, and then return the matching root documents along with their responses, regardless of whether the responses match the query condition or not. The CursorEntry objects returned by the cursor will have an indentLevel property (an int) that identifies where they lie in the hierarchy, with 0 indicating a root document.
+###Document Hierarchies in Cursors
+The query engine natively understands Darwino document hierarchies, and the Cursor takes advantage of that by allowing cursor queries to return not only the matching root documents but also their associated child documents. In other words, a cursor query can test for values in the root documents, and then return the matching root documents along with their children, regardless of whether the children match the query condition or not. The CursorEntry objects returned by the cursor will have an indentLevel property (an int) that identifies where they lie in the hierarchy, with 0 indicating a root document.
 
-By default, when you query documents you get back a flat list of documents; there is no hierarchy. If you want to include the children of the selected documents, you have to explicitely specify that you want their children as well, up to a given level. By default, the hierarchical level is zero. If you specify hierarchical(1), then you will get the queried documents plus their direct descendents. SPecifying hierarchical(2) would return all of those, plus the grandchildren.
+By default, when you query documents you get back a flat list of documents; there is no hierarchy. If you want to include the children of the selected documents, you have to explicitely specify that you want their children as well, up to a given level. By default, the hierarchical level is zero. If you specify hierarchical(1), then you will get the queried documents plus their direct descendents. Specifying hierarchical(2) would return all of those, plus the grandchildren.
 
 ### The range() method
-The range() method, given a number to skip and a number to return, will return a subset of a curser’s entries, can be controlled via the Cursor options (by specifying RANGE_ROOT) to apply the skip and limit parameters only to the root documents, and to then return all associated response documents, without regard to the limit parameter.
+The range() method, given a number to skip and a number to return, will return a subset of a curser’s entries, and can be controlled via the Cursor options (by specifying RANGE_ROOT) to apply the skip and limit parameters only to the root documents, and to then return all associated child documents, without regard to the limit parameter.
 
 ### Cursor Sorting Options
 orderBy(String…fields) sorts cursor results by field. This can be an extracted field (for example, @myfield) or a system field (such as _unid or cuser). If the RDBMS supports JSONQuery, then a JSON reference can be used can be used, such as a JSON field name or a direct path to a JSON field. Optionally, the sort order can be specified by appending a space and the text “asc” or “desc” to each field/path value. For example:
@@ -62,14 +62,13 @@ The ascending() and descending() global options apply to the orderBy() method re
 
 If no order is specified, and if there is no index, documents will appear in a cursor ordered by unid. WHen there IS an index, the default order is the index key.
 
-###Browsing the entries:
+###Browsing the Entries:
 There are two ways to execute a cursor:
 - Call find(), passing a CursorHandler. It will execute the query, returning the entries one-by-one and calling the CursorHandler for each.
 
 ```
 	final StringBuilder b = new StringBuilder();
 	c = store.openCursor().range(0,10);
-	b.setLength(0);
 	c.find(new CursorHandler() {
 	  public boolean handle(CursorEntry e) throws JsonException {  
 	    b.append("  "+e.getString("firstName")+" "+e.getString("lastName")+"\n");
@@ -87,9 +86,11 @@ There are two ways to execute a cursor:
 ```
 
 
-There are equivalent methods, different in that they extract the document object, allowing it to be updated and saved back to the database. Extracting a whole document has an extra cost compared to just loading the cursor entries.
+There are equivalent methods, different in that they extract the document object, allowing it to be updated and saved back to the database. Extracting a whole document has an extra cost compared to just loading the cursor entries (but it is still faster than the dual steps of getting the entry and then loading the document).
 
 The count() method will return the number of entries in the cursor. Behind the scenes, Darwino executes a SELECT count(*) on the table, which can be costly on large data sets.
+
+The countWithLimit() method behaves similarly, but uses the limit parameter. If the actual count is greater than the specified limit, then the limit is returned.
 
 ### Categorization and Aggregation
 Categorization is a means to group documents, and, secondarily, to calculate or aggregate on the groups.
@@ -106,6 +107,6 @@ In this example, we count how many times the field "@manufacturer" is not null f
 See [Appendix 3. The Query Language](Appendix 3. The Query Language.md) for details on categorization and aggregation in Darwino.
 
 ## Optimizing queries
-The query language is robust, with a lot of operators, and is optimized for the underlying database system. It will attempt to use only native database functions when constructing its SQL; if necessary functions not supported by the database, it will still use those that ARE supported for parts of the query. For example, if there is an “AND” in the query, and only one condition is directly supported by the database, the query language will execute that part of the query first and only then iterate through the results one-by-one.
+The query language is robust, with a lot of operators, and is optimized for the underlying database system. It will attempt to use only native database functions when constructing its SQL; if necessary functions are not supported by the database, it will still use those that ARE supported for parts of the query. For example, if there is an “AND” in the query, and only one condition is directly supported by the database, the query language will execute that part of the query first and only then iterate through the results one-by-one.
 
 The query language’s API allows the cursor to be checked to determine whether a particular query is supported by the database. It compiles the query and answers whether it can generate SQL for the query, or it can generate only partial SQL, or it cannot generate SQL at all.
