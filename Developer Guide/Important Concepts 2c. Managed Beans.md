@@ -54,6 +54,18 @@ Managed bean configurations can instantiate multiple sets of bean objects lists 
 </bean>
 ```
 
+For nested beans, and if the bean class is an inner class of the main bean, the class name can simply be ".InnerClassName". In the example below...
+
+```xml
+<bean  class="com.acme.business.Finance" ....>
+<property name="account">
+  <bean  class="com.acme.business.Finance.Account" ....>
+```
+...the last statement can be shortened to:
+```xml
+  <bean  class=".Account" ....>
+```
+
 A list can also match a Java array, and Maps can be used as well:
  ```xml
 <map name="properties">
@@ -71,6 +83,11 @@ When the Darwino code that parses managed bean definitions encounters a property
 
 This allows you to drive the creation of the managed beans from outside the application.
 
+Property references are of the form:
+```
+${propertyname[=default value]}
+```
+
 The goal with all of this is to have a WAR file that is customizable from outside the application, without having to repackage the application.
 
 ### Scope of Managed Beans
@@ -81,7 +98,7 @@ Managed beans have a defined scope. By default, if you do not provide a scope, t
 - **None:** A new instance of the bean is created on every call to the bean. The bean object is discarded after every call.  
 - **Request:** A new instance of the bean is created on every request, meaning the developer can call the bean, then call multiple methods on the same instance of the bean. Once the bean object is out of scope, it will be discarded,  
 - **Session:** A new instance of the bean is created and persisted for each session. Once the session is discarded, the bean object is discarded.  
-- **Application:** A new instance of the bean is create for each calling application in a particular class loader.  
+- **Application:** A new instance of the bean is created for each calling application in a particular class loader.  
 
 
 

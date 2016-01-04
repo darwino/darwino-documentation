@@ -1,6 +1,6 @@
 The Platform Object
 ==
->Darwino applications execute on multiple platforms, including iOS, Android, JVM, and a Web Container. Your code must handle differences in these platforms. The Darwino Platform Object manages these platform differences so that you do not have to worry about them.
+Darwino applications execute on multiple platforms, including iOS, Android, JVM, and a Web Container. Your code must handle differences in these platforms. The Darwino Platform Object manages these platform differences so that you do not have to worry about them.
 
 Darwino is built to be platform agnostic, and exposes everything in the architecture as pluggable. The foundation of this capability is the Darwino Platform object, which encapsulates all platform-specific functionality. When working with multiple platform development, even simple tasks such as logging are managed differently depending upon on which platform the application is currently running. The Darwino Platform object allows you to interact with platform capabilities such as logging in an abstract manner, without having to determine the execution platform.
 
@@ -18,4 +18,4 @@ Developers can extend the Platform object using custom services and extensions.
 Platform Configuration
 ----
 
-In order to maintain platform agnosticism, Darwino does not depend on the use of fixed configuration files; instead, it is the Platform object that provides access to configuration properties. 
+In order to maintain platform agnosticism, Darwino does not depend on the use of fixed configuration files; instead, it is the Platform object that provides access to configuration properties.
