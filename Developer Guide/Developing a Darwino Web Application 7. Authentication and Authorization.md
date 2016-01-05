@@ -37,3 +37,5 @@ A side effect of this filter authentication is that the users are unknown to the
 Security can be done at the web application server level, for example with J2EE’s Container security or WebSphere’s Administration Console. Alternatively, it can be handled via Darwino’s authentication filter.
 
 Darwino’s authentication filter provides basic authentication and form-based authentication, and it can work with a directory implemented as a Darwino database.
+
+Accessing the current user in Darwino code is done through the DarwinoContext.

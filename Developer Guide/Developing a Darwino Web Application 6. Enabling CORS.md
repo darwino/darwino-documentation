@@ -12,3 +12,5 @@ To have Darwino implement the CORS (Cross-Origin Resource Sharing) standard, ena
 	<dispatcher>FORWARD</dispatcher>
 </filter-mapping>
 ```
+
+This CORS filter is based on eBay's implementation documented [here](https://github.com/eBay/cors-filter).

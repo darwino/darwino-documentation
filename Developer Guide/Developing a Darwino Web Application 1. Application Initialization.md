@@ -10,7 +10,7 @@ The Darwino application object should be initialized before anything else. In or
 </listener>
 ```
 
-The listener is called when the application is started, and again when it is stopped. The listener will create the application object, and destroy it when it is no longer needed. It can also be used to initialize the relational database by creating the tables, assuming that th eRDBMS user has the rights to modify the database schema.
+The listener is called when the application is started, and again when it is stopped. The listener will create the application object, and destroy it when it is no longer needed. It can also be used to initialize the relational database by creating the tables, assuming that the RDBMS user has the rights to modify the database schema.
 ```
 <context-param>
      <param-name>dwo-auto-deploy-jsonstore</param-name>
