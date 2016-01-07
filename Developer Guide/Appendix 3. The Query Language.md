@@ -1,28 +1,28 @@
 #The Query Language
 
-The query language in Darwino is modeled on [the one used in MongoDB](http://docs.mongodb.org/manual/tutorial/query-documents/). This is unsurprising, given that MongoDB is a database for JSON documents. It uses JavaScript as a query language; the queries are JSON.
+The query language in Darwino is modeled on [the one used in MongoDB](http://docs.mongodb.org/manual/tutorial/query-documents/). This is unsurprising, given that MongoDB is a database for JSON documents. It uses JSON as a query language; the queries are JSON.
 
 Darwino's query language is used to apply an evaluation formula on top of the JSON store, but it can be used beyond that. It can be used to query any kind of JSON document; the JSON doesn't have to reside in the database.
 
 Working in the context of the JSON store, the query language is used to populate cursors. After opening a cursor, pass a query string or a JSON object as the argument to the cursor's query() method.
 
-The syntax is straightforward. All queries are enclosed in braces. A very simple query would be a search in a field for a specific value. This would take the form:
+The syntax is straightforward. All queries are enclosed in braces. A very simple query would be a search for a specific value in a field at the document root level. This would take the form:
 
 ```
 {city:'Springfield'}
 ```
 
-Expanding on that, we can add an "AND" operator:
+This {fieldname:'value'} syntax is a shorthand form for {fieldname: {$eq: 'value'}}, using the "$eq" operator. This shorthand exists because most of the time we want to test for equality.
 
-> Notes:
-> This {fieldname:'value'} syntax is a shorthand form for {fieldname: {$eq: 'value'}}, using the "$eq" operator.
-> This shorthand exists because most of the time we want to test for equality.
->
-> The field name can be either a literal string or a complete JSON path. The string does not have to be quoted; this is a benefit of Darwino's extension of JSON standard notation. JSON specs have field names between a pair of double quotes. Darwino respects that, but also permits single quotes or none at all.
+The field name can be either a literal string or a complete JSON path. The string does not have to be quoted; this is a benefit of Darwino's extension of JSON standard notation. JSON specs have field names between a pair of double quotes. Darwino respects that, but also permits single quotes or none at all.
 
+Expanding on this example, we can add an "AND" operator:
+```
+{$and: [{city:'Springfield'},{state:'TX'}]}
+```
 
 ##Operators
-Naturally, there is a set of comparison operators. Here is a partial list. ALso, more wil be added over time.
+Naturally, there is a set of comparison operators. Here is a partial list; more wil be added over time.
 
 > 
 > Note: All operators start with the dollar sign. Arguments are typed: "1" is not equal to 1.
@@ -39,28 +39,54 @@ Naturally, there is a set of comparison operators. Here is a partial list. ALso,
  
  `{string: {$contains: 'g'}}`
 
-- $eq - Tests for equality. See above for an example, and a description of the shorthand version.
+- $eq - Tests for equality.
+ ` {city: {$eq: ‘Springfield’}}`
+
+ There is a handy shorthand version of this syntax, which does not require the "$eq".
+ `{city:'Springfield'}`
 
 - $exists - Tests whether a field exists or not.
 
- `{field1: {exists$: true}`
+ `{field1: {$exists: true}`
 
 - $gte - Greater than or equal to.
-- $gt - Greater than.
-- $in - Test whether a value is in an an array of values
 
- `{it: {in$ ['can','we','find','it']}}
+ `{qty: {$gte: 20}}`
+- $gt - Greater than.
+
+ `{qty: {$gt: 19}}`
+- $in - Test whether a value is in an array of values
+
+ `{it: {$in: ['can','we','find','it']}}
 `
 - $lte - Less than or equal to.
+
+ `{qty: {$lte: 20}}`
+
 - $lt - Less than.
+
+ `{qty: {$lt: 21}}`
+ 
 - $ne - Tests for inequality.
 
  ` {Joe: {$ne: 'Joseph'}}`
 
 - $nin - Tests whether a value is NOT in an array of values.
+
+ `{findme: { $nin: ['can','we','find','it']} }`
+
 - $nor - Returns documents that fail to match both conditions.
+
+ `{$nor: [{price: 1.99 }, {size: large'}]}`
+
 - $not - Used in conjunction with other operators, it will negate the result, returning documents that do not match the query.
+
+ `{cost: {$not: {$gt: 10.00}}}`
+
 - $or - Returns documents that match both conditions.
+
+ `{$or: [{price: {$lt: 10}}, { size: small'}]}`
+
 - $path - Evaluates the provided JSON path and returns the value.
 
  `{$upperCase: {$path: 'g.il'}}`
@@ -73,6 +99,9 @@ Naturally, there is a set of comparison operators. Here is a partial list. ALso,
 `8: Boolean`
 
 - $upperCase and $lowerCase - Converts the case of the argument.
+
+ `{$upperCase: {'cobol'}}`
+
 
 The [MongoDB Query documentation](https://docs.mongodb.org/manual/tutorial/query-documents/) serves as a good reference for the Darwino query language, as long as you keep in mind that the two are not 100% identical. When using the MongoDB reference, ignore the MongoDB API and focus on the query language itself.
 
@@ -106,7 +135,7 @@ All of the query operators and functions can be used here, and it is also possib
 The extraction takes place server-side. While this clearly has the performance benefit that comes from not transmitting unneeded data to the client, it also allows your functions to utilize server resources, such as the cache and connections–such as to LDAP directories for lookups.
 
 ##Aggregation
-There is a set of aggregation operators in the query language, permitting actions such as counting and summing and categorization of query results. SImilar to the extraction language, the syntax is a JSON document in which every entry is a column. Also similar to extraction, the order of the entries doesn't matter.
+There is a set of aggregation operators in the query language, permitting actions such as counting and summing and categorization of query results. These operators apply on the entries belonging to categories. Similar to the extraction language, the syntax is a JSON document in which every entry is a column. Also similar to extraction, the order of the entries doesn't matter.
 
 The aggregate operators ($count, $sum, $avg, $min, and $max) use a JSON path as a parameter.
 
@@ -117,13 +146,13 @@ The aggregate operators ($count, $sum, $avg, $min, and $max) use a JSON path as 
 Behind the scenes, Darwino constructs a SQL query that uses the database's native aggregation operators. This is good in terms of efficiency: the document selection, value extraction, and aggregation is done server-side using efficient SQL statements. The database does the work.
 
 ##Categorization
-Categorization is a means to organize documents in groups based on shared key values, determined by the ORDER BY clause. Categorization is completely dynamic; being based on the sort order, which is not fixed, categorization can be calculated on the fly.
+Categorization is a means to organize documents in groups based on shared key values, determined by the orderBy() of a cursor, in the Darwino API. Categorization is completely dynamic; being based on the sort order, which is not fixed, categorization can be calculated on the fly.
 
 Categorization adds entries to the result to define the categories. If an entry has a "category" value of true, then it is not a document... it is a category entry. The "categoryCount" value, a number, contains the level of categorization for the entry in a multi-category result: top level would be categoryLevel of 1, the next level down would be categoryLevel of 2, and so on.
 
-The .categories(int nCat) method takes as its parameter the number of category levels to apply.
+The .categories(int nCat) method takes as its parameter the number of category levels to apply, based on the orderBy() fields.
 
-When categorizing, it is possible to request that the documents not be extracted in the cursor; in this case, the result will consist only of the categories. This is equivalent to "GROUP BY" in SQL.
+When categorizing, it is possible to request that the documents not be extracted in the cursor; in this case, the result will consist only of the categories.
 
 Another option is to extract categories while skipping the highest level categories. For example, extract two categories, but start at the second-level category, returning levels two and three.
 
