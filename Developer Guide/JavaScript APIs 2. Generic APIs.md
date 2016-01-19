@@ -7,7 +7,7 @@ Included in the darwino.js is Darwino.jstore, which is an entire JSON store API.
 
 You can directly call the JavaScript services, or you can use these wrappers, or you can use both. It’s a matter of convenience. 
 
-From darwino.jstore, you can call createRemoteApplication(), passing it a url for where the Darwino runtime is running (for example: “$darwino-jstore”). This returns a pointer to the remote server. From that, you can call createSession(). With no parameters, it creates a session for the anonymous user, or, if logged in, for the current authenticated user. Passed a username and password, it will create a session on behalf of the specified user. Every operation performed from that session will use the rights and identity of the session’s user.
+From the darwino.jstore REST API, you can call createRemoteApplication(), passing it a url for where the Darwino runtime is running (for example: “$darwino-jstore”). This returns a pointer to the remote server. From that, you can call createSession(). With no parameters, it creates a session for the anonymous user, or, if logged in, for the current authenticated user. Passed a username and password, it will create a session on behalf of the specified user. Every operation performed from that session will use the rights and identity of the session’s user.
 
 Once you have the session object, you have the exact same API capabilities that you have in Java. There are, however, several details that are specific to JavaScript:
 -	The system constants (for example “SYSTEM_READERS” and “SYSTEM_WRITERS”) that are defined in Java are also defined in JavaScript. They are accessible through standard dot notation, as in:

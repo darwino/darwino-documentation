@@ -17,7 +17,9 @@ Which projects are generated depends on the options that were selected in the wi
 
  -- AppDatabaseDef.java defines the metadata of the JSON store. This metadata is used when the database is initially created, and then anytime you need to make a change. 
  
- The first time replication runs, the tables will optionally be created automatically. It can also check to ensure that the tables are at the required level. If the database and the DATABASE_VERSION are equal, it will proceed. If the table version is higher than expected, an error will be raised. If the table version is lower, you can upgrade the tables (if autodeploy was selected), or raise an error.
+ The first time replication runs, the tables will optionally be created automatically. It can also check to ensure that the tables are at the required level. If the database and the DATABASE_VERSION are equal, it will proceed. If the table version is higher than expected, an error will be raised. If the table version is lower, you can upgrade the tables (if autodeploy was selected), or raise an error. 
+ 
+  In the enterprise, it is often the case that the database developer does not have the authority to create and modify tables on the J2EE server; that task is restricted to the database administrator. To accomodate this, Darwino provides the AppDDLGenerator, a class that will create the DDL text file that can then be given to the administrator for processing. The DDL file is created considering the database definition, any customizations, and the database provider. The developer will run the AppDDLGenerator in Eclipse, and it will produce the DDL file in the console.
 
  -- AppDBBusinessLogic.java provides the means to handle database events. Examples include the Document events (create, edit, delete) and database replication events.
 

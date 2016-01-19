@@ -17,6 +17,13 @@ A cursor consumes a database connection; thus, the connection has to be released
 ## Query and extraction language
 When searching for documents in a database, index, or cursor, there are many options available. For example, searches can be based on key, a range of keys, partialkey, parentid, unid, tags, and ftsearch. Since it is possible to force a unid's value in Darwino, using the unid as a key is a particularly efficient basis for searches.
 
+start key
+end key
+partial key
+parent id
+by tag - will extract only document tagged with the value passed as the parameter
+also, you can combine all of them.
+
 These methods are fast and efficient, but may not always provide the search term flexibility required by an application. Darwino's query and extraction language allows for queries based on complex criteria.
 
 The JSON query language has three variants; which you use depends on where and how you want to use it:
@@ -38,9 +45,16 @@ Cursor c = store.openCursor().ftSearch(“version”).orderByFtRank().range(0,5)
 This will perform a fulltext search on “version”, order the result by rank, and return the first five entries.
 
 ###Cursor Options
-It is possible to query by tags. This is done by passing a list of tags and specifying via the TAGS_OR option whether to perform an “and” or an “or” with the tags.
-DATA_READMARK adds a flag to every cursor entry indicating whether the entries have been read by the user executing the query.
-DATA_WRITEACC adds a flag indicating whether the current user can edit the documents.
+When executing a cursor, there are options available that control the behavior of the query.
+- DATA_DOCUMENT: Instead of returning the value of the column, the query will return the document itself.
+- DATA_NONE: The query will not extract any data. This could be used to determine whether a matching document exists without unnecessarily returning a value.
+- DATA_MODDATES: Returns the creation and last modification dates of every document matched.
+- DATA_READMARK: Returns a flag for every matching document that indicates whether it has read by the user executing the query.
+- DATA_WRITEACC: Returns a flag for every matching document indicating whether the user executing the query is authorized to edit the document.
+- HIERARCHY_SQL: By default, Darwino will utilize the underlying database's ability, if available, to perform recursive queries (CTE, or Common Table Expressions). This option will disable this support, forcing the runtime to perform the queries exhaustively, in the case where the built-in recursive query feature is deemed unreliable or inconsistent in the particular database. This is a potentially expensive option.
+- QUERY_NOSQL: The option disables Darwino's default behavior of generating optimized SQL queries, forcing the runtime to do the query manually. Like HIERARCHY_SQL, this is potentially a very expensive choice and should be used only when absolutely necessary.
+- RANGE_ROOT: When a query is using skip and limit, this option will cause the query to consider only the root elements when determining the skip and limit values. By default, category and child entries are included when calculating the skip and the limit; this option overrides that default.
+- TAGS_OR: By default, when querying by tag and specifying multiple tags, ALL of the tags must match for documents to be selected (the default is an "AND"); when TAGS_OR is specified, then ANY matching tag will allow documents to be selected.
 
 
 
@@ -99,7 +113,8 @@ Categorization is based on the ORDER BY clause that produced the result set. The
 
 To calculate aggregate data, such as average, minimum, and maximum, pass an aggregate query to the cursor. For example:
 ```
-{Count {$count: "@manufacturer”}, Sum: {$sum: “@released”}, Avg: {$avg: “@released”}, Min: {$min: “@released”}, Max: {$max: “@released”}}
+Cursor c = store.openCursor()
+			.query("{Count {$count: "@manufacturer”}, Sum: {$sum: “@released”}, Avg: {$avg: “@released”}, Min: {$min: “@released”}, Max: {$max: “@released”}});
 ```
 
 In this example, we count how many times the field "@manufacturer" is not null for all of the documents belonging to each category and we return the result as "Count". For "Sum", we calculate the sum of the field "@released" for every document in the category, and return the result as "Sum". We also calculate the average of the "@released" field as "Avg", and we select and return the minimum and maximum values for that field as well.

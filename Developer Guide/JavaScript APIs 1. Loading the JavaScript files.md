@@ -2,7 +2,7 @@ JavaScript APIs
 =======================
 # 1	Loading the Javascript files
 
-For every Java interface in Darwino, there is a corresponding JavaScript interface. The JavaScript implementation’s source is compacted and compressed into one file: Darwino.js. This is the one file to include in applications; there is no reason to include the non-compressed files.
+The JavaScript implementation’s source is compacted and compressed into one file: Darwino.js. This is the one file to include in applications; there is no reason to include the non-compressed files.
 ```
 <script src=”$darwino-libs/Darwino/Darwino.js”></script>
 ```

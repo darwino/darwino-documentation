@@ -2,7 +2,15 @@ Darwino DB API - Security
 =======================
 
 # Database security
-Darwino implements multi-level security. You can assign security to the Server object; you can control who can and cannot access the server. At the database level, you can assign an ACL. In the ACL, you can define who can access the database, manage the database, read documents, create documents, delete documents, edit documents, and update someone else's social data.
+Darwino implements multi-level security. We have the notion of the user, which is mapped by the User class. A user has a CN, a DN, a list of groups, and a list of roles. The directory is used to authenticate the user and to get the list of groups. Generally, the groups come from the directory, while the roles are very specific to the application. Mapping between roles and groups can be done within a particular application.
+
+At the server level, you can control who can and cannot access the server, based on user ID, group, or role.
+
+At the application level, you can add dynamic roles to each user. The JSON store will trust the roles that are defined for the user in the User object.
+
+With the Darwino Enterprise Edition, we have the notion of instances. An instance can contribute roles and groups to a particular user. For example, in a multi-tenant application running in IBM Connections with Communities, one tenant will be one Community. You can define the readers of a tenant as being all of those who are members of a Community, and the editors could be all of those who are owners of the Community. This will change for each Community, because the Communities each have their own lists of members and owners. In other words, you have an extension point that allows the Instance Manager to augment a user with roles and groups–dynamically–for a particular instance. The UserContext in the JSON store is the User plus what has been contributed by the Instance Manager.
+
+At the database level, you can assign an ACL. In the ACL, you can define who, among those who have been allowed server access, can access the database, manage the database, read documents, create documents, delete documents, edit documents, and update someone else's social data. When defining the database ACL, you are defining access rights to the database based on user IDs, groups, or roles.
 
 # Document security
 At the Document level, you can maintain a list of users who can read or read/write the document.  Document security is based on a simple set of rules involving fields specifying read-only and read/write access. Entries in these fields can be the names of users, roles, and groups.
