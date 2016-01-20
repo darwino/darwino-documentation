@@ -107,9 +107,9 @@ The count() method will return the number of entries in the cursor. Behind the s
 The countWithLimit() method behaves similarly, but uses the limit parameter. If the actual count is greater than the specified limit, then the limit is returned.
 
 ### Categorization and Aggregation
-Categorization is a means to group documents, and, secondarily, to calculate or aggregate on the groups.
+Categorization is a means to group documents, and, secondarily, to calculate or aggregate on the groups. Categorization organizes documents in groups based on shared key values, determined by the orderBy() of a cursor, in the Darwino API. Categorization is completely dynamic; being based on the sort order, which is not fixed, categorization can be calculated on the fly.
 
-Categorization is based on the ORDER BY clause that produced the result set. There can be up to as many categories as there are sorted fields in the ORDER BY. If you have four levels in the sorting, then you can categorize on the first, or the first and second, or the first three, and so on. When categorizing, it isn't required that you start with the first sorted field; you can start with a subsequent sorted field instead. However, once you've started categorizing on multiple fields you cannot skip a sorted field and continue. That is to say, it is possible to categorize on the second, third, and fourth sorted fields, but not on just the second and fourth.
+There can be up to as many categories as there are sorted fields. If you have four levels in the sorting, then you can categorize on the first, or the first and second, or the first three, and so on. When categorizing, it isn't required that you start with the first sorted field; you can start with a subsequent sorted field instead. However, once you've started categorizing on multiple fields you cannot skip a sorted field and continue. That is to say, it is possible to categorize on the second, third, and fourth sorted fields, but not on just the second and fourth.
 
 To calculate aggregate data, such as average, minimum, and maximum, pass an aggregate query to the cursor. For example:
 ```
@@ -119,7 +119,15 @@ Cursor c = store.openCursor()
 
 In this example, we count how many times the field "@manufacturer" is not null for all of the documents belonging to each category and we return the result as "Count". For "Sum", we calculate the sum of the field "@released" for every document in the category, and return the result as "Sum". We also calculate the average of the "@released" field as "Avg", and we select and return the minimum and maximum values for that field as well.
 
-See [Appendix 3. The Query Language](Appendix 3. The Query Language.md) for details on categorization and aggregation in Darwino.
+Categorization adds entries to the result to define the categories. If an entry has a "category" value of true, then it is not a document... it is a category entry. The "categoryCount" value, a number, contains the level of categorization for the entry in a multi-category result: top level would be categoryLevel of 1, the next level down would be categoryLevel of 2, and so on.
+
+The .categories(int nCat) method takes as its parameter the number of category levels to apply, based on the orderBy() fields.
+
+When categorizing, it is possible to request that the documents not be extracted in the cursor; in this case, the result will consist only of the category entries.
+
+Another option is to extract categories while skipping the highest level categories. For example, extract two categories, but start at the second-level category, returning levels two and three.
+
+
 
 ## Optimizing queries
 The query language is robust, with a lot of operators, and is optimized for the underlying database system. It will attempt to use only native database functions when constructing its SQL; if necessary functions are not supported by the database, it will still use those that ARE supported for parts of the query. For example, if there is an “AND” in the query, and only one condition is directly supported by the database, the query language will execute that part of the query first and only then iterate through the results one-by-one.

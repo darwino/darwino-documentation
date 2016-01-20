@@ -25,7 +25,7 @@ These methods find the user that best matches the provided ID. Depending on the 
 findUserByLoginID() does not identify a user with certainty; only findUser() can do that.
 
 There are also several functions for returning lists of users:
-- findUsers() returns a list of users based on the provided String array of DNs.
+- findUsers() returns a list of users based on the provided String array of DNs. This is an optimization, reducing the cost of finding multiple users. This is one call for multiple users as opposed to multiple calls, each for a single user.
 - query() takes an LDAP query (allowing ANDs and ORs) and returns a List of all matches across all directories.
 - typeAhead() performs a simple “starts with” or "contains" query, depending on the implementation provided by the driver, and returns a List of all matches across all directories.
 

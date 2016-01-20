@@ -145,14 +145,3 @@ The aggregate operators ($count, $sum, $avg, $min, and $max) use a JSON path as 
 
 Behind the scenes, Darwino constructs a SQL query that uses the database's native aggregation operators. This is good in terms of efficiency: the document selection, value extraction, and aggregation is done server-side using efficient SQL statements. The database does the work.
 
-##Categorization
-Categorization is a means to organize documents in groups based on shared key values, determined by the orderBy() of a cursor, in the Darwino API. Categorization is completely dynamic; being based on the sort order, which is not fixed, categorization can be calculated on the fly.
-
-Categorization adds entries to the result to define the categories. If an entry has a "category" value of true, then it is not a document... it is a category entry. The "categoryCount" value, a number, contains the level of categorization for the entry in a multi-category result: top level would be categoryLevel of 1, the next level down would be categoryLevel of 2, and so on.
-
-The .categories(int nCat) method takes as its parameter the number of category levels to apply, based on the orderBy() fields.
-
-When categorizing, it is possible to request that the documents not be extracted in the cursor; in this case, the result will consist only of the categories.
-
-Another option is to extract categories while skipping the highest level categories. For example, extract two categories, but start at the second-level category, returning levels two and three.
-

@@ -68,5 +68,8 @@ There is a Java class, SecurityHelper, that can be used to manipulate these fiel
  
 When document security is enabled, Darwino, when composing a SQL query, adds a subquery to exclude what is not allowed to be seen. This incurs a cost. To avoid this when possible, there is a database property indicating whether document security should be enabled. When it is not enabled, generated queries can avoid the step of running the subquery. A result of this is that if the flag is not set, readers and writers on documents will be ignored in all of the database’s stores. Options for this property are: no document security, reader/writer security only, ereader/ewriter security only, and all security features.
 
+###REST Services Restriction
+Even though a particular user has access to a database, you can restrict their access via REST services. For example, in your application you may want to expose a business API; you may want to manipulate and return objects. Physically, they are stored as documents. You might want to expose your objects through REST services, while preventing direct access via the default REST services serving documents; you only want people to go through your API. In this case, you could choose to prevent access to this particular database via REST services. 
+
 ###Dynamic Filtering
 There is a DocumentContentFilter interface for the REST services that allows dynamic filtering of the document data that is being produced, typically for security purposes. Along with that is a feature of the API that allows reconciliation of filtered documents upon save, so that if a section was filtered for presentation, that filtered data is not lost from the document when saving.

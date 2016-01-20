@@ -61,7 +61,7 @@ The prefix of Darwino's table names is the name of the Darwino database. This re
 
  - _dov table: This stores the list of fields extracted from documents. The extracted data is stored in one of four columns, one for each possible data type; they are named ftxt, fnum, fbol, and fdat.
 
- - _idx: This is where in indexes are stored.
+ - _idx: This is where indexes are stored. There are entries for each document, and for each entry there are stored keys and values.
 
  - _idv: Like the _dov table, but for the index level, because we can store fields at the index level.
 
@@ -100,7 +100,7 @@ Physically, a store is nothing; it is just a concept. It is actually just a logi
 
 Stores have several options: 
  - setAnonymousSocial(boolean anonymousSocial) – Enabling this allows tracking of the social activities of the anonymous user; for example, tracking when anonymous reads a document. This defaults to false, since there are few cases where it would be desired.
- - setFTSearch(_FtSearch ftSearch) – Specifies which fields in the JSON document are being indexed.
+ - setFTSearch(_FtSearch ftSearch) – Specifies what data should be extracted from the JSON so it can be fulltext-searchable. If, for example, you might specify "$" if you want to index the entire document, or just the JSON path for the field "Title" if you want that field to be the only indexed data.
 	
  - setFtSearchEnabled(boolean fulltextEnabled) – Enables full text search of the documents in the store. Darwino uses the full text search engine provided by the host database. This results in maximum performance and low overhead.
 It is possible to test at run time, using the Store-level method isFtSearchEnabled(), whether the database supports full text search, so the UI can be adjusted accordingly.
@@ -132,8 +132,4 @@ In Darwino, an index is the MAP action in MAP/REDUCE. It allows fast access to d
 index.valuesExtract(“\”$\””) will specify the root of the JSON value (the entire document) as the value to extract. This is using JSON Path expressions. 
  
  When specifying the keys, you can specify whether the keys are unique or not. This is done by calling the setUniqueKey(Boolean uniqueKey) method.
- 
-setUpdateWithUserData() specifies whether the index should be updated when a document’s social data, which is stored outside of the document, is changed, even if the document itself has not been changed. An example of this would be if you are tracking ratings for documents and you wish to display the average rating for each document. Rather than recalculate the average every time you query the index, you would store the rating average every time the ratings are changed. By default, the index is not updated when the social data changes.
-
-setUpdateWithUserData() can also be used to store the number of child documents for a parent document. But this is like recalculating the index of a parent document, while a child is updated (parentId). So there is an option to the save() method that forces the parent document, or the sync master, to update as well.
 

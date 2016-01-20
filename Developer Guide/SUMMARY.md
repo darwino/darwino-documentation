@@ -50,6 +50,7 @@
       * [User Authentication](Business APIs 1b. User Authentication.md)
       * [User Service Providers](Business APIs 1c. User Service Providers.md)
     * [Mail Service](Business APIs 2. Mail Service.md)
+    * [Preferences Service](Business APIs 3. Preferences Service.md)
 * [Optimizing the Database](Optimizing the database.md)
 * [Appendices](Appendices.md)
     * [Utility Libraries](Appendix 1. Utility Libraries.md)

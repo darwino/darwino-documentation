@@ -53,6 +53,11 @@ There is an option for the save() method that forces the master document to upda
 
 > Note: While typically it would be, a sync master does not have to be an ancestor of the documents that refer to it as their sync master. There are other relationships besides parent/child that can benefit from the sync master technology; for example, all documents associated with a particular project could be linked in this way, whether or not they are hierarchically related.
 
+####Social Data Updates
+The Store's setUpdateWithUserData() method specifies whether the index should be updated when a document’s social data, which is stored outside of the document, is changed, even if the document itself has not been changed. An example of this would be if you are tracking ratings for documents and you wish to display the average rating for each document. Rather than recalculate the average every time you query the index, you would store the rating average every time the ratings are changed. By default, the index is not updated when the social data changes.
+
+setUpdateWithUserData() can also be used to store the number of child documents for a parent document. But this is like recalculating the index of a parent document, while a child is updated (parentId). So there is an option to the save() method that forces the parent document, or the sync master, to update as well.
+
  
 ####Document security
 Darwino implements multi-level security. You can assign security to the Server object; you can control who can and cannot access the server. At the database level, you can assign an ACL. In the ACL, you can define who can access the database, manage the database, read documents, create documents, delete documents, and edit documents. At the Document level, you can maintain a list of users who can read or read/write the document, within the limits defined by the ACL. For example, if a user is granted only Read access to the database via the ACL, they will be limited to reading a given document even if the document-level security is set to allow Edit rights.
