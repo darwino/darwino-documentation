@@ -1,5 +1,5 @@
 ## Logging
-Darwino provides its own logging library for each platform, and dynamically chooses the appropriate one for current platform. This make it completely transparent to the developer; your logging code will be fully cross-platform.
+Darwino provides its own logging library for each platform, and dynamically chooses the appropriate one for the current platform. This makes it completely transparent to the developer; your logging code will be fully cross-platform.
 ```
 // General logging
 Platform.log("Logging {0} unconditionally", "My Message");
@@ -16,4 +16,4 @@ A group is a named object, typically with a hierarchical name of the form "a.b.c
 
 For example, you could create a log group named "archive". You could then refer to "archive.info" and pass some strings or content. You could enable this group for a particular level of logging, for example warnings, or errors plus warnings, or errors plus warnings plus information, or everything including debug information.
 
-Generally, you define hierarchical groups; this creates the possibility of functional logging. You could then enable logging only, for example, for "archive.permanent" or "archive.permanent.*".
+Generally, you define hierarchical groups; this creates the possibility of functional logging. You could then, for example, enable logging only for "archive.permanent" or "archive.permanent.*".
