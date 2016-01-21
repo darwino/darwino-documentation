@@ -17,7 +17,7 @@ Darwino.jstore.Database.STORE_COMMENTS
 
 - Another point specific for JavaScript is the way we handle binary content. Because JavaScript is restricted to manipulating the binary data as Base64, it is more efficient to do such work on the server in Java via REST services and just display the value, or values, or links inside the HTML. JavaScript is not designed for this.
 - Synchronous vs. Asynchronous calls
-To create an application that is responsive and not often blocking the user you have to use asynchronous JavaScript, which means that when you call a service you’re not blocking the UI thread. The entire JavaScript Darwino API allows you to do asynchronous calls. You may choose to do either synchronous or asynchronous calls, but synchronous calls should be used only when the application demands them. Asynchronous is the default; if you want to do synchronous calls, you have to pass parameters, either at the session to change the default (session.Async(false);) or with each individual call.
+To create an application that is responsive and not often blocking the user you have to use asynchronous JavaScript, which means that when you call a service you’re not blocking the UI thread. The entire JavaScript Darwino API allows you to do asynchronous calls. You may choose to do either synchronous or asynchronous calls, but synchronous calls should be used only when the application demands them. Asynchronous is the default; if you want to do synchronous calls, you have to pass parameters, either at the session to change the default (session.Async(false)) or with each individual call.
 
  By default, when you call a JavaScript function that triggers a call to a service, what it returns is a promise. The latest generation of browsers supports promises, but because not all browsers do Darwino provides an A+ Compliant version that is backwards-compatible with older browsers. 
 
@@ -25,7 +25,7 @@ To create an application that is responsive and not often blocking the user you 
  
  Promises can be chained.
 
- Some functions, such as getDatabase(), will return a promise, while others, such as getStore() will return a real value. There is no way to differentiate between the two type other than the fact that if a function has a parameter called “header” then it is an asynchronous function and will return a promise. 
+ Some functions, such as getDatabase(), will return a promise, while others, such as getStore(), will return a real value. There is no way to differentiate between the two types other than the fact that if a function has a parameter called “header” then it is an asynchronous function and will return a promise. 
 
  The [Darwino Playground](http://playground.darwino.com/playground.nsf/JavaScriptSnippets.xsp#snippet=/Json%20Store/Async) is a resource for examples of synchronous and asynchronous calls and promise handling.
 

@@ -14,12 +14,12 @@ There is a set of social data that can be associated with any document. There ar
  - getRate() – Given a unid and userName, returns that user’s rating for the document
  - getRateAvg() – Given a unid, returns the average rating from all users for the document
  - getRateSum() - Given a unid, returns the sum of all ratings for the document, for example to count votes where ratings would be defined by the application to range, say, from -1 to 1.
-
+ 
  -- Sharing: With the share method, a unid and username sets a Boolean flag indicating whether the document has been shared by that user. It is similar in concept to a Facebook “like”. Two methods exist to interrogate shares:
  - isShared() – Returns a Boolean indicating whether the document is shared by a specified username
  - getShareCount() – returns the number of shares by all users as an integer
-
- -- Read: While not specifically social, the read flag is functionally similar to the other social data. At the store level, the readMarkenabled option enables the auto-flagging of documents as being read when they are loaded. This applies only to documents that are actually loaded; their being included in a query result is not sufficient to mark them as read. A document load() option can also prevent the flag from being set, when necessary.
+ 
+ -- Read: While not specifically social, the read flag is functionally similar to the other social data. At the store level, the readMarkEnabled option enables the auto-flagging of documents as being read when they are loaded. This applies only to documents that are actually loaded; their being included in a query result is not sufficient to mark them as read. A document load() option can also prevent the flag from being set, when necessary.
  
  There are three methods in the store to enable manipulation and querying of the read flags:
  - isRead() returns the read value for the specified document and username

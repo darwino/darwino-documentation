@@ -41,4 +41,4 @@ The TaskExecutorContext includes an updateUi() method with a Runnable that allow
 There is also a task scheduler. It allows one-time executions and scheduling by periodic intervals, and it supports time ranges (for example, “run hourly between 7:00am and 5:00pm”).
 
 #3 Tracer
-The HttpTracerService can trace all of the requests that are coming to the server. As long as the requests are being served by the HttpService, the tracer (a managed bean) can be told precisely what should be traced. Tracing can be restricted to specific urls and particular types of data (headers, details, content)
+The HttpTracerService can trace all of the requests that are coming to the server. As long as the requests are being served by the HttpService, the tracer (a managed bean) can be told precisely what should be traced. Tracing can be restricted to specific urls and particular types of data (such as headers, details, and content).

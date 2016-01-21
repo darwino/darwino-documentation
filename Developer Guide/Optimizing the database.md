@@ -9,12 +9,12 @@ To be sure, your Darwino application will work without any indexes beyond those 
 ###  Default indexes
 There is one set of relational tables per Darwino database. The names of the tables depend on the database name, and the definition of the tables is static for a given version of Darwino. This allows the tables to be created once by a DBA, and then used as-is even as the application evolves. See [Appendix 2. Mapping between a Darwino DB and a relational database](Appendix 2. Mapping between a Darwino DB and a relational database.md) for details on the Darwino application tables.
 
-Darwino defines a minimal set of RDBMS indexes to assist generic access to the database (get a document by id, get document by UNID, index by key, synchronization...). Because there is a cost involved in creating indexes, Darwino makes no presumptions about your applications needs beyond these basic functions. It is up to the application developer to track the requests being emitted to the database and then add additional indexes if necessary.
+Darwino defines a minimal set of RDBMS indexes to assist generic access to the database (get a document by id, get document by UNID, index by key, synchronization...). Because there is a cost involved in creating indexes, Darwino makes no presumptions about your application's needs beyond these basic functions. It is up to the application developer to track the requests being emitted to the database and then add additional indexes if necessary.
 
 > Note: On the database systems that support native JSON access, JSON access indexes can be added. Refer to your RDBMS documentation for details and best practices.
 
 ###The database customizer
-You can use your RDBMS's admistration tools to create indexes while you're developing and debugging your application. A problem arises once you have deployed the application: you, as developer, may no longer be in control of the database, and you cannot be sure that your indexes will remain.
+You can use your RDBMS's administration tools to create indexes while you're developing and debugging your application. A problem arises once you have deployed the application: you, as developer, may no longer be in control of the database, and you cannot be sure that your indexes will remain.
 
 Fortunately, Darwino has the ability to generate the indexes for you. The JdbcDatabaseCustomizer has a method, getAlterStatements(), that is called when you deploy the database. It takes a set of SQL statements and executes them for you. Those statements can create indexes, stored procedures, triggers... anything that is understandable by your database. Because the database schema is being modified, it is necessary that you have authority to perform database DDL write operations. 
 

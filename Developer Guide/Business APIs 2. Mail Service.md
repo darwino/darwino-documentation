@@ -16,7 +16,9 @@ mailService.send(m);
 ```
 
 HTML body content can be created via the setContentHTML() method:
+```
 m.setContentHTML(“Here is <b>bold</b> and <i>italic</i>.”);
+```
 
 To send more complicated messages, the MailMimePart class allows the creation of MIME content from text:
 ```

@@ -8,7 +8,7 @@ Cursors facilitate the selection of document sets from the database, and the ext
 > Note: A cursor is forward only. You cannot browse the resultset backwards.
 >  
 
-A cursor consumes a database connection; thus, the connection has to be released when it's done. To avoid reliance on the intermittent garbage collector, Darwino provides a callback to the cursor. The Cursor calls this cursor handler for every result. For example, when iterating through a result set, you call find(), passing a CursorHandler. The CursorHandler has one method, which is handle(), which handles the CursorEntry. The cursor is allocating the database connection, executing the SQL query, calling the CursorHandler for every result, and then closing and recycling the database connection.
+A cursor consumes a database connection; thus, the connection has to be released when it's done. To avoid reliance on the intermittent garbage collector, Darwino provides a callback to the cursor. The cursor calls this cursor handler for every result. For example, when iterating through a result set, you call find(), passing a CursorHandler. The CursorHandler has one method, which is handle(), which handles the CursorEntry. The cursor is allocating the database connection, executing the SQL query, calling the CursorHandler for every result, and then closing and recycling the database connection.
  
  There are methods designed for dealing with the subset of documents that are represented in the collection. For example:
 - deleteAllDocuments(int options) – Will delete all of the documents not by iterating through and deleting each one-by-one, but instead will generate a SQL query to do the job in one fell swoop.
@@ -22,8 +22,7 @@ When searching for documents in a database, index, or cursor, there are many opt
         public Cursor key(Object key) throws JsonException; 
 - Search document using a partial key, meaning document with a key starting with a specified string: 
         public Cursor partialKey(Object partialKey) throws JsonException; 
-- Search a range of documents. When 'exclude' is not specified, then it means false (the document with the key is included) 
-You generally specified a start and an end, although omitting the start means from the beginning, while omitting the end means up to and including the last document. 
+- Search a range of documents. When 'exclude' is not specified, then it means false (the document with the key is included). You typically specify a start and an end, although omitting the start means from the beginning, while omitting the end means up to and including the last document. 
         public Cursor startKey(Object startKey) throws JsonException; 
         public Cursor startKey(Object startKey, boolean excludeStart) throws JsonException; 
         public Cursor endKey(Object endKey) throws JsonException; 
@@ -77,22 +76,22 @@ When executing a cursor, there are options available that control the behavior o
 
 
 ###Document Hierarchies in Cursors
-The query engine natively understands Darwino document hierarchies, and the Cursor takes advantage of that by allowing cursor queries to return not only the matching root documents but also their associated child documents. In other words, a cursor query can test for values in the root documents, and then return the matching root documents along with their children, regardless of whether the children match the query condition or not. The CursorEntry objects returned by the cursor will have an indentLevel property (an int) that identifies where they lie in the hierarchy, with 0 indicating a root document.
+The query engine natively understands Darwino document hierarchies, and the cursor takes advantage of that by allowing cursor queries to return not only the matching root documents but also their associated child documents. In other words, a cursor query can test for values in the root documents, and then return the matching root documents along with their children, regardless of whether the children match the query condition or not. The CursorEntry objects returned by the cursor will have an indentLevel property (an int) that identifies where they lie in the hierarchy, with 0 indicating a root document.
 
-By default, when you query documents you get back a flat list of documents; there is no hierarchy. If you want to include the children of the selected documents, you have to explicitely specify that you want their children as well, up to a given level. By default, the hierarchical level is zero. If you specify hierarchical(1), then you will get the queried documents plus their direct descendents. Specifying hierarchical(2) would return all of those, plus the grandchildren.
+By default, when you query documents you get back a flat list of documents; there is no hierarchy. If you want to include the children of the selected documents, you have to explicitly specify that you want their children as well, up to a given level. By default, the hierarchical level is zero. If you specify hierarchical(1), then you will get the queried documents plus their direct descendents. Specifying hierarchical(2) would return all of those, plus the grandchildren.
 
 ### The range() method
-The range() method, given a number to skip and a number to return, will return a subset of a curser’s entries, and can be controlled via the Cursor options (by specifying RANGE_ROOT) to apply the skip and limit parameters only to the root documents, and to then return all associated child documents, without regard to the limit parameter.
+The range() method, given a number to skip and a number to return, will return a subset of a cursor’s entries, and can be controlled via the cursor options (by specifying RANGE_ROOT) to apply the skip and limit parameters only to the root documents, and to then return all associated child documents, without regard to the limit parameter.
 
 ### Cursor Sorting Options
-orderBy(String…fields) sorts cursor results by field. This can be an extracted field (for example, @myfield) or a system field (such as _unid or cuser). If the RDBMS supports JSONQuery, then a JSON reference can be used can be used, such as a JSON field name or a direct path to a JSON field. Optionally, the sort order can be specified by appending a space and the text “asc” or “desc” to each field/path value. For example:
+orderBy(String…fields) sorts cursor results by field. This can be an extracted field (for example, @myfield) or a system field (such as _unid or cuser). If the RDBMS supports JSONQuery, then a JSON reference can be used, such as a JSON field name or a direct path to a JSON field. Optionally, the sort order can be specified by appending a space and the text “asc” or “desc” to each field/path value. For example:
 .orderBy(“@state desc”, “unid”) will sort by state descending, then by unid ascending (that being the default).
 
 The fulltext rank can also be used for specifying the order in a cursor, by use of the orderByFtRank() method. This is a short cut to .orderBy("_ftRank"). orderByFtRank() is always descending, with the best best match first.
 
 The ascending() and descending() global options apply to the orderBy() method results, but are overriden by orderBy() when "asc" or "desc" is specified.
 
-If no order is specified, and if there is no index, documents will appear in a cursor ordered by unid. WHen there IS an index, the default order is the index key.
+If no order is specified, and if there is no index, documents will appear in a cursor ordered by unid. When there IS an index, the default order is the index key.
 
 ###Browsing the Entries:
 There are two ways to execute a cursor:
@@ -132,7 +131,8 @@ There can be up to as many categories as there are sorted fields. If you have fo
 To calculate aggregate data, such as average, minimum, and maximum, pass an aggregate query to the cursor. For example:
 ```
 Cursor c = store.openCursor()
-			.query("{Count {$count: "@manufacturer”}, Sum: {$sum: “@released”}, Avg: {$avg: “@released”}, Min: {$min: “@released”}, Max: {$max: “@released”}});
+	.query("{Count {$count: "@manufacturer”}, Sum: {$sum: “@released”},
+    Avg: {$avg: “@released”}, Min: {$min: “@released”}, Max: {$max: “@released”}});
 ```
 
 In this example, we count how many times the field "@manufacturer" is not null for all of the documents belonging to each category and we return the result as "Count". For "Sum", we calculate the sum of the field "@released" for every document in the category, and return the result as "Sum". We also calculate the average of the "@released" field as "Avg", and we select and return the minimum and maximum values for that field as well.

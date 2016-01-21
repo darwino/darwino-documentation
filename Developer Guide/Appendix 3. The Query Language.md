@@ -140,7 +140,8 @@ There is a set of aggregation operators in the query language, permitting action
 The aggregate operators ($count, $sum, $avg, $min, and $max) use a JSON path as a parameter.
 
 ```
-{Count: {$count: "@manufacturer"}, Sum: {$sum: "@released"}, Avg: {$avg: "@released"}, Min: {$min: "@released"}, Max: {$max: "@released"}}
+{Count: {$count: "@manufacturer"}, Sum: {$sum: "@released"}, Avg: {$avg: "@released"}, 
+		Min: {$min: "@released"}, Max: {$max: "@released"}}
 ```
 
 Behind the scenes, Darwino constructs a SQL query that uses the database's native aggregation operators. This is good in terms of efficiency: the document selection, value extraction, and aggregation is done server-side using efficient SQL statements. The database does the work.

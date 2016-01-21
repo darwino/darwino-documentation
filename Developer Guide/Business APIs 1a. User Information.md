@@ -10,17 +10,18 @@ To work with the User Service:
 	return Platform.getService(UserService.class);
 ```
 
-The User Service provides a set of function for finding users and retrieving details about users. Because multiple directories may be referenced, there could be multiple IDs for a single user. Nonetheless, there must be only one canonical distinguished name (DN). With this in mind, there are two operations available to find a particular user:
+The User Service provides a set of function for finding users and retrieving details about users. Because multiple directories may be referenced, there could be multiple IDs for a single user. Nonetheless, there must be only one canonical distinguished name (DN). With this in mind, there are two operations available to find a particular user.
+
+This method returns the User object corresponding to the provided DN:
 
 ```
 public User findUser(String dn) throws UserException;
 ```
-This method returns the User object corresponding to the provided DN.
+This method finds the user that best matches the provided ID. Depending on the directory configuration, the ID can be a DN, an email address, a short name, a common name, etc…
 
 ```
 public User findUserByLoginID(String id) throws UserException;
 ```
-These methods find the user that best matches the provided ID. Depending on the directory configuration, the ID can be a DN, an email address, a short name, a common name, etc…
 
 findUserByLoginID() does not identify a user with certainty; only findUser() can do that.
 
@@ -38,5 +39,5 @@ Once you have the User object, you can use its methods to query a provider for u
 -	getRoles()
 -	getAttribute()
 
-> Groups come from the directory itself, while roles are generally application specific.
+> Groups come from the directory itself, while roles are generally application-specific.
 > 
