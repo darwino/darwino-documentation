@@ -100,7 +100,7 @@ Physically, a store is nothing; it is just a concept. It is actually just a logi
 
 Stores have several options: 
  - setAnonymousSocial(boolean anonymousSocial) – Enabling this allows tracking of the social activities of the anonymous user; for example, tracking when anonymous reads a document. This defaults to false, since there are few cases where it would be desired.
- - setFTSearch(_FtSearch ftSearch) – Specifies what data should be extracted from the JSON so it can be fulltext-searchable. If, for example, you might specify "$" if you want to index the entire document, or just the JSON path for the field "Title" if you want that field to be the only indexed data.
+ - setFTSearch(_FtSearch ftSearch) – Specifies what data should be extracted from the JSON to a table so it can be fulltext-indexed. If, for example, you might specify "$" if you want to index the entire document, or just the JSON path for the field "Title" if you want that field to be the only indexed data.
 	
  - setFtSearchEnabled(boolean fulltextEnabled) – Enables full text search of the documents in the store. Darwino uses the full text search engine provided by the host database. This results in maximum performance and low overhead.
 It is possible to test at run time, using the Store-level method isFtSearchEnabled(), whether the database supports full text search, so the UI can be adjusted accordingly.
@@ -113,15 +113,13 @@ None of the databases know, now, how to do full text search on the JSON document
 	
  - setTaggingEnabled(boolean taggingEnabled) – Enabling this allows Darwino to maintain an array of tags for each document. You can search documents a tag or a combination of tags. There is also a well-optimized function at the store level that returns a tag cloud.  
 
- - The addField() method adds fields that can be extracted for querying. 
-
  - setFields() has two forms. The simple form takes the name of a field as its parameter and it indexes that field. The other form takes an array of FieldNodes. 
 
  - addQueryField() has five forms. The first takes one parameter, that being that name of the field. It will use that value both as the field name and as the path to the data. The next takes three parameters: the field name, the data type, and a Boolean determining whether the field is multiple. The third adds a specification of the path in the JSON. The fourth form takes a single parameter, this being a callback fieldFunction, which itself has several parameters: the field name, the data type, the multi Boolean, the name of a registered callback function and a JSON path to the data in the JSON document which acts as the parameter to the referenced callback function. The fifth form is like form #4, but uses a Darwino query language statement in place of the function name and parameter. 
  
  By allowing a callback function or query result, the function allows sophisticated processing to be called when creating the field value, which can then be used in a query.
 
-###INDEXES
+###Indexes
 In Darwino, an index is the MAP action in MAP/REDUCE. It allows fast access to data, as well as pre-computing of some data (ex: number of children, social data...) and then querying these data. It associates a key with a value for a selected set of documents. The value can be computed from the actual JSON document.
 
  The store.addIndex() method creates an index based on a subset of the data in the JSON documents. Once you add the index, you define the keys and the values to extract from the JSON document. 

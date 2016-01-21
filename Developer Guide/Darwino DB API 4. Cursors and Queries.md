@@ -16,15 +16,33 @@ A cursor consumes a database connection; thus, the connection has to be released
 
 ## Query and extraction language
 When searching for documents in a database, index, or cursor, there are many options available. For example, searches can be based on key, a range of keys, partialkey, parentid, unid, tags, and ftsearch. Since it is possible to force a unid's value in Darwino, using the unid as a key is a particularly efficient basis for searches.
+> When we use the term "key", it means the unid when the cursor is querying a store, or the key when the cursor is querying an index. 
 
-start key
-end key
-partial key
-parent id
-by tag - will extract only document tagged with the value passed as the parameter
-also, you can combine all of them.
+- Search document by key 
+        public Cursor key(Object key) throws JsonException; 
+- Search document using a partial key, meaning document with a key starting with a specified string: 
+        public Cursor partialKey(Object partialKey) throws JsonException; 
+- Search a range of documents. When 'exclude' is not specified, then it means false (the document with the key is included) 
+You generally specified a start and an end, although omitting the start means from the beginning, while omitting the end means up to and including the last document. 
+        public Cursor startKey(Object startKey) throws JsonException; 
+        public Cursor startKey(Object startKey, boolean excludeStart) throws JsonException; 
+        public Cursor endKey(Object endKey) throws JsonException; 
+        public Cursor endKey(Object endKey, boolean excludeEnd) throws JsonException; 
+- Select by parent UNID 
+        public Cursor parentUnid(String parentId) throws JsonException; 
+        public Cursor parent(Document parent) throws JsonException; 
+- Select by tag 
+        public Cursor tags(String... tags) throws JsonException; 
+- Select based on the doc id or the UNID 
+        public Cursor id(int id) throws JsonException; 
+        public Cursor unid(String unid) throws JsonException; 
+- Select using a full text search expression 
+        public Cursor ftSearch(String search) throws JsonException; 
+
 
 These methods are fast and efficient, but may not always provide the search term flexibility required by an application. Darwino's query and extraction language allows for queries based on complex criteria.
+- Select using the query language         
+        public Cursor query(String query) throws JsonException; 
 
 The JSON query language has three variants; which you use depends on where and how you want to use it:
 1. Query documents. In this case, it's a query condition. The result of a query that is applied to a document is true or false. Does the document match the condition or not? Does field "State" equal "New York"? Is the field "Price" greater than $100? The query condition is applied to every document in the database. The cursor will select only the documents for which the condition is true. 
