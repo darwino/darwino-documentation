@@ -17,6 +17,6 @@ Object r2 = c.getAsJson(new String[]{"user"});
 _formatText("JSON Store User: {0}",r2);
 
 ```
-The Darwino HttpClient is built on top of the platform's own client; the developer doesn’t have to worry about the underlying HTTP client (for Apache, regular JVM client, OkHttp).
+The Darwino HttpClient is built on top of the platform's own client; the developer doesn’t have to worry about the specifics of the underlying HTTP client.
  
 The HttpClient also handles GZIP, ChunkedPost, and multi-part MIME.

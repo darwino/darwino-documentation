@@ -3,7 +3,7 @@ Darwino DB API
 
 The Darwino database is a NoSQL store for storing JSON documents and related attachments. It is actually a database of JSON documents, and you can attach binary pieces to any document.
 
-Built on top of existing relational databases, it provides the benefits of a mature, well-established technology. Is it fully transactional, and it scales to very large datasets. It also inserts well into the existing infrastructure, leveraging the existing processes such as backup porocedures and security.
+Built on top of existing relational databases, it provides the benefits of a mature, well-established technology. Is it fully transactional, and it scales to very large datasets. It also inserts well into the existing infrastructure, leveraging existing processes such as backup procedures and security.
 
 Darwino takes advantage of the latest NoSQL additions, such as native JSON and data sharding. 
  

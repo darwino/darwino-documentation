@@ -9,7 +9,7 @@ Darwino is built to be platform agnostic, and exposes everything in the architec
 Services
 --------
 
-The Platform object provides several default services. See [Services and extensions](Important Concepts 2. Services and Extensions.md) for details.
+The Platform object provides several default services. See [Services and extensions](Important Concepts 2. Services and Extensions.html) for details.
 
 Developers can extend the Platform object using custom services and extensions.  
 
