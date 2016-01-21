@@ -41,7 +41,7 @@ store.getDatabase().deleteDocumentById(d3.getDocId());
 When loading an existing document, there are a number of options you can pass.
 
 ```
-Document doc = store.loadDocument(unid, options); // the unid is a string, and options is an int.
+Document doc = store.loadDocument(unid, options); // options is an int.
 ```
 Document loading options (these are ORed):
 - DOCUMENT_NOREADMARK - This will load the document but not mark it as read. Normally, the read mark is checked when using the loadDocument() method, but not when the document is accessed via a query. Examples of when you might want to leave the read mark untouched include:
@@ -56,7 +56,7 @@ There are also options available when saving a document:
 
 Delete document options:
 - DELETE_ERASE - When replication is enabled for a database, deleting a document will, by default, create a deletion stub to represent a deleted document so that the document will be deleted in replicas of the database during replication. Using the DELETE_ERASE flag during deletion will delete the document without leaving a deletion stub. Thus, the deletion will not replicate out, and the document will return the next time the database replicates with a copy of the database in which the document exists.
-- DELETE_NOTOUCH - Like SAVE_NOTOUCH, this will leave related documents unnotified of the deletion.
+- DELETE_NOTOUCH - Like SAVE_NOTOUCH, this will leave related documents un-notified of the deletion.
 - DELETE_CHILDREN - The option will recursively delete all descendents of the document along with the document itself. Since these deletions are performed within a transaction, it's all-or-nothing. You will not be left with a partially-intact document family. Also, they are all done within the same network process, so there's no wasteful back-and-forth that would be required if the deletes were done one at a time.
 - DELETE_SYNCSLAVES - This is like DELETE_CHILDREN, but applies when you are deleting a sync master document. It and all of its sync slaves will be deleted.
 
@@ -106,11 +106,11 @@ try {
 ## Access to the documents
 There are three ways in Darwino to access documents:
  - The Java API. This API talks directly to the database whenever it is a JDBC-based database, or is SQLite.
- - REST services, which operate on top of the Java API. The set of REST services in Darwino support everything the Java API allows in regard to document operations EXCEPT transactions. Because REST is stateless, transactions, which are stateful, cannot be supported.
+ - REST services, which operate on top of the Java API. The set of REST services in Darwino supports everything the Java API allows in regard to document operations EXCEPT transactions. Because REST is stateless, transactions, which are stateful, cannot be supported.
  - REST services wrapped for particular languages. Darwino provides two wrappers to assist in REST service work: a Java wrapper and a JavaScript wrapper.
 The Java wrapper is the Java API, but instead of being implemented to deal directly with the JDBC driver locally, it deals with the REST services. Nonetheless, it is the exact same API. The only difference is how you get access to the session.
-The JavaScript wrapper in intended for use in a JavaScript environment such as a browser or a server-side JavaScript environment like node.js.
-In the future there could be other wrappers, just as PHP bindings, Ruby binding, etc…
+The JavaScript wrapper is intended for use in a JavaScript environment such as a browser or a server-side JavaScript environment like node.js.
+In the future there could be other wrappers, just as PHP bindings, a Ruby binding, etc…
 
 ## Access to the JSON content
  The JSON document in Darwino is more than a JSON object; it has several components:
@@ -118,10 +118,10 @@ In the future there could be other wrappers, just as PHP bindings, Ruby binding,
  - optionally, attachments
  - metadata – For example, the UNID and the docID, modification date and modification user, as well as tags and other social data, and security-related fields such as READER and EDITOR fields which define which people and groups can access the document. These metadata are not modifiable manually by normal operations. 
  - system data that can be modified – For example, a list of tags. System fields are actually fields in the root of the JSON content object, but their names start with an underscore.
-optionally, transient property fields that can contain data we want to pass to document events but never want to store in the document. They are never saved. They can be set and read at the document level, but they are never persistent. A typical use of this is when you want to pass information to an event handler without having this information be part of the document.
+ - optionally, transient property fields that can contain data we want to pass to document events but never want to store in the document. They are never saved. They can be set and read at the document level, but they are never persistent. A typical use of this is when you want to pass information to an event handler without having this information remain part of the document.
 
 ### JSON content access methods
-Methods are provided for accessing the JSON content in all data types. They all take a String as their sole parameter, and return the value of the requested JSON field, assuming that the content is a JSON object:
+Methods are provided for accessing the JSON content in all data types. They all take a String as their only parameter, and return the value of the requested JSON field, assuming that the content is a JSON object:
  - getString()
  - getInt()
  - getLong()
@@ -153,10 +153,10 @@ Attachment methods:
 - update(Content content) updates the content of the attachment
 - getContent() returns the content of the attachment as a Content object.
 - getInputStream() returns the content of the attachment as an InputStream
-There are three “readAs” methods intended for convenience, but are not meant to be used with large attachments. They are not as efficient as working with an InputStream:
-- readAsBase64() 
-- readAsString()
-- readAsString(String encoding)  
+- There are three “readAs” methods intended for convenience, but are not meant to be used with large attachments. They are not as efficient as working with an InputStream:
+-- readAsBase64() 
+-- readAsString()
+-- readAsString(String encoding)  
 
 The Content object has four methods:
 - getMimeType()
