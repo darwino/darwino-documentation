@@ -46,10 +46,10 @@ Which projects are generated depends on the options that were selected in the wi
  In the web.xml, we can point to Darwino artifacts, which are either servlets or filters. Several of these are of particular importance. The DarwinoJ2EEFilter handles on-the-fly transformation of url requests, allowing the folder structure to vary without requiring code modifications to accommodate the changes, and making urls platform-independent).
  
  Defined in web.xml:
--- DarwinoAppResourcesServlet
--- DarwinoJ2EEFilter: When a request comes in, this is the first filter to be activated. It retrieves the current context and puts it on the stack so it becomes available to the application. It does this for every URL.
--- DarwinoGlobalPathRewriterFilter translates all of the URLs containing $darwino-xxx/... into /.darwino-xxx/... paths. All the predefined Darwino services are now mapped to /.darwino-<service name>. This makes the url completely platform-independent.
--- Darwino services: for example, built-in services like the JSON store, or custom (user-created) services served by the DarwinoServiceDispatcher filter.
+ - DarwinoAppResourcesServlet
+ - DarwinoJ2EEFilter: When a request comes in, this is the first filter to be activated. It retrieves the current context and puts it on the stack so it becomes available to the application. It does this for every URL.
+ - DarwinoGlobalPathRewriterFilter translates all of the URLs containing $darwino-xxx/... into /.darwino-xxx/... paths. All the predefined Darwino services are now mapped to /.darwino-<service name>. This makes the url completely platform-independent.
+ - Darwino services: for example, built-in services like the JSON store, or custom (user-created) services served by the DarwinoServiceDispatcher filter.
  
  In order for the highest level, the Darwino application, to have the context it requires, at application initialization the com.demo.app.AppContextListener is triggered before anything else. It provides the application with access to all of its environment information. As a listener, it cannot pass parameters, but the application can have global parameters, so the listener uses global parameters to pass context information
  
@@ -63,10 +63,10 @@ The wizard generates code allowing the use of J2EE authentication, but this form
  - darwino-beans.xml
   These are Java objects, and, as managed beans, the platform will automatically create instances of these objects when needed.
   Contains sections for:
-  -- Database access
-  -- IBM Connections endpoint
-  -- HttpTracer – allows tracing of all aspects of the communication between client and server
-  -- Static directory of users
+  - Database access
+  - IBM Connections endpoint
+  - HttpTracer – allows tracing of all aspects of the communication between client and server
+  - Static directory of users
    
    Each bean has a type and a name, and can have an alias list, which can include the alias “default”. 
  
