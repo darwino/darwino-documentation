@@ -26,10 +26,10 @@ At the Server Object level, you can register an ExtensionRegistry. This registry
  
  In addition, there are events related specifically to synchronization conflicts. Code here can customize the action to be taken during conflicts.
 
- - conflictAction – raised when the runtime has detected a synchronization conflict, this event provides information about the conflict, including what changed in the source document and what is in the target document. Code here will return a ConflictAction, which will be one of the following:
-  -- DEFAULT – the default handler should be applied
-  -- SOURCE – the source should win
-  -- TARGET – the target should win
+ - conflictAction – raised when the runtime has detected a synchronization conflict, this event provides information about the conflict, including what changed in the source document and what is in the target document. Code here will return a ConflictAction, which will be one of the following: 
+  -- DEFAULT – the default handler should be applied 
+  -- SOURCE – the source should win 
+  -- TARGET – the target should win 
   -- CUSTOM – call the handleConflict method, where the conflict can be handled by custom business logic. For example, in an HR application where several people interviewing an applicant each have access to a different section of the document. In this case, you would choose to merge the different sections.
   
 -	FieldFunction: Functions used when extracting fields from documents or computing indexes are registered here.
