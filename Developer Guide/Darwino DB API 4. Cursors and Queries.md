@@ -50,7 +50,7 @@ The JSON query language has three variants; which you use depends on where and h
 
 When a cursor runs, it calls the cursor handler with all of the cursor entries. In the cursor entry are the key and the value, accessible via getKey() and getValue(). What these two represent depends on the source of the cursor. A cursor executed on a store will have documents as its result, the key will be the unids of the documents, and the value will be the JSON of the documents. If, instead, the cursor was executed on an index, then the key will be the key of the index, and the value will be either the value that’s stored in the index or the JSON value from the corresponding documents, depending on an option applied to the cursor.
 
-For details on the query language, see [Appendix 3. The Query Language](Appendix 3. The Query Language.md).
+For details on the query language, see [Appendix 3. The Query Language](Appendix 3. The Query Language.html).
 
 
 ## Executing a query

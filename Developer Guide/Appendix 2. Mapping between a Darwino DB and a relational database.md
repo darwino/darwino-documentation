@@ -26,7 +26,7 @@ The prefix of Darwino's table names is the name of the Darwino database. This re
 
  If the runtime itself has been updated, the “tableVersion” in the database definition comes into play. It is not managed by the application; it is managed by the runtime. If Darwino has been upgraded and needs to upgrade the design of its default tables, it will do so transparently to the user, as long as the RDBMS user has the rights to run DDL statements.
  
- There is also versioning associated with the DatabaseCustomizer, which is where the developer, using a set of DDL statements, defines additional indexes, stored procedures, and triggers, typically for the purpose of optimizing the performance of the application. See [Optimizing the database](Optimizing the database.md) for details.
+ There is also versioning associated with the DatabaseCustomizer, which is where the developer, using a set of DDL statements, defines additional indexes, stored procedures, and triggers, typically for the purpose of optimizing the performance of the application. See [Optimizing the database](Optimizing the database.html) for details.
  
  
  - _doc: The document table. There is one row per document. This row contains the JSON value as well as some metadata. 
