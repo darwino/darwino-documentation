@@ -64,7 +64,8 @@ This will perform a fulltext search on “version”, order the result by rank, 
 ###Cursor Options
 When executing a cursor, there are options available that control the behavior of the query.
 - DATA_DOCUMENT: Instead of returning the value of the column, the query will return the document itself.
-- DATA_NONE: The query will not extract any data. This could be used to determine whether a matching document exists without unnecessarily returning a value.
+- DATA_CATONLY: Only the category rows will be extracted from the query, and not the ones related to documents. If no categories are defined for the query, then an error will be raised.
+- DATA_NOVALUE: The 'value' of each row entry will be null, instead of containing a JSON document. This is an optimization that prevents the actual extraction being done when not needed. This is useful if, for example, you're only interested by the document meta-data (unid, ...) or the hierarchy.
 - DATA_MODDATES: Returns the creation and last modification dates of every document matched.
 - DATA_READMARK: Returns a flag for every matching document that indicates whether it has read by the user executing the query.
 - DATA_WRITEACC: Returns a flag for every matching document indicating whether the user executing the query is authorized to edit the document.
