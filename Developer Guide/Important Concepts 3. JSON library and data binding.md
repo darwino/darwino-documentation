@@ -55,7 +55,7 @@ We can also emit compressed, binary JSON in place of text. Darwino does not use 
  ###JSON Query Language
  There is a query language for JSON, allowing you to quickly and easily query JSON data. The query language is actually a JSON document itself and is super-subset of the MongoDB one. This language is used throughout Darwino.
  
- Here is an example showing the query language being used to populate a [cursor](Darwino+DB+API+4.+Cursors+and+Queries.html) based on JSON content:
+ Here is an example showing the query language being used to populate a [cursor](Darwino DB API 4.+Cursors and Queries.html) based on JSON content:
 ```
  Cursor c = store.openCursor()
 	.query("{$or: [{state:'MI'},{state:'TX'}]}");
@@ -69,4 +69,4 @@ Cursor c = store.openCursor()
 	.extract("{first:'firstName',last:'lastName'}").range(0,5);
 
 ```
- See [Appendix 3. The Query Language](Appendix%203.%20The%20Query%20Language.html) for details on the Query Language and JSON Data Extractor.
+ See [Appendix 3. The Query Language](Appendix 3. The Query Language.html) for details on the Query Language and JSON Data Extractor.
