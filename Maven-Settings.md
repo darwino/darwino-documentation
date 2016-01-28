@@ -50,7 +50,26 @@ eclipse (`Window->Show View->Other...`). Hit the refresh button to make the Darw
 ![](eclipse-mavenrepo.png)
 
 
-IBM Domino specific settings
+Installing the Android Libraries
+--------------------------------
+
+The Darwino sample projects, as well as the studio wizards, assume that these libraries are available.
+
+The Android libraries are currently not available from the maven central repository, so each
+developer has to install them in his local repository. Fortunately, there are some
+available scripts and instructions provided [here](https://books.sonatype.com/mvnref-book/reference/android-dev-sect-config-build.html#android-dev-sect-repository-install).
+
+Tip: there are two ways to install these libraries:
+1.  Using maven and the command line, as documented in the Github repository. This requires maven to be properly installed. See: [https://maven.apache.org/install.html](https://maven.apache.org/install.html).
+We suggest to only install the platforms that you need using `mvn install -P xxx`, where xxx is the desired platform release.
+2.  Using the Eclipse built-in maven install. To do this, make sure that `ANDROID_HOME` is defined before you launch Eclipse. Then, follow the instruction above to download the installer. In Eclipse, import the main project (and only this one) in your workspace:
+![](maven-eclipseimport.png)
+Finally, right click on the project, select "Run As...Maven Build..." and manually enter the install command with the desired platform:
+![](maven-eclipserun.png)
+Once done, you can remove this maven project from your workspace, unless you want to install more platforms going forward.
+
+
+IBM Domino Specific Settings
 ----------------------------
 
 If you will be working on Domino-related projects, it is necessary to download and install and reference the IBM Domino Update Site for Build Management from [openntf.org](https://www.openntf.org/main.nsf). It contains the OSGi plugins required by Domino.

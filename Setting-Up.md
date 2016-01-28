@@ -78,18 +78,6 @@ configuring Eclipse, **and the Darwino Studio Eclipse add-on component**. These
 instructions assume that you will use the Eclipse for J2EE version (Not Eclipse
 for Java).
 
-Maven Configuration
--------------------
-
-Maven should be configured to point to the Darwino repository for Darwino
-libraries. If you are using Eclipse, please see the following instructions after
-installing Eclipse: [Setting Up Maven][2].
-
-[2]: <Maven%20Settings>
-
-(If you are using the command line tools, then you should first install maven
-(latest recommended) and configure it as described in the instructions.)
-
 Installing the Android application development tools
 ----------------------------------------------------
 
@@ -105,9 +93,7 @@ entire "Android 4.2.2 (API 17)" & "Android 4.4.2 (API 19)" folders.
 
 ![](<install-android-pkg.png>)
 
-Additionally, set the path to the Android SDK root (e.g. `c:\Android\SDK`) in an
-environment variable named `ANDROID_HOME` as well as in the Maven `settings.xml`
-(see the documentation on installing Maven).
+Additionally, set the path to the Android SDK root (e.g. `c:\Android\SDK`) in an environment variable named `ANDROID_HOME`. Also do not forget, when installing maven, to add the android libraries to your local repository, as described in the documentation on installing Maven.
 
 Note: using the stock Android emulator, it is likely that the applications will
 be too slow to provide a great developer experience. This is particularly true
@@ -122,6 +108,20 @@ As stated earlier, developing for iOS requires an Apple Mac computer running OS
 X. To compile, run in a simulator or deploy the application, the Apple Xcode
 development environment is required. It is available freely from the Mac App
 Store (<https://itunes.apple.com/us/app/xcode/id497799835?mt=12>).
+
+Maven Configuration
+-------------------
+
+Maven should be configured to point to the Darwino repository for Darwino
+libraries. If you are using Eclipse, please see the following instructions after
+installing Eclipse: [Setting Up Maven][2].
+
+[2]: <Maven%20Settings>
+
+(If you are using the command line tools, then you should first install maven
+(latest recommended) and configure it as described in the instructions.)
+
+
 
 Apache TOMCAT
 -------------

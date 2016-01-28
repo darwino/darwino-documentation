@@ -1,5 +1,19 @@
 The News applications are an example of a syncing news-reader app with randomly-generated article content. It contains a J2EE application with two UI examples and which can act as a remote server for its mobile applications. It also includes pairs of examples for both Android and iOS: native UIs and hybrid (HTML-based) UIs.
 
+Installing the new application in Eclipse
+------------------------------------------
+
+The new application is provided by the [darwino-demo](https://github.com/darwino/darwino-demo) Github repository as a set of maven enabled projects.
+To import them in Eclipse once the Git repository has been cloned, select `Import...->Existing Maven Projects` and choose `parent-dwo-demo-news`.
+
+![](news-importmaven.png)
+
+The result should be a set of project in your workspace:
+
+![](news-workspace.png)
+
+
+
 J2EE Application
 -----------------
 

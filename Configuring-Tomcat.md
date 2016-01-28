@@ -11,20 +11,20 @@ Just unzip the server under your installation directory:
 If you plan to use the demo applications, then you need to add some demo users with roles in your tomcat environment. Add the following content to `{tomcat install dir}\conf\tomcat-users.xml` :
 
 	<role name="user"/>
-	  <user password="floflo" roles="user" username="atinov"/>
-	  <user password="floflo" roles="user" username="amass"/>
-	  <user password="floflo" roles="user" username="aboucher"/>
-	  <user password="floflo" roles="user" username="acalder"/>
-	  <user password="floflo" roles="user" username="agardner"/>
-	  <user password="floflo" roles="user" username="bchapot"/>
-	  <user password="floflo" roles="user" username="blemercier"/>
-	  <user password="floflo" roles="user" username="bchris"/>
-	  <user password="floflo" roles="user" username="bbright"/>
-	  <user password="floflo" roles="user" username="larmatti"/>
-	  <user password="floflo" roles="user" username="lbros"/>
-	  <user password="floflo" roles="user" username="mdavis"/>
-	  <user password="floflo" roles="user" username="pcollins"/>
-	  <user password="floflo" roles="user" username="rjordan"/>
+	  <user password="darwino" roles="user" username="atinov"/>
+	  <user password="darwino" roles="user" username="amass"/>
+	  <user password="darwino" roles="user" username="aboucher"/>
+	  <user password="darwino" roles="user" username="acalder"/>
+	  <user password="darwino" roles="user" username="agardner"/>
+	  <user password="darwino" roles="user" username="bchapot"/>
+	  <user password="darwino" roles="user" username="blemercier"/>
+	  <user password="darwino" roles="user" username="bchris"/>
+	  <user password="darwino" roles="user" username="bbright"/>
+	  <user password="darwino" roles="user" username="larmatti"/>
+	  <user password="darwino" roles="user" username="lbros"/>
+	  <user password="darwino" roles="user" username="mdavis"/>
+	  <user password="darwino" roles="user" username="pcollins"/>
+	  <user password="darwino" roles="user" username="rjordan"/>
     
 
 
