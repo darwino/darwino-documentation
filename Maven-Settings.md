@@ -1,14 +1,59 @@
+Basic Maven Settings
+--------------------
+
 Darwino projects require Maven to be properly configured to point to the Darwino repository. This is best done by modifying Maven's settings file, which is a file called `settings.xml` located in the `.m2` directory in your home folder.
 
 If you're using Eclipse and this file already exists, you can open it for editing by going to the Maven &rarr; User Settings pane in Eclipse's Preferences and clicking "Open File":
 
 ![](eclipse-mavenopenfile.png)
 
-If the file does not yet exist, this link will be absent. In that case, create a new file in a text editor and, when saving, browse to your home directory (e.g. C:\Users\yourname on Windows), create a folder named ".m2" (with the leading dot), and save the file as "settings.xml" within it.
+If the file does not yet exist, this link will be absent. In that case, create a new file in a text editor and, when saving, browse to your home directory (e.g. `C:\Users\yourname` on Windows, `~/` on a mac), create a folder named ".m2" (with the leading dot), and save the file as "settings.xml":
 
-Depending on your system, it may be difficult to create a new folder named ".m2". If that is the case, it may be necessary to open a Command Prompt or Terminal window, which should default to your home directory, and type `mkdir .m2`.
+ If it is a new file, use the following content or merge it with the existing file:
 
-If you will be working on Domino-related projects, it is necessary to download and install and reference the IBM Domino Update Site for Build Management from openntf.org. It contains the OSGi plugins required by Domino.
+	<?xml version="1.0"?>
+	<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+		<profiles>
+			<profile>
+				<id>darwino-repository-profile</id>
+				<repositories>
+					<repository>
+						<id>darwino-repository</id>
+						<name>Darwino Platform</name>
+						<url>https://maven.darwino.com/darwino-enterprise-edition-release</url>
+					</repository>
+				</repositories>
+			</profile>
+		</profiles>
+		<activeProfiles>
+			<activeProfile>darwino-repository-profile</activeProfile>
+		</activeProfiles>
+		<servers>
+			<server>
+			    <id>darwino-repository</id>
+			    <username>]username]</username>
+			    <password>[password]</password>
+			</server>
+		</servers>
+	</settings>
+
+Of course, you have to set your own user and password and, depending on the edition you are
+willing to use, set the repository URL to:
+- Enterprise Edition
+	<https://maven.darwino.com/darwino-enterprise-edition-release>
+- Community Edition
+	<https://maven.darwino.com/darwino-community-edition-release>
+
+To validate that your maven settings are correct, display the Maven Repositories view in
+eclipse (`Window->Show View->Other...`). Hit the refresh button to make the Darwino repository appear. Finally, right click on this repository and select `Rebuild Index`,. As a result, you should see the Darwino assets like in:
+
+![](eclipse-mavenrepo.png)
+
+
+IBM Domino specific settings
+----------------------------
+
+If you will be working on Domino-related projects, it is necessary to download and install and reference the IBM Domino Update Site for Build Management from [openntf.org](https://www.openntf.org/main.nsf). It contains the OSGi plugins required by Domino.
 
 The Update Site can be downloaded [here](http://www.openntf.org/main.nsf/project.xsp?r=project/IBM%20Domino%20Update%20Site%20for%20Build%20Management). Expand the download zip file and place the contents in the Java install directory.
 
@@ -18,10 +63,6 @@ In Eclipse Preferences, add the Update Site to the target platform. To do this, 
 
 ![](Install_Domino_Update_Site2.png)
 
-
-
-Setting up the Repository
--------------------------
 
 The important information to add to your Maven settings is the location of the Darwino repository, which contains the core Darwino components as well as needed third-party dependencies.
 
@@ -41,7 +82,7 @@ Here is an example of a complete settings.xml containing the remote repository u
 					<repository>
 						<id>darwino-repository</id>
 						<name>Darwino Platform</name>
-						<url>https://builds.darwino.com/artifactory/repo/</url>
+						<url>https://maven.darwino.com/darwino-enterprise-edition-release</url>
 					</repository>
 				</repositories>
 			</profile>
@@ -52,8 +93,8 @@ Here is an example of a complete settings.xml containing the remote repository u
 		<servers>
 			<server>
 			    <id>darwino-repository</id>
-			    <username>repo</username>
-			    <password>AP7d25JuFEitQAXAfkLb45Gn8xr</password>
+			    <username>]username]</username>
+			    <password>[password]</password>
 			</server>
 		</servers>
 	</settings>
