@@ -37,7 +37,7 @@ Darwino Installation
 In order to develop with the Darwino Studio, the following components should be
 installed:
 
-\- Java JRE/JDK: The minimum version is Java 7, but it is advised to use the
+- Java JRE/JDK: The minimum version is Java 7, but it is advised to use the
 latest one (Java 8 as of today).  
 - Eclipse for J2EE or other IDE  
 - Web application server is required to run the web applications. Although any
@@ -74,7 +74,7 @@ Installing Eclipse for J2EE
 
 If you plan to use Eclipse, or already do, please ensure that you first ensure
 that you follow the [instructions] (Installing Eclipse) for downloading and
-configuring Eclipse, a**nd the Darwino Studio Eclipse add-on component**. These
+configuring Eclipse, **and the Darwino Studio Eclipse add-on component**. These
 instructions assume that you will use the Eclipse for J2EE version (Not Eclipse
 for Java).
 

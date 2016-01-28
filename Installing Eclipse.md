@@ -9,6 +9,8 @@ please download and install the latest version of '**Eclipse IDE for Java EE
 Developers**‘ (NOT Eclipse IDE for Java Developers).
 <http://www.eclipse.org/downloads/>
 
+Darwino has been validated with Eclipse 4.5.1, also known as Mars-1.
+
 Installing Eclipse is achieved by unzipping the archive in its target directory.
 The following directory structure shows eclipse unzipped into the c:\\Darwino
 directory:
@@ -35,7 +37,7 @@ provided update site URL
 
 -   For developing Web (J2EE) applications
 
-    -   M2E WTP **Note**: your version of Eclipse, if it is recent enough, might
+    -   M2E WTP **Note**: your version of Eclipse J2EE edition, if it is recent enough, might
         already have this feature installed. In this case, just skip this step.
         Select `Help->Eclipse Marketplace...` and search for `m2e wtp`. Be
         careful to install m2e-wtp matching your Eclipse version and *not*
@@ -52,30 +54,24 @@ provided update site URL
 -   If iOS is a desired target platform
 
     -   RoboVM, Follow the instructions under "*RoboVM for Eclipse*" from
-        <http://robovm.com/develop/documentation/>
-
--   In case you want to use WRO4J to optimize your JavaScript/CSS code, it is
-    advised to install the m2e-wro4j connector
-
-    -   WRO4J Connector, Select `Help->Eclipse Marketplace...` and search for
-        `m2e wro4j`.
+        <http://docs.robovm.com/getting-started/eclipse.html>
 
 Installing the Darwino Studio add-on
 ------------------------------------
 
-The Darwino studio provides a set of tools and wizards. It is available from an
-Eclipse update site located at: <http://builds.darwino.com/studio/nightly>.
-*("nightly" is temporary and subject to change soon)*
+The Darwino studio provides a set of tools and wizards. It is available from an Eclipse update site located.
 
 Bellow are the instructions:
 
 1.  Select Help \> Install New Software.
 
-2.  In the "Work With:" field, enter the following URL:
-    <http://builds.darwino.com/studio/nightly>
+2.  In the "Work With:" field, enter the following UR, depending on the edition you selected:
+    Enterprise Edition:
+    <http://eclipse.darwino.com/darwino/studio/enterprise>
+    Community edition:
+    <http://eclipse.darwino.com/darwino/studio/community>
 
-3.  When prompted, enter your Darwino user and password. *Use repo/darwinorepo
-    if you don't have a specific one*
+3.  When prompted, enter your Darwino user and password, as provided during the registration process.
 
 4.  In the Available Software dialog, select the Darwino Studio checkbox.
 
@@ -92,6 +88,10 @@ Bellow are the instructions:
 Eclipse Add-ons Information
 ---------------------------
 
+-   Darwino Studio
+
+    -   Update site URL: <http://eclipse.darwino.com/darwino/studio/enterprise>
+
 -   Android Development Tools
 
     -   Instructions:
@@ -99,13 +99,14 @@ Eclipse Add-ons Information
 
     -   Update site URL: <https://dl-ssl.google.com/android/eclipse/>
 
+
 -   Android for Maven Eclipse
 
     -   Instructions: <http://rgladwell.github.io/m2e-android/>
 
 -   RoboVM
 
-    -   Instructions: <http://robovm.com/develop/documentation/>
+    -   Instructions: <http://docs.robovm.com/getting-started/eclipse.html>
 
     -   Update site URL: <http://download.robovm.org/eclipse/>
 
