@@ -20,7 +20,7 @@ If the file does not yet exist, this link will be absent. In that case, create a
 					<repository>
 						<id>darwino-repository</id>
 						<name>Darwino Platform</name>
-						<url>https://maven.darwino.com/darwino-enterprise-edition-release</url>
+						<url>https://maven.darwino.com/darwino-enterprise-edition</url>
 					</repository>
 				</repositories>
 			</profile>
@@ -40,9 +40,9 @@ If the file does not yet exist, this link will be absent. In that case, create a
 Of course, you have to set your own user and password and, depending on the edition you are
 willing to use, set the repository URL to:
 - Enterprise Edition
-	<https://maven.darwino.com/darwino-enterprise-edition-release>
+	<https://maven.darwino.com/darwino-enterprise-edition>
 - Community Edition
-	<https://maven.darwino.com/darwino-community-edition-release>
+	<https://maven.darwino.com/darwino-community-edition>
 
 To validate that your maven settings are correct, display the Maven Repositories view in
 eclipse (`Window->Show View->Other...`). Hit the refresh button to make the Darwino repository appear. Finally, right click on this repository and select `Rebuild Index`,. As a result, you should see the Darwino assets like in:
@@ -101,7 +101,7 @@ Here is an example of a complete settings.xml containing the remote repository u
 					<repository>
 						<id>darwino-repository</id>
 						<name>Darwino Platform</name>
-						<url>https://maven.darwino.com/darwino-enterprise-edition-release</url>
+						<url>https://maven.darwino.com/darwino-enterprise-edition</url>
 					</repository>
 				</repositories>
 			</profile>

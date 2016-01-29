@@ -36,25 +36,20 @@ Marketplace or by selecting `Help->Install New Software...`, then use the
 provided update site URL
 
 -   For developing Web (J2EE) applications
-
-    -   M2E WTP **Note**: your version of Eclipse J2EE edition, if it is recent enough, might
-        already have this feature installed. In this case, just skip this step.
-        Select `Help->Eclipse Marketplace...` and search for `m2e wtp`. Be
-        careful to install m2e-wtp matching your Eclipse version and *not*
-        m2eclipse-wtp, which is deprecated.
+    -   M2E WTP **Note**: your version of Eclipse J2EE edition, if it is recent enough, might already have this feature installed. In this case, just skip this step. Select `Help->Eclipse Marketplace...` and search for `m2e wtp`. Be careful to install m2e-wtp matching your Eclipse version and *not* m2eclipse-wtp, which is deprecated.
 
 -   If Android is a desired target platform
-
-    -   Android Development Tools (aka ADT), Select `Help->Eclipse
-        Marketplace...` and search for `android adt`.
-
-    -   Android for Maven Eclipse Select `Help->Eclipse Marketplace...` and
-        search for `m2e android`.
+    -   Android Development Tools (aka ADT), Select `Help->Eclipse->Marketplace...` and search for `android adt`.
+    -   Android for Maven Eclipse Select `Help->Eclipse Marketplace...` and search for `m2e android`.
 
 -   If iOS is a desired target platform
-
     -   RoboVM, Follow the instructions under "*RoboVM for Eclipse*" from
-        <http://docs.robovm.com/getting-started/eclipse.html>
+<http://docs.robovm.com/getting-started/eclipse.html>
+
+-   If IBM Domino is a desired target platform
+    -   The Darwino project wizard as well as the sample applications use Tycho to target OSGi platforms (Eclipse, IBM Domino...). As a result, it requires the Tycho m2e connector to be installed. The easiest way to get it installed is to wait from Eclipse to display a build problem (see bellow), right click on the issue and choose quick fix. Eclipse will automatically propose to download and install the connector.
+![](<eclipse-maventycho.png>)
+
 
 Installing the Darwino Studio add-on
 ------------------------------------
