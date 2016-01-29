@@ -1,5 +1,6 @@
 # Darwino Installation Guide
 
+* [Home](Home.md)
 * [Installation](Installation.md)
 	* [Setting Up](Setting-Up.md)
 		* [Configuring TOMCAT](Configuring-Tomcat.md)
