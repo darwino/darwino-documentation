@@ -126,9 +126,13 @@ installing Eclipse: [Setting Up Maven][2].
 Apache TOMCAT
 -------------
 
+Apache Tomcat is a free, easy to use, Java servlet container. The instructions bellow explain how to configure it for development and test purposes. Any servlet 3.0 compliant web server can also be used.
+
 See: [[Configuring TOMCAT]]
 
 PostgreSQL
 ----------
+
+Postgresql is a free and popular relational database featuring well suited JSON extensions for Darwino. The instructions bellow show how to install Postgreql for development and test purposes. Other databases, like IBM DB2, are also supported.
 
 See: [[Configuring PostgreSQL]]
