@@ -62,9 +62,9 @@ Bellow are the instructions:
 
 2.  In the "Work With:" field, enter the following UR, depending on the edition you selected:
     Enterprise Edition:
-    <http://eclipse.darwino.com/darwino/studio/enterprise>
+    <https://eclipse.darwino.com/darwino/studio/enterprise>
     Community edition:
-    <http://eclipse.darwino.com/darwino/studio/community>
+    <https://eclipse.darwino.com/darwino/studio/community>
 
 3.  When prompted, enter your Darwino user and password, as provided during the registration process.
 
@@ -85,7 +85,9 @@ Eclipse Add-ons Information
 
 -   Darwino Studio
 
-    -   Update site URL: <http://eclipse.darwino.com/darwino/studio/enterprise>
+    -   Update site URL:
+        <https://eclipse.darwino.com/darwino/studio/enterprise>
+        <https://eclipse.darwino.com/darwino/studio/community>
 
 -   Android Development Tools
 
