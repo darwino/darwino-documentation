@@ -60,11 +60,9 @@ Bellow are the instructions:
 
 1.  Select Help \> Install New Software.
 
-2.  In the "Work With:" field, enter the following UR, depending on the edition you selected:
-    Enterprise Edition:
-    <https://eclipse.darwino.com/darwino/studio/enterprise>
-    Community edition:
-    <https://eclipse.darwino.com/darwino/studio/community>
+2.  In the "Work With:" field, enter the following URL, depending on the edition you selected:
+    Enterprise Edition: <https://eclipse.darwino.com/darwino/studio/enterprise>
+    Community edition: <https://eclipse.darwino.com/darwino/studio/community>
 
 3.  When prompted, enter your Darwino user and password, as provided during the registration process.
 
