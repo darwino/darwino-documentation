@@ -6,7 +6,7 @@
 		* [Configuring TOMCAT](Configuring-Tomcat.md)
 		* [Configuring PostgreSQL](Configuring-PostgreSQL.md)
 	* [Installing Eclipse](Installing Eclipse.md)
-		* [Maven Settings](Maven Settings.md)		
+		* [Maven Settings](Maven-Settings.md)		
 * [Getting Started](Getting Started.md)
 	* [Running the News Samples](Running the News Samples.md)
 	* [Running the Domino Discussion Samples](Running the Domino Discussion Samples.md)
