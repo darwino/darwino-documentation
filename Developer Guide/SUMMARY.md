@@ -3,7 +3,7 @@
     * [Darwino architecture](Introduction to Darwino 1. Darwino Architecture.md)
     * [Hierarchy of libraries](Introduction to Darwino 2. Hierarchy of Libraries.md)
     * [Required Infrastructure](Introduction to Darwino 3. Required Infrastructure.md)
-* Installing a development environment (Current wiki content)
+* [Installing a development environment](.\Home.md)
 * [Using the studio](Using the Studio.md)
 * [Important concepts](Important Concepts intro.md)
     * [Platform object](Important Concepts 1. Platform Object.md)
