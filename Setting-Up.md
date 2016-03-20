@@ -130,6 +130,14 @@ Apache Tomcat is a free, easy to use, Java servlet container. The instructions b
 
 See: [[Configuring TOMCAT]]
 
+
+IBM Websphere Liberty
+---------------------
+
+Alternatively, you can use IBM Websphere Liberty as the application server, on premises and on the cloud through IBM Bluemix.
+
+See: [[Configuring IBM Websphere Liberty]]
+
 PostgreSQL
 ----------
 
