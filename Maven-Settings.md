@@ -43,6 +43,7 @@ willing to use, set the repository URL to:
 	<https://maven.darwino.com/darwino-enterprise-edition>
 - Community Edition
 	<https://maven.darwino.com/darwino-community-edition>
+These maven repositories contain both the production builds and the nightly ones (aka xxxx-SNAPSHOTS)
 
 To validate that your maven settings are correct, display the Maven Repositories view in
 eclipse (`Window->Show View->Other...`). Hit the refresh button to make the Darwino repository appear. Finally, right click on this repository and select `Rebuild Index`,. As a result, you should see the Darwino assets like in:

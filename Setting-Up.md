@@ -27,7 +27,7 @@ Darwino currently supports the following target platforms:
 
 -   OSGi environments, like Eclipse rich client or IBM Domino
 
-Notes: Based on Apple requirements, an Apple Mac computer running OS X is
+Notes: Based on Apple requirements, an Apple Mac computer running OSX is
 required for developing Apple iOS applications. Currently, only Android
 applications can be developed and tested using Microsoft Windows or Linux.
 
@@ -38,12 +38,12 @@ In order to develop with the Darwino Studio, the following components should be
 installed:
 
 - Java JRE/JDK: The minimum version is Java 7, but it is advised to use the
-latest one (Java 8 as of today).  
+latest one (Java 8 as of today)
 - Eclipse for J2EE or other IDE  
 - Web application server is required to run the web applications. Although any
 servlet container 2.5+ would work, these instructions show how to install/run
 the demo projects using Apache TOMCAT  
-- Database server: These instructions document the use of Postgres 9.4.x
+- Database server: These instructions document the use of Postgres 9.4+
 database server. Although other databases may be used, the demo applications are
 pre-configured to work with PostgreSQL. (Note that a future version of Darwino
 might use a embedded database and thus this step won't be necessary.)
@@ -141,6 +141,6 @@ See: [[Configuring IBM Websphere Liberty]]
 PostgreSQL
 ----------
 
-Postgresql is a free and popular relational database featuring well suited JSON extensions for Darwino. The instructions bellow show how to install Postgreql for development and test purposes. Other databases, like IBM DB2, are also supported.
+Postgresql is a free and popular relational database featuring well suited JSON extensions for Darwino. The instructions bellow show how to install Postgreql for development and test purposes. Other databases, like IBM DB2 10.5 FP8 or MS SqlServer 2016, are also supported.
 
 See: [[Configuring PostgreSQL]]

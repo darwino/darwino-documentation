@@ -3,7 +3,7 @@ If you plan to use Tomcat as the development web application server, then you ha
 
 Installing Apache Tomcat
 ------------------------
-Download the latest Tomcat server (8.x) from the Apache Web Site: [https://tomcat.apache.org/download-80.cgi](https://tomcat.apache.org/download-80.cgi "Download Tomcat").
+Download the latest Tomcat server (8.x or 8.5x) from the Apache Web Site: [https://tomcat.apache.org/download-80.cgi](https://tomcat.apache.org/download-80.cgi "Download Tomcat").
 Just unzip the server under your installation directory:
 ![](install-tomcat.png)
 

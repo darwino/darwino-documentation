@@ -18,13 +18,13 @@ It connects to PostgreSQL for its local data storage. By default, it uses the po
 Android Application
 -------------------
 
-The Android application is `dwo-demo-dominodisc-android`. To run this app, right-click the project and choose Run As &rarr; Android Application:
+The Android application is `dwo-demo-dominodisc-android-hybrid`. To run this app, right-click the project and choose Run As &rarr; Android Application:
 
 ![](runas-android.png)
 
 iOS Application
 ---------------
 
-If you are running on a Mac, you can run the iOS application, which is `dwo-demo-dominodisc-robovm`. To do so, right-click on the project and choose one of the Run As &rarr; iOS Simulator App options:
+If you are running on a Mac, you can run the iOS application, which is `dwo-demo-dominodisc-moe-hybrid`. To do so, right-click on the project and choose one of the Run As &rarr; iOS Simulator App options:
 
 ![](runas-ios.png)

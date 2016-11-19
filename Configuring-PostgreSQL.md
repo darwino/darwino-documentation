@@ -4,7 +4,7 @@ PostgreSQL is a free, open source database with great capability. It is particul
 Installing PostgreSQL
 ---------------------
 If you just started with PostgreSQL, the we strongly advise you to run one of the predefined installers. See: [http://www.postgresql.org/download/](http://www.postgresql.org/download/ "Download PostgreSQL").
-Please, choose at least version 9.4
+Please, choose the latest version, or at least version 9.4.
 
 By default, the pre-packaged Darwino configuration files (see: TOMCAT installation) look for a PostgreSQL database on the local host using the user/password and port below: 
 - Port: 5432 *(default)*
@@ -28,6 +28,3 @@ Here are the steps:
 
 Once done, you should see the database created after double clicking it in the list:
 ![](postgresql_demodb.png)
-
-
-
