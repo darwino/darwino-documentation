@@ -98,7 +98,7 @@ Eclipse Add-ons Information
 
     -   Update site URL: <https://dl-ssl.google.com/android/eclipse/>
 
--   Multi OS Engine
+-   Multi-OS Engine
 
     -   Instructions: <https://multi-os-engine.org/start/>
 

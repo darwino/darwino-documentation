@@ -14,7 +14,7 @@ assume that you are using:
 
 Unless specified otherwise, all the installation instructions assume a Microsoft
 Windows environment, with the software being installed on `c:\Darwino`. However,
-most of the instructions work identically on other platforms such as Apple OSX
+most of the instructions work identically on other platforms such as Apple macOS
 or Linux.
 
 Darwino currently supports the following target platforms:
@@ -27,7 +27,7 @@ Darwino currently supports the following target platforms:
 
 -   OSGi environments, like Eclipse rich client or IBM Domino
 
-Notes: Based on Apple requirements, an Apple Mac computer running OSX is
+Notes: Based on Apple requirements, an Apple Mac computer running macOS is
 required for developing Apple iOS applications. Currently, only Android
 applications can be developed and tested using Microsoft Windows or Linux.
 
@@ -64,8 +64,8 @@ Both the Java JRE and SDK can be downloaded from the Oracle web site:
 <http://www.oracle.com/technetwork/java/javase/downloads/index.html>. An IBM JDK
 will also work. Once installed, make sure that the development environment
 variable JAVA\_HOME is pointing to you Java environment. Make also sure that the
-JVM is available from the command line (terminal on OSX) by using the command
-`java -version`.
+JVM is available from the command line (Terminal on macOS or Linux) by using the
+command `java -version`.
 
 ![](<install-java-version.png>)
 
@@ -128,7 +128,7 @@ Apache TOMCAT
 
 Apache Tomcat is a free, easy to use, Java servlet container. The instructions bellow explain how to configure it for development and test purposes. Any servlet 3.0 compliant web server can also be used.
 
-See: [[Configuring TOMCAT]]
+See: [Configuring TOMCAT](Configuring-Tomcat.md)
 
 
 IBM Websphere Liberty
@@ -136,11 +136,11 @@ IBM Websphere Liberty
 
 Alternatively, you can use IBM Websphere Liberty as the application server, on premises and on the cloud through IBM Bluemix.
 
-See: [[Configuring IBM Websphere Liberty]]
+See: [Configuring IBM Websphere Liberty](Configuring-WasLiberty.md)
 
 PostgreSQL
 ----------
 
 Postgresql is a free and popular relational database featuring well suited JSON extensions for Darwino. The instructions bellow show how to install Postgreql for development and test purposes. Other databases, like IBM DB2 10.5 FP8 or MS SqlServer 2016, are also supported.
 
-See: [[Configuring PostgreSQL]]
+See: [Configuring PostgreSQL](Configuring-PostgreSQL.md)

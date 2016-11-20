@@ -96,6 +96,6 @@ This project depends on all the others except the J2EE app. It includes all the 
  SplashScreenActivity provides the splash screen.
 
 - -moe-hybrid: This is the iOS version of the app.
-We’re writing Java for iOS, but Java is not supported natively by iOS, so we rely on 3rd-party frameworks. We currently support Multi OS Engine (MOE). As of Darwino 1.5, RoboVM is no longer supported as the product as been acquired and ceased by Microsoft.
+We’re writing Java for iOS, but Java is not supported natively by iOS, so we rely on 3rd-party frameworks. We currently support Multi-OS Engine (MOE). As of Darwino 1.5, RoboVM is no longer supported as the product as been acquired and ceased by Microsoft.
  
  Just as we generate an Android wrapper, we generate a MOE one. The contained classes match those of the android-hybrid, with MainViewController equating to MainActivity.

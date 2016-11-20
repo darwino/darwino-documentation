@@ -4,19 +4,18 @@ Building the iOS demo application requires a Mac with a valid iOS developer prof
 
 That should list any available signing profiles, and valid ones will contain "iPhone Developer" or "iOS Development".
 
-Running via Maven
------------------
+Running in the Simulator
+------------------------
 
-To run the iOS applications via Maven (for example, via the command line), the [instructions for the RoboVM plugin](http://docs.robovm.com/maven/1.0.0-beta-03/) apply:
+To run iOS applications in the simulator, right-click the iOS project in Eclipse and choose Run As &rarr; Multi-OS Engine iOS Application:
 
-	mvn robovm:ipad-sim
-    mvn robovm:iphone-sim
-    mvn robovm:ios-device
+![](<run-as-moe.png>)
 
-Packaging via Maven
--------------------
+To change the device or OS version used in the simulator, choose "Run Configurations" and select a different target device from the list:
 
-Because building an iOS IPA package requires this specialized configuration, the RoboVM projects are configured to only attempt to do so in the `ipa` profile. For example:
+![](<run-as-moe-2.png>)
 
-	mvn -P ipa package
+Running on an iOS Device
+------------------------
 
+Running an application on a physical iOS device can be done by adjusting the Run Configuration as above, but instead choosing a physical device from the list.

@@ -37,7 +37,7 @@ The two Android applications are `dwo-demo-news-android-hybrid` and `dwo-demo-ne
 iOS Applications
 ----------------
 
-If you are running on a Mac, you can run the iOS applications, which are `dwo-demo-news-robovm-native` and `dwo-demo-news-moe-hybrid`. To do so, right-click on the project and choose one of the Run As &rarr; iOS Simulator App options:
+If you are running on a Mac, you can run the iOS applications, which are `dwo-demo-news-moe-native` and `dwo-demo-news-moe-hybrid`. To do so, right-click on the project and choose one of the Run As &rarr; iOS Simulator App options:
 
 ![](runas-ios.png)
 
