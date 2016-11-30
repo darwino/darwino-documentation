@@ -62,6 +62,8 @@ If the file does not yet exist, this link will be absent. In that case, create a
 		</servers>
 	</settings>
 
+This example file can be [downloaded here](settings.xml).
+
 Of course, you have to set your own user and password and, depending on the edition you are
 willing to use, set the repository URL to:
 - Enterprise Edition
