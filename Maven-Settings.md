@@ -16,6 +16,10 @@ If the file does not yet exist, this link will be absent. In that case, create a
 		<profiles>
 			<profile>
 				<id>darwino-repository-profile</id>
+				<properties>
+					<!-- Enter the filesystem path to the Android SDKs folder here -->
+					<android.sdk.path></android.sdk.path>
+				</properties>
 				<repositories>
 					<repository>
 						<id>darwino-repository</id>
