@@ -24,14 +24,39 @@ If the file does not yet exist, this link will be absent. In that case, create a
 					</repository>
 				</repositories>
 			</profile>
+		
+			<profile>
+	                <id>bintray-moe</id>
+	                <repositories>
+	                        <repository>
+	                                <snapshots>
+	                                        <enabled>false</enabled>
+	                                </snapshots>
+	                                <id>bintray-repository</id>
+	                                <name>bintray</name>
+	                                <url>https://dl.bintray.com/multi-os-engine/maven-dev</url>
+	                        </repository>
+	                </repositories>
+	                <pluginRepositories>
+	                        <pluginRepository>
+	                                <snapshots>
+	                                        <enabled>false</enabled>
+	                                </snapshots>
+	                                <id>bintray-repository</id>
+	                                <name>bintray-plugins</name>
+	                                <url>https://dl.bintray.com/multi-os-engine/maven-dev</url>
+	                        </pluginRepository>
+	                </pluginRepositories>
+	        </profile>
 		</profiles>
 		<activeProfiles>
 			<activeProfile>darwino-repository-profile</activeProfile>
+			<activeProfile>bintray-moe</activeProfile>
 		</activeProfiles>
 		<servers>
 			<server>
 			    <id>darwino-repository</id>
-			    <username>]username]</username>
+			    <username>[username]</username>
 			    <password>[password]</password>
 			</server>
 		</servers>
