@@ -97,6 +97,12 @@ Eclipse Add-ons Information
         <http://developer.android.com/sdk/installing/installing-adt.html>
 
     -   Update site URL: <https://dl-ssl.google.com/android/eclipse/>
+	
+	-   Alternatively, search the Eclipse Marketplace
+
+-   Andmore (successor to Android Development Tools)
+
+    -   Install from the Eclipse Marketplace
 
 -   Multi-OS Engine
 
