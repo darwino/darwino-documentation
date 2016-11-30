@@ -37,10 +37,11 @@ version of Eclipse. These plug-ins can generally be installed from the Eclipse
 Marketplace or by selecting `Help->Install New Software...`, then use the
 provided update site URL
 
--   If Android is a desired target platform
-    -   Android Development Tools (aka ADT), Select `Help->Eclipse->Marketplace...` and search for `android adt`.
+-   If Android is a desired target platform:
+    -   Andmore (successor to Google's ADT), Select `Help->Eclipse->Marketplace...` and search for `andmore`. It will be called something like "Andmore: Development Tools for Android"
+	-   Note: during the process for installing m2e adapters (as with Tycho below), the m2e adapter for Android may prompt you to install the earlier Android Development Toolkit. If so, and you already have Andmore installed, deselect those plugins during the m2e setup.
 
--   If iOS is a desired target platform
+-   If iOS is a desired target platform:
     -   Multi-OS Engine. The current update site is [http://dl.bintray.com/multi-os-engine/eclipse](http://dl.bintray.com/multi-os-engine/eclipse)
 
 -   If IBM Domino is a desired target platform
@@ -91,16 +92,7 @@ Eclipse Add-ons Information
         <https://eclipse.darwino.com/darwino/studio/enterprise-nightly/>
         <https://eclipse.darwino.com/darwino/studio/community-nightly/>
 
--   Android Development Tools
-
-    -   Instructions:
-        <http://developer.android.com/sdk/installing/installing-adt.html>
-
-    -   Update site URL: <https://dl-ssl.google.com/android/eclipse/>
-	
-	-   Alternatively, search the Eclipse Marketplace
-
--   Andmore (successor to Android Development Tools)
+-   Andmore (Android Tools)
 
     -   Install from the Eclipse Marketplace
 
