@@ -22,6 +22,11 @@ If the file does not yet exist, this link will be absent. In that case, create a
 						<name>Darwino Platform</name>
 						<url>https://maven.darwino.com/darwino-enterprise-edition</url>
 					</repository>
+					<repository>
+						<id>openntf-repository</id>
+						<name>OpenNTF</name>
+						<url>https://artifactory.openntf.org/openntf</url>
+					</repository>
 				</repositories>
 			</profile>
 		

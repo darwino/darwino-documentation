@@ -9,6 +9,11 @@
 					<name>Darwino Platform</name>
 					<url>https://maven.darwino.com/darwino-community-edition</url>
 				</repository>
+				<repository>
+					<id>openntf-repository</id>
+					<name>OpenNTF</name>
+					<url>https://artifactory.openntf.org/openntf</url>
+				</repository>
 			</repositories>
 		</profile>
 	
