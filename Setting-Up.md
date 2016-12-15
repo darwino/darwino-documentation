@@ -37,7 +37,7 @@ Darwino Installation
 In order to develop with the Darwino Studio, the following components should be
 installed:
 
-- Java JRE/JDK: The minimum version is Java 7, but it is advised to use the
+- Java JDK: The minimum version is Java 7, but it is advised to use the
 latest one (Java 8 as of today)
 - Eclipse for J2EE or other IDE  
 - Web application server is required to run the web applications. Although any
@@ -48,19 +48,27 @@ database server. Although other databases may be used, the demo applications are
 pre-configured to work with PostgreSQL. (Note that a future version of Darwino
 might use a embedded database and thus this step won't be necessary.)
 
+Also, a few configuration actions has to be taken:
+
+- Configure the Maven settings to point to Darwino repository
+- Configure the Darwino beans and properties
+
+Note that since Darwino 1.5.1, the Darwino Eclipse studio features a configuration
+module that makes the installation process easier. It is highly recommended to use
+this helper.
+
 The following instructions describe the installation of each component.
 
-Installing the Java JRE/JDK
----------------------------
+Installing the Java JDK
+-----------------------
 
-*If you already have Java 7 or higher installed (Java 8 is highly recommended),
+*If you already have Java JDK 7 or higher installed (Java 8 is highly recommended),
 you can skip this step.*
 
-If you plan to use Eclipse as the main development environment, then a Java JRE
-is sufficient. If you plan to use Maven from the command line, then you'll need
-a full JDK to be installed.
+A full Java JDK is required by the maven tools to compile the Java. A Java JRE
+is not sufficient.
 
-Both the Java JRE and SDK can be downloaded from the Oracle web site:
+The Java SDK can be downloaded from the Oracle web site:
 <http://www.oracle.com/technetwork/java/javase/downloads/index.html>. An IBM JDK
 will also work. Once installed, make sure that the development environment
 variable JAVA\_HOME is pointing to you Java environment. Make also sure that the
@@ -68,15 +76,6 @@ JVM is available from the command line (Terminal on macOS or Linux) by using the
 command `java -version`.
 
 ![](<install-java-version.png>)
-
-Installing Eclipse for J2EE
----------------------------
-
-If you plan to use Eclipse, or already do, please ensure that you first ensure
-that you follow the [instructions] (Installing Eclipse) for downloading and
-configuring Eclipse, **and the Darwino Studio Eclipse add-on component**. These
-instructions assume that you will use the Eclipse for J2EE version (Not Eclipse
-for Java).
 
 Installing the Android application development tools
 ----------------------------------------------------
@@ -93,7 +92,7 @@ entire "Android 4.2.2 (API 17)" & "Android 4.4.2 (API 19)" folders.
 
 ![](<install-android-pkg.png>)
 
-Additionally, set the path to the Android SDK root (e.g. `c:\Android\SDK`) in an environment variable named `ANDROID_HOME`. Also do not forget, when installing maven, to add the android libraries to your local repository, as described in the documentation on installing Maven.
+Additionally, set the path to the Android SDK root (e.g. `c:\Android\SDK`) in an environment variable named `ANDROID_HOME`. Also do not forget, when installing maven, to add the android libraries to your local repository, as described in the documentation on installing Maven. The Studio configuration module will also report an error if this is not properly defined.
 
 Note: using the stock Android emulator, it is likely that the applications will
 be too slow to provide a great developer experience. This is particularly true
@@ -109,8 +108,31 @@ X. To compile, run in a simulator or deploy the application, the Apple Xcode
 development environment is required. It is available freely from the Mac App
 Store (<https://itunes.apple.com/us/app/xcode/id497799835?mt=12>).
 
-Maven Configuration
--------------------
+PostgreSQL
+----------
+
+Postgresql is a free and popular relational database featuring well suited JSON extensions for Darwino. The instructions bellow show how to install Postgreql for development and test purposes. Other databases, like IBM DB2 10.5 FP8 or MS SqlServer 2016, are also supported.
+
+See: [Configuring PostgreSQL](Configuring-PostgreSQL.md)
+
+Installing Eclipse for J2EE
+---------------------------
+
+We advise developer to use Eclipse as the development IDE. Moreover, starting with Darwino 1.5.1, the Darwino Eclipse plugins feature an installation validation module that checks for the pre-requisites, and helps fixing the potential issues.
+
+If you plan to use Eclipse, or already do, please ensure that you first ensure
+that you follow the [instructions] (Installing Eclipse) for downloading and
+configuring Eclipse, **and the Darwino Studio Eclipse add-on component**. These
+instructions assume that you will use the Eclipse for J2EE version (Not Eclipse
+for Java).
+
+Manual configuration
+--------------------
+
+These steps are only required if they were not achieved through the Studio configuration
+module.
+
+### Maven Configuration ###
 
 Maven should be configured to point to the Darwino repository for Darwino
 libraries. If you are using Eclipse, please see the following instructions after
@@ -121,26 +143,19 @@ installing Eclipse: [Setting Up Maven][2].
 (If you are using the command line tools, then you should first install maven
 (latest recommended) and configure it as described in the instructions.)
 
-
-
-Apache TOMCAT
--------------
+### Apache TOMCAT ###
 
 Apache Tomcat is a free, easy to use, Java servlet container. The instructions bellow explain how to configure it for development and test purposes. Any servlet 3.0 compliant web server can also be used.
 
 See: [Configuring TOMCAT](Configuring-Tomcat.md)
 
+Note that TOMCAT can also be launch from Maven. Most of the demo projects, as well as the new
+application wizard, now integrate the TOMCAT Maven plugin. As a result, TOMCAT can be launched
+using a maven commend without going though a full installation:
+	`mvn tomcat7:run`
 
-IBM Websphere Liberty
----------------------
+### IBM Websphere Liberty ###
 
 Alternatively, you can use IBM Websphere Liberty as the application server, on premises and on the cloud through IBM Bluemix.
 
 See: [Configuring IBM Websphere Liberty](Configuring-WasLiberty.md)
-
-PostgreSQL
-----------
-
-Postgresql is a free and popular relational database featuring well suited JSON extensions for Darwino. The instructions bellow show how to install Postgreql for development and test purposes. Other databases, like IBM DB2 10.5 FP8 or MS SqlServer 2016, are also supported.
-
-See: [Configuring PostgreSQL](Configuring-PostgreSQL.md)

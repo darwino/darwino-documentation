@@ -9,6 +9,7 @@
 	* [Installing Eclipse](Installing Eclipse.md)
 		* [Maven Settings](Maven-Settings.md)		
 * [Getting Started](Getting Started.md)
+	* [Running the Contacts Samples](Running the Contacts sample.md)
 	* [Running the News Samples](Running the News Samples.md)
 	* [Running the Domino Discussion Samples](Running the Domino Discussion Samples.md)
 	* [Creating a new Darwino Project](Creating a new Darwino Project.md)

@@ -1,8 +1,7 @@
 Installing the Eclipse IDE
 --------------------------
 
-Although the use of an IDE, and in particular Eclipse, is not a requirement, it
-certainly eases the development of Darwino applications.
+Although the use of an IDE, and in particular Eclipse, is not a requirement, it certainly eases the development of Darwino applications. In particular, it also helps validate that all the requirements are met (installed software, configuration files...)
 
 In order to configure web servers and get the best web development experience,
 please download and install the latest version of '**Eclipse IDE for Java EE
@@ -10,7 +9,7 @@ Developers**‘ (NOT Eclipse IDE for Java Developers).
 <http://www.eclipse.org/downloads/>
 
 Darwino run best with the latest Eclipse version, currently Neon-1. Although it has been
-tested with earlier versions like Mars-1, the maven integration works best
+tested with earlier versions like Mars-1, the maven integration definitively works best
 with Neon.
 
 Installing Eclipse is achieved by unzipping the archive in its target directory.
@@ -29,8 +28,51 @@ within `c:\Darwino`:
 
 ![](<install-workspace.png>)
 
-Configuring Eclipse
--------------------
+
+Installing the Darwino Studio add-on
+------------------------------------
+
+The first module to install is the Darwino Studio. Bellow are the instructions:
+
+1.  Select Help \> Install New Software.
+
+2.  In the "Work With:" field, enter the following URL, depending on the edition you selected:
+	- Enterprise Edition: <https://eclipse.darwino.com/darwino/studio/enterprise/>
+	- Community edition: <https://eclipse.darwino.com/darwino/studio/community/>
+
+    Note that you can also install the nightly builds by using the URLs bellow. The nightly builds
+    provide access to the latest version, under development
+	- Enterprise Edition: <https://eclipse.darwino.com/darwino/studio/enterprise-nightly/>
+	- Community edition: <https://eclipse.darwino.com/darwino/studio/community-nightly/>
+
+3.  When prompted, enter your Darwino user and password, as provided during the registration process.
+
+4.  In the Available Software dialog, select the Darwino Studio checkbox.
+
+5.  In the next window, you'll see a list of the tools to be downloaded. Click
+    Next.
+
+6.  Read and accept the license agreements, then click Finish.
+
+7.  If you get a security warning saying that the authenticity or validity of
+    the software can't be established, click OK.
+
+8.  When the installation completes, restart Eclipse.
+
+Validating the configuration
+----------------------------
+The Darwino studio, once installed, features an installation validation module available under `Window->Preferences / Darwino`:
+![](<studiovalidation.png>)
+This module checks your environment and gives you guidance on the next actions:
+- Having Maven settings.xml properly configured
+- Having the Darwino configuration files at the right place
+- Making sure that the Eclipse dependencies are installed
+- ...
+
+Manually Configuring Eclipse
+----------------------------
+
+The configuration validator exposed above should give you all the necessary information but some details are exposed bellow.
 
 Darwino requires some extra plug-ins bellow to be installed on top of the
 version of Eclipse. These plug-ins can generally be installed from the Eclipse
@@ -47,39 +89,6 @@ provided update site URL
 -   If IBM Domino is a desired target platform
     -   The Darwino project wizard as well as the sample applications use Tycho to target OSGi platforms (Eclipse, IBM Domino...). As a result, it requires the Tycho m2e connector to be installed. The easiest way to get it installed is to wait from Eclipse to display a build problem (see bellow), right click on the issue and choose quick fix. Eclipse will automatically propose to download and install the connector.
 ![](<eclipse-maventycho.png>)
-
-
-Installing the Darwino Studio add-on
-------------------------------------
-
-The Darwino studio provides a set of tools and wizards. It is available from an Eclipse update site located.
-
-Bellow are the instructions:
-
-1.  Select Help \> Install New Software.
-
-2.  In the "Work With:" field, enter the following URL, depending on the edition you selected:
-    Enterprise Edition: <https://eclipse.darwino.com/darwino/studio/enterprise/>
-    Community edition: <https://eclipse.darwino.com/darwino/studio/community/>
-
-    Note that you can also install the nightly builds by using the URLs bellow. The nightly builds
-    provide access to the latest version, under development
-    Enterprise Edition: <https://eclipse.darwino.com/darwino/studio/enterprise-nightly/>
-    Community edition: <https://eclipse.darwino.com/darwino/studio/community-nightly/>
-
-3.  When prompted, enter your Darwino user and password, as provided during the registration process.
-
-4.  In the Available Software dialog, select the Darwino Studio checkbox.
-
-5.  In the next window, you'll see a list of the tools to be downloaded. Click
-    Next.
-
-6.  Read and accept the license agreements, then click Finish.
-
-7.  If you get a security warning saying that the authenticity or validity of
-    the software can't be established, click OK.
-
-8.  When the installation completes, restart Eclipse.
 
 Eclipse Add-ons Information
 ---------------------------
