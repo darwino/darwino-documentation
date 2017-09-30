@@ -6,6 +6,7 @@
 		* [Configuring TOMCAT](Configuring-Tomcat.md)
 		* [Configuring IBM Websphere Liberty](Configuring-WasLiberty.md)
 		* [Configuring PostgreSQL](Configuring-PostgreSQL.md)
+		* [Configuring NPM](NPM-Settings.md)
 	* [Installing Eclipse](Installing Eclipse.md)
 		* [Maven Settings](Maven-Settings.md)		
 * [Getting Started](Getting Started.md)
