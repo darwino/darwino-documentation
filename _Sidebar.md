@@ -14,7 +14,7 @@
 
 **Getting Started**
 
-* [[Running the Contacts sample.md]]
+* [[Running the Contacts sample]]
 * [[Running the News Samples]]
 * [[Running the Domino Discussion Samples]]
 * [[Creating a new Darwino Project]]
