@@ -1,22 +1,18 @@
-**Introduction**
+# Darwino Installation Guide
 
-* [[Home]]
-
-**Installation**
-
-* [[Setting Up]]
-	* [[Configuring TOMCAT]]
-	* [[Configuring PostgreSQL]]
-* [[Installing Eclipse]]
-	* [[Maven Settings]]
-
-**Getting Started**
-
-* [[Running the Contacts sample.md]]
-* [[Running the News Samples]]
-* [[Running the Domino Discussion Samples]]
-* [[Creating a new Darwino Project]]
-
-**Packaging Mobile Applications**
-
-* [[iOS Applications|Working With iOS Applications]]
+* [Home](Home.md)
+* [Installation](Installation.md)
+	* [Setting Up](Setting-Up.md)
+		* [Configuring TOMCAT](Configuring-Tomcat.md)
+		* [Configuring IBM Websphere Liberty](Configuring-WasLiberty.md)
+		* [Configuring PostgreSQL](Configuring-PostgreSQL.md)
+		* [Configuring NPM](NPM-Settings.md)
+	* [Installing Eclipse](Installing Eclipse.md)
+		* [Maven Settings](Maven-Settings.md)		
+* [Getting Started](Getting Started.md)
+	* [Running the Contacts Samples](Running the Contacts sample.md)
+	* [Running the News Samples](Running the News Samples.md)
+	* [Running the Domino Discussion Samples](Running the Domino Discussion Samples.md)
+	* [Creating a new Darwino Project](Creating a new Darwino Project.md)
+* [Packaging Mobile Applications](Packaging Mobile Applications.md)
+	* [iOS Applications](Working With iOS Applications.md)
