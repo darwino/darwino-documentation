@@ -12,6 +12,8 @@ assume that you are using:
 
 -   Maven as your build tool.
 
+-   NodeJS and NPM for JavaScript client development
+
 Unless specified otherwise, all the installation instructions assume a Microsoft
 Windows environment, with the software being installed on `c:\Darwino`. However,
 most of the instructions work identically on other platforms such as Apple macOS
@@ -51,6 +53,7 @@ might use a embedded database and thus this step won't be necessary.)
 Also, a few configuration actions has to be taken:
 
 - Configure the Maven settings to point to Darwino repository
+- Configure the NPM settings to point to Darwino repository
 - Configure the Darwino beans and properties
 
 Note that since Darwino 1.5.1, the Darwino Eclipse studio features a configuration
@@ -118,13 +121,23 @@ See: [Configuring PostgreSQL](Configuring-PostgreSQL.md)
 Installing Eclipse for J2EE
 ---------------------------
 
-We advise developer to use Eclipse as the development IDE. Moreover, starting with Darwino 1.5.1, the Darwino Eclipse plugins feature an installation validation module that checks for the pre-requisites, and helps fixing the potential issues.
+We advise developers to use Eclipse as the development IDE. Moreover, starting with Darwino 1.5.1, the Darwino Eclipse plugins feature an installation validation module that checks for the pre-requisites, and helps fixing the potential issues.
 
 If you plan to use Eclipse, or already do, please ensure that you first ensure
 that you follow the [instructions] (Installing Eclipse) for downloading and
 configuring Eclipse, **and the Darwino Studio Eclipse add-on component**. These
 instructions assume that you will use the Eclipse for J2EE version (Not Eclipse
 for Java).
+
+NPM Installation
+-----------------
+
+NPM should be configured to point to the Darwino repository for Darwino
+libraries, identified by @darwino.
+
+You should first install NodeJS and NPM following the instructions here: [https://www.npmjs.com/get-npm](https://www.npmjs.com/get-npm)
+
+Then you should configure NPM to connect to the Darwino private repository. See: [Configuring NPM](NPM-Settings.md)
 
 Manual configuration
 --------------------
@@ -142,6 +155,7 @@ installing Eclipse: [Setting Up Maven][2].
 
 (If you are using the command line tools, then you should first install maven
 (latest recommended) and configure it as described in the instructions.)
+
 
 ### Apache TOMCAT ###
 
