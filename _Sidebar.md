@@ -6,9 +6,9 @@
 
 * [[Setting Up]]
 	* [[Configuring TOMCAT]]
-	* [[Configuring-WasLiberty|Configuring IBM Websphere Liberty]]
+	* [[Configuring IBM Websphere Liberty|Configuring-WasLiberty]]
 	* [[Configuring PostgreSQL]]
-	* [[Configuring PostgreSQL]]
+	* [[Configuring NPM|NPM-Settings]]
 * [[Installing Eclipse]]
 	* [[Maven Settings]]
 
