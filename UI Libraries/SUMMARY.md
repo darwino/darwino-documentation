@@ -16,7 +16,7 @@
 		* [Computed Fields](5.2.3. Computed Fields.md)
 		* [Field Label Layout](5.2.4. Field Label Layout.md)
 		* [Readonly Forms](5.2.5. Readonly Forms.md)
-	* [Configuring the navigator](5.2. Configuring the Navigator.md)
+	* [Configuring the navigator](5.3. Configuring the Navigator.md)
 * [Interacting with the server](6. Interacting with the Server.md)
 	* [REST services](6.1. REST Services.md)
 	* [Micro services](6.2. Micro Services.md)
