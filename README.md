@@ -1,2 +1,2 @@
-# Darwino Documentation
+# Darwino Installation Guide
 
