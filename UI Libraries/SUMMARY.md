@@ -1,4 +1,3 @@
-* [Introduction](1. Introduction.md)
 * [Setting up the development environment](3. Setting Up the Development Environment.md)
 * [Darwino libraries](2. Darwino Libraries.md)
 	* [@darwino/darwino](2.1. darwino.md)
