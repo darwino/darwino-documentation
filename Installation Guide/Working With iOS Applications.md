@@ -9,11 +9,11 @@ Running in the Simulator
 
 To run iOS applications in the simulator, right-click the iOS project in Eclipse and choose Run As &rarr; Multi-OS Engine iOS Application:
 
-![](<run-as-moe.png>)
+![](run-as-moe.png)
 
 To change the device or OS version used in the simulator, choose "Run Configurations" and select a different target device from the list:
 
-![](<run-as-moe-2.png>)
+![](run-as-moe-2.png)
 
 Running on an iOS Device
 ------------------------
