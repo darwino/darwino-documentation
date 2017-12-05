@@ -1,2 +1,2 @@
 rd _pdf /s /q
-gitbook pdf ./ "./_pdf/Domino Developer Guide.pdf"
+call gitbook pdf ./ "./_pdf/Domino Developer Guide.pdf"

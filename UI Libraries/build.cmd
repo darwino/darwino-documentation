@@ -1,2 +1,2 @@
 rd _book /s /q
-gitbook build
+call gitbook build

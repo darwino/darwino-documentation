@@ -1,2 +1,2 @@
 rd _pdf /s /q
-gitbook pdf ./ "./_pdf/Installation Guide.pdf"
+call gitbook pdf ./ "./_pdf/Installation Guide.pdf"
