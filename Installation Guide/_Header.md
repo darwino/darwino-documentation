@@ -1,0 +1,1 @@
+![](darwino_bigicon.png)
