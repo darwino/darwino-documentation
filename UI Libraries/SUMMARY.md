@@ -20,5 +20,5 @@
 * [Interacting with the server](6. Interacting with the Server.md)
 	* [REST services](6.1. REST Services.md)
 	* [Micro services](6.2. Micro Services.md)
-* [Advanced capabilities](7. Advanced capabilities.md)
+* [Advanced capabilities](7. Advanced Capabilities.md)
 	* [Custom query functions](7.1. Custom Query Functions.md)
