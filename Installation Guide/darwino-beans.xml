@@ -1,0 +1,124 @@
+<beans>
+    <!-- ================================================================================================== -->
+    <!-- Database access -->
+    <!-- ================================================================================================== -->
+    <bean type="darwino/jsondb" name="postgresql" class="com.darwino.config.jsonstore.JsonDbJdbc" alias="demo,default">
+    	<property name="db">postgresql</property>    
+    	<property name="user">postgres</property>    
+    	<property name="password">postgres</property>    
+    	<property name="url">jdbc:postgresql://localhost:5432/dwodemo</property>    
+    </bean>
+
+    <!-- ================================================================================================== -->
+    <!-- Static directory of users users -->
+    <!-- ================================================================================================== -->
+    <property name="uc">com.darwino.config.user.UserDirStatic$User</property>
+    <bean type="darwino/userdir" name="static" class="com.darwino.config.user.UserDirStatic" alias="demo,default">
+        <list name="users">
+            <bean class='${uc}'>
+                <property name='dn'>cn=adam tinov,o=darwino</property>
+                <property name='cn'>Adam Tinov</property>
+                <property name='uid'>atinov</property>
+                <property name='email'>atinov@darwino.com</property>
+                <property name='password'>darwino</property>
+            </bean>    
+            <bean class='${uc}'>
+                <property name='dn'>cn=al mass,o=darwino</property>
+                <property name='cn'>Al Mass</property>
+                <property name='uid'>amass</property>
+                <property name='email'>amass@darwino.com</property>
+                <property name='password'>darwino</property>
+                <list name='roles'>
+                    <value>admin</value>
+                </list>
+                <list name='groups'>
+                    <value>darwino</value>
+                </list>
+            </bean>    
+            <bean class='${uc}'>
+                <property name='dn'>cn=alain boucher,o=darwino</property>
+                <property name='cn'>Alain Boucher</property>
+                <property name='uid'>aboucher</property>
+                <property name='email'>aboucher@darwino.com</property>
+                <property name='password'>darwino</property>
+            </bean>    
+            <bean class='${uc}'>
+                <property name='dn'>cn=amanda calder,o=darwino</property>
+                <property name='cn'>Amanda Calder</property>
+                <property name='uid'>acalder</property>
+                <property name='email'>acalder@darwino.com</property>
+                <property name='password'>darwino</property>
+            </bean>    
+            <bean class='${uc}'>
+                <property name='dn'>cn=ava gardner,o=darwino</property>
+                <property name='cn'>Ava Gardner</property>
+                <property name='uid'>agardner</property>
+                <property name='email'>agardner@darwino.com</property>
+                <property name='password'>darwino</property>
+            </bean>    
+            <bean class='${uc}'>
+                <property name='dn'>cn=bernard chapot,o=darwino</property>
+                <property name='cn'>Bernard Chapot</property>
+                <property name='uid'>bchapot</property>
+                <property name='email'>bchapot@darwino.com</property>
+                <property name='password'>darwino</property>
+            </bean>    
+            <bean class='${uc}'>
+                <property name='dn'>cn=bernard lemercier,o=darwino</property>
+                <property name='cn'>Bernard Lemercier</property>
+                <property name='uid'>blemercier</property>
+                <property name='email'>blemercier@darwino.com</property>
+                <property name='password'>darwino</property>
+            </bean>    
+            <bean class='${uc}'>
+                <property name='dn'>cn=betty chris,o=darwino</property>
+                <property name='cn'>Betty Chris</property>
+                <property name='uid'>bchris</property>
+                <property name='email'>bchris@darwino.com</property>
+                <property name='password'>darwino</property>
+            </bean>    
+            <bean class='${uc}'>
+                <property name='dn'>cn=bill bright,o=darwino</property>
+                <property name='cn'>Bill Bright</property>
+                <property name='uid'>bbright</property>
+                <property name='email'>bbright@darwino.com</property>
+                <property name='password'>darwino</property>
+            </bean>    
+            <bean class='${uc}'>
+                <property name='dn'>cn=lauren armatti,o=darwino</property>
+                <property name='cn'>Lauren Armatti</property>
+                <property name='uid'>larmatti</property>
+                <property name='email'>larmatti@darwino.com</property>
+                <property name='password'>darwino</property>
+            </bean>    
+            <bean class='${uc}'>
+                <property name='dn'>cn=leon bros,o=darwino</property>
+                <property name='cn'>Leon Bros</property>
+                <property name='uid'>lbros</property>
+                <property name='email'>lbros@darwino.com</property>
+                <property name='password'>darwino</property>
+            </bean>    
+            <bean class='${uc}'>
+                <property name='dn'>cn=mary davis,o=darwino</property>
+                <property name='cn'>Mary Davis</property>
+                <property name='uid'>mdavis</property>
+                <property name='email'>mdavis@darwino.com</property>
+                <property name='password'>darwino</property>
+            </bean>    
+            <bean class='${uc}'>
+                <property name='dn'>cn=philip collins,o=darwino</property>
+                <property name='cn'>Philip Collins</property>
+                <property name='uid'>pcollins</property>
+                <property name='email'>pcollins@darwino.com</property>
+                <property name='password'>darwino</property>
+            </bean>    
+            <bean class='${uc}'>
+                <property name='dn'>cn=ralf jordan,o=darwino</property>
+                <property name='cn'>Ralf Jordan</property>
+                <property name='uid'>rjordan</property>
+                <property name='email'>rjordan@darwino.com</property>
+                <property name='password'>darwino</property>
+            </bean>    
+        </list>    
+    </bean>
+</beans>
