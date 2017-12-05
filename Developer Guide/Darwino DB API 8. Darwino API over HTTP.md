@@ -11,7 +11,7 @@ All of the features of the JSON store are exposed through REST services, and the
 
 In the Darwino Playground is an [API Explorer](http://playground.darwino.com/playground.nsf/Explorer.xsp); this can be used to experiment with the REST Services’ capabilities. All of the services are covered there, with documentation for all of their parameters.
 
-![](<api_explorer.png>)
+![](api_explorer.png)
 
 
 The Darwino framework allows the REST services, available by default, to be disabled at the database level, or to be overridden and enhanced. By overriding the service factory, is it possible to permit access dynamically based on the database, store, and current user.
