@@ -1,2 +1,2 @@
-# Introduction
-This guide mill make you a Darwino Chef, by giving recipes to solve commons use cases. As with cooking, new recipes can be invented continuously, so this guide will be updated on a regular basis.
+# How to Guide
+This guide mill make you a Darwino Chef, by giving you recipes to solve commons use cases. As with cooking, new recipes can be invented continuously, so this guide will be updated on a regular basis.
