@@ -4,16 +4,14 @@ Using the Studio - Creating your first Darwino application
 ##The Darwino Application Wizard
 The Darwino application wizard is the first step in creating a Darwino application.
 
-![](<select-wizard.png>)
-
+![](select-wizard.png)
 The Wizard generates a set of Maven projects. The top project is the container for the other projects.
 
-![](<demo-app.png>)
-
+![](demo-app.png)
 Which projects are generated depends on the options that were selected in the wizard.
 
 - -shared: This project contains the Java code that is shared by all the platforms. 
-![](<shared-contents.png>)
+![](shared-contents.png)
 
  -- AppDatabaseDef.java defines the metadata of the JSON store. This metadata is used when the database is initially created, and then anytime you need to make a change. 
  
