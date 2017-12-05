@@ -1,7 +1,7 @@
 # Darwino User's Guide
 * [Introduction to Darwino](Introduction to Darwino Intro.md)
     * [Darwino architecture](Introduction to Darwino 1. Darwino Architecture.md)
-    * [Hierarchy of library](Introduction to Darwino 2. Hierarchy of Libraries.md)
+    * [Hierarchy of libraries](Introduction to Darwino 2. Hierarchy of Libraries.md)
     * [Required Infrastructure](Introduction to Darwino 3. Required Infrastructure.md)
 * [Installing a development environment](Installing a Development Environment.md)
 * [Using the studio](Using the Studio.md)
