@@ -78,7 +78,7 @@ variable JAVA\_HOME is pointing to you Java environment. Make also sure that the
 JVM is available from the command line (Terminal on macOS or Linux) by using the
 command `java -version`.
 
-![](<install-java-version.png>)
+![](install-java-version.png)
 
 Installing the Android application development tools
 ----------------------------------------------------
@@ -93,7 +93,7 @@ entire "Android 4.2.2 (API 17)" & "Android 4.4.2 (API 19)" folders.
 
 [3]: <http://developer.android.com/tools/help/sdk-manager.html>
 
-![](<install-android-pkg.png>)
+![](install-android-pkg.png)
 
 Additionally, set the path to the Android SDK root (e.g. `c:\Android\SDK`) in an environment variable named `ANDROID_HOME`. Also do not forget, when installing maven, to add the android libraries to your local repository, as described in the documentation on installing Maven. The Studio configuration module will also report an error if this is not properly defined.
 
