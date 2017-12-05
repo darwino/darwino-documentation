@@ -8,4 +8,4 @@ Note that the database access is abstracted by the runtime libraries. If you're 
 This is better than a straight Apache Cordova application, although Cordova can be used if desired.
 
 
-![](<hybrid-architecture.png>)
+![](hybrid-architecture.png)
