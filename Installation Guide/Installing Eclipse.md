@@ -16,7 +16,7 @@ Installing Eclipse is achieved by unzipping the archive in its target directory.
 The following directory structure shows eclipse unzipped into the c:\\Darwino
 directory:
 
-![](<install-eclipse.png>)
+![](install-eclipse.png)
 
 Launching Eclipse for the first time
 ------------------------------------
@@ -26,7 +26,7 @@ directory.  The default value is fine, but well, you could also make this
 directory a peer of the eclipse one, to get the whole environment contained
 within `c:\Darwino`:
 
-![](<install-workspace.png>)
+![](install-workspace.png)
 
 
 Installing the Darwino Studio add-on
@@ -62,7 +62,7 @@ The first module to install is the Darwino Studio. Bellow are the instructions:
 Validating the configuration
 ----------------------------
 The Darwino studio, once installed, features an installation validation module available under `Window->Preferences / Darwino`:
-![](<studiovalidation.png>)
+![](studiovalidation.png)
 This module checks your environment and gives you guidance on the next actions:
 - Having Maven settings.xml properly configured
 - Having the Darwino configuration files at the right place
@@ -88,7 +88,8 @@ provided update site URL
 
 -   If IBM Domino is a desired target platform
     -   The Darwino project wizard as well as the sample applications use Tycho to target OSGi platforms (Eclipse, IBM Domino...). As a result, it requires the Tycho m2e connector to be installed. The easiest way to get it installed is to wait from Eclipse to display a build problem (see bellow), right click on the issue and choose quick fix. Eclipse will automatically propose to download and install the connector.
-![](<eclipse-maventycho.png>)
+    
+![](eclipse-maventycho.png)
 
 Eclipse Add-ons Information
 ---------------------------
