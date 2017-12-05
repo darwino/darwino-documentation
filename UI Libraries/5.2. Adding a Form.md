@@ -1,0 +1,14 @@
+# Adding a form
+
+A form is simply a ReactJS component used to edit the data coming from a REST service. The data is handled through Redux, and more specifically through [Redux Form](https://redux-form.com/7.2.0/).
+To ease the process of creating form, Darwino provides some easy to use components:
+1. A base class for the form, handling the communication with the server, calculated fields and other helpser
+2. Some edit components doing the data binding with the document
+
+## Creating a Form
+A form component should inherit from 
+
+    import {DocumentForm} from '@darwino/darwino-react-bootstrap'
+    class Company extends DocumentForm {
+      ...
+
