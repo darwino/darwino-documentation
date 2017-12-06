@@ -1,6 +1,15 @@
 # View grid customization
 
-The Darwino view grid is based is based on the react-data-grid component, with a few enhancements.
+The Darwino view grid is based is based on the react-data-grid component, with a few 
+enhancements.
+
+## Making the grid reponsive
+The view grid can be made responsive to adapt to different screen size by setting the 
+`responsive` property to `true`.
+![](responsive1.png)
+![](responsive2.png)
+
+Note: due to some `react-data-grid` limitations, this is still a preview function.
 
 ## Custom column rendering
 The content of a column is generally the row content of a JSON field, converted to a string.
