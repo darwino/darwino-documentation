@@ -1,24 +1,23 @@
-# Accessing the view selection
+# Export to CSV
 
-The grid component has an option to let a user select rows.
+The value returned by queries through REST services is generally a JSON array. But the runtime also provides an export capability that returns the data using different formats, like CSV.
 
-# Allowing row selection
+See the `/export` service: https://playground.darwino.com/playground.nsf/OpenApiExplorer.xsp#openApi=Json_Store_Query_Database
 
-Row selection is allowed for grid using the following option:
 
-    selectRows={true}
+Here is, for example, how to compose a URL that will return the content of a query as CSV:
 
-# Accessing the selection
+    export(format) {
+        const url = this.createJstoreCursor()
+          .queryParams({
+              format, 
+              columns: this.getColumnNames().join(','),
+              titles: this.getColumnTitles().join(',')
+          })
+          .computeUrl('/entries/export')
+        window.open(url); 
+    }
+    
+Such a URL can contain any Darwino cursor property, like query, data extraction, ...
 
-The selection is an array of selected cursor entries, available through `getSelectedEntries()`.
-
-Here is, for example, how to get the selection as an array of UNIDs. The array of entry is processed to extract the `__meta.unid` for each single entry:
-
-    let sel = this.getGrid().getSelectedEntries().map( e => e.__meta.unid );
-
-or another example showing how to extract the value of a view column:
-
-    this.getGrid().getSelectedEntries().forEach( e => {
-        sel += "\n" + e.Name
-    });
-    alert("Selection: "+sel)
+See: `AllContacts.jsx`
