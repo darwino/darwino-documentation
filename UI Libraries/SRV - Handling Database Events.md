@@ -6,24 +6,23 @@ Here are the available events:
 
 - When a document is created - queryNew/postNew
 
-  queryNew: to  accept or refuse the document creation
-  postNew: to set default values when the document is created
+  **queryNew**: to  accept or refuse the document creation
+  **postNew**: to set default values when the document is created
   
 - When a document is loaded - queryLoad/postLoad
 
-  queryLoad: to prevent the document from being loaded
-  postLoad: to execute an action once the document is loaded
+  **queryLoad**: to prevent the document from being loaded
+  **postLoad**: to execute an action once the document is loaded
 
 - When a document is saved - querySave/postSave
 
-  querySave: to accept of refuse the document save. The document content can also be updated before it is saved
-  postSave: to execute an action once the document is saved
+  **querySave**: to accept of refuse the document save. The document content can also be updated before it is saved
+  **postSave**: to execute an action once the document is saved
 
 - When a document is deleted - queryDelete/postDelete (only triggered when a document is individually deleted, not with mass deletion, like `deleteAll()`).
 
-  queryDelete: to accept of refuse the document deletion
-  postDelete: to execute an action once the document is deleted
- 
+  **queryDelete**: to accept of refuse the document deletion
+  **postDelete**: to execute an action once the document is deleted
 
 An handler can be registered at anytime to the registry:
 
