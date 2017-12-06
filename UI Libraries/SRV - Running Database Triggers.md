@@ -29,7 +29,7 @@ The handler class is related to the trigger it self. Here is an example of an ha
         }
     }
 
-Then the handler shoud be associated to a trigger, like this:
+Then the handler should be associated to a trigger, like this:
 
     StaticEventBuilder triggerList = new StaticEventBuilder();
     triggerList.add(new JsonStoreChangesTrigger()
