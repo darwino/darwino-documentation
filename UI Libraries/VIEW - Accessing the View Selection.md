@@ -15,3 +15,10 @@ The selection is an array of selected cursor entries, available through `getSele
 Here is, for example, how to get the selection as an array of UNIDs. The array of entry is processed to extract the `__meta.unid` for each single entry:
 
     let sel = this.getGrid().getSelectedEntries().map( e => e.__meta.unid );
+
+or another example showing how to extract the value of a view column:
+
+    this.getGrid().getSelectedEntries().forEach( e => {
+        sel += "\n" + e.Name
+    });
+    alert("Selection: "+sel)
