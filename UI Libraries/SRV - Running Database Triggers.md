@@ -33,15 +33,15 @@ Then the handler shoud be associated to a trigger, like this:
 
     StaticEventBuilder triggerList = new StaticEventBuilder();
     triggerList.add(new JsonStoreChangesTrigger()
-	.scheduler("10s")
-	.database(AppDatabaseDef.DATABASE_NAME)
-	//.store(Database.STORE_DEFAULT)
-	.maxEntries(10) // For demo purposes, only process the last 10 docs...
-	.handler(new LogHandler())
+        .scheduler("10s")
+        .database(AppDatabaseDef.DATABASE_NAME)
+        //.store(Database.STORE_DEFAULT)
+        .maxEntries(10) // For demo purposes, only process the last 10 docs...
+        .handler(new LogHandler())
     );		
     JsonStorePersistenceService svc = new JsonStorePersistenceService()
-	.database(AppDatabaseDef.DATABASE_NAME)
-	.category("trigger");
+        .database(AppDatabaseDef.DATABASE_NAME)
+        .category("trigger");
     triggers = new EventBuilderFactory(triggerList,svc);
     triggers.install();
 
