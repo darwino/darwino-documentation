@@ -13,3 +13,6 @@ The library provides some Notes/Domino specific classes for forms and subforms.
     - Sends the computed fields to the server, as a transient property, when the document is saved. This allows server side processing to use these values.
 - Subform: base subform class
 
+## ViewPage & ViewGrid
+Base class for displaying views that can even be embedded within a form. In that case, such an 'embedded view' can contribute to the form action bar.
+
