@@ -7,6 +7,7 @@
 		* [Defining the query](5.1.1. Defining the Query Condition.md)
 		* [Defining the view columns](5.1.2. Defining the View Columns.md)
 		* [Accessing the view selection](VIEW - Accessing the View Selection.md)	
+		* [View grid customization](VIEW - View Grid Customization.md)	
 		* [Export to CSV](VIEW - Export To CSV.md)				
 	* [Adding a form](5.2. Adding a Form.md)
 		* [Form fields](5.2.1. Form Fields.md)
