@@ -14,6 +14,7 @@
 		* [Validation](5.2.6. Validation.md)
 		* [Sub forms](5.2.7. Subforms.md)
 	* [Configuring the navigator](5.3. Configuring the Navigator.md)
+	* [Actions](SMPL - Actions.md)
 * [Interacting with the server](SRV - Interacting with the Server.md)
 	* [REST services](SRV - REST Services.md)
 	* [Micro services](SRV - Micro Services.md)
