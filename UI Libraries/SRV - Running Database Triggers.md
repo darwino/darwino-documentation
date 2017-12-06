@@ -47,6 +47,7 @@ Then the handler shoud be associated to a trigger, like this:
 As the trigger needs to store what was the last time it checked for changes, it uses a `PersistenceStore` for this purpose. This implementation stores the data in the `local` store (not replicated) of the database. Other `PersistenceStore` implementations can be used if necessary,
 
 See: `LogHandler.java`
+See: `AppContextListener.java`
 
 ## Other examples
 The Darwino discussion database also shows how to use query triggers, calling the IBM Watson APIs when new documents are created.
