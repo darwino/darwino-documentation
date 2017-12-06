@@ -1,50 +1,33 @@
-# Scheduled tasks
+# Handling database events
 
-Darwino features a mechanism to run scheduled, or on demand, tasks on the server. A task is a Java class with an `execute()` method that is called asynchronously by the Darwino runtime.
+An application can hook on the database access an provide its own business logic. The handlers have to be registered in the registry of the database server level (LocalJsonServer). They can apply to any transaction, to transactions specific to a database, or even transaction specific to a store.
 
-## Defining a task
-A task should inherit from the class `com.darwino.commons.tasks.Task`. It should implement the method 'execute()' to execute the task:
+Here are the available events:
 
-	public Void execute(TaskExecutorContext context) throws TaskException {
-		Platform.log("Task scheduled, time:{0}",
-		    DateFormatter.Standard.LONG_DATETIME.getFormat().format(new Date()));
-		return null;
-	}
+- When a document is created - queryNew/postNew
 
-Tasks can be used in a wider context and thus also return a value. When running schduled tasks, the return value is ignored so better to define the task as returning an object of type `Void` with the value `null`.
+  queryNew: to  accept or refuse the document creation
+  postNew: to set default values when the document is created
+  
+- When a document is loaded - queryLoad/postLoad
 
-See: `LogTask.java`
+  queryLoad: to prevent the document from being loaded
+  postLoad: to execute an action once the document is loaded
 
-## Scheduling a task
-The Darwino platform has a background task scheduler provided as a service. Tasks can be scheduled at any time, and also removed from the scheduler.
+- When a document is saved - querySave/postSave
 
-Example:
+  querySave: to accept of refuse the document save. The document content can also be updated before it is saved
+  postSave: to execute an action once the document is saved
 
-    protected void initTasks(ServletContext servletContext, 
-        TaskProgress progress) throws JsonException {
-	final TaskScheduler scheduler = Platform.getService(TaskScheduler.class);
-	// Install the tasks
-	// This tasks logs a string every 1 minute
-	scheduler.scheduleTask(
-		new LogTask(),
-		new IntervalScheduler().interval("1m"));
-    }
+- When a document is deleted - queryDelete/postDelete (only triggered when a document is individually deleted, not with mass deletion, like `deleteAll()`).
 
-As a task executes in the background, and not from an HTTP request, it does not have a DarwinoContext object available. Thus, if the task needs to access the database, the task should create a temporary session with using a predefined user object, or as a system admin. The session should be closed when the task is executed, to not hold any physical connection to the database.
+queryDelete: to accept of refuse the document deletion
+postDelete: to execute an action once the document is deleted
+ 
 
-Example:
-
-    public Void execute(TaskExecutorContext context) throws TaskException {
-        LocalJsonDBServer srv = DarwinoApplication.get().getLocalJsonDBServer();
-	Session session = srv.createSystemSession(null);
-	try {
-	    ...
-	} finally {
-	    StreamUtil.close(session);
-	}
-	return null;
-    }
-
-
-See: `AppContextListener.java`
-
+		// Add here the database events to register to the JSON store
+		registerDocumentEvents(AppDatabaseDef.DATABASE_NAME, Database.STORE_DEFAULT, new DocumentEvents() {
+			@Override
+			public void queryNewDocument(Store store, String unid) throws JsonException {
+				Platform.log("QueryNewDocument, Database={0}, Store={1}, Unid={2}",store.getDatabase().getId(),store.getId(),unid);
+			}
