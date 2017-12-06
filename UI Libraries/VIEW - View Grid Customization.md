@@ -43,6 +43,7 @@ See: `ByState.jsx` where each category displays the number of documents it conta
 
 ## Adding extra rows
 That migh seems strange at the begining, but it is useful to display totalization and other extra data calculated out of the data in the grid.
+Everytime the ViewGrid reads data from the server, it gives to the developer an opportunity to process the entries and, eventually, insert or remove rows (filter)
+This is done using the `processEntries` property.
 
 See: `ByState.jsx` for the totalization of the male and female entries
-
