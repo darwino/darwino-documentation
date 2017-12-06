@@ -32,3 +32,20 @@ In Notes/Domino, the form associated with a document is deduced from the FORM fi
 
 See: `notes/AllContacts.jsx`
 See: `RouteForm.jsx`
+
+## Notes Domino security
+Darwino supports a similar security model to Notes/Domino.
+
+- Database ACL
+
+  Darwino supports its own ACL, defined as part of the database. But it can also use the replicated ACL object from Notes/Domino. It has to be enabled explicitly in the extension registry:
+  
+      setDatabaseACLFactory(new DefaultDatabaseACLFactory());
+
+- Document based security
+
+  Darwino supports readers and authors fields, although the standard Darwino behavior is a little bit different from Notes/Domino. Fortunately, Darwino features n options that emulates the Notes/Domino one:
+  
+    db.setDocumentSecurity(Database.DOCSEC_INCLUDE|Database.DOCSEC_NOTESLIKE);
+
+See: the discussion database demo application, `AppDatabaseDef`
