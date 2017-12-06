@@ -33,3 +33,5 @@ The code in the action can access the field values using the form/subform `getFi
 
 Similarly, an action can set the document field using `setFieldValue()`, which is behind the scene calling the proper redux functions.
 **DO NOT** change the fields without going through the redux. Else the changes will be lost, and the UI components won't be updated.
+
+See: `CCAddress.jsx`
