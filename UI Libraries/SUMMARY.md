@@ -19,6 +19,7 @@
 	* [Micro services](SRV - Micro Services.md)
 	* [Running scheduled tasks](SRV - Running Scheduled Tasks.md)
 	* [Running database triggers](SRV - Running Database Triggers.md)
+	* [Handling database events](SRV - Handling Database Events.md)
 * [Advanced capabilities](7. Advanced Capabilities.md)
 	* [Custom query functions](7.1. Custom Query Functions.md)
 * [Matching Notes Domino](ND - Matching Notes Domino.md)
