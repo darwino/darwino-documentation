@@ -21,13 +21,20 @@ Here are the available events:
 
 - When a document is deleted - queryDelete/postDelete (only triggered when a document is individually deleted, not with mass deletion, like `deleteAll()`).
 
-queryDelete: to accept of refuse the document deletion
-postDelete: to execute an action once the document is deleted
+  queryDelete: to accept of refuse the document deletion
+  postDelete: to execute an action once the document is deleted
  
 
-		// Add here the database events to register to the JSON store
-		registerDocumentEvents(AppDatabaseDef.DATABASE_NAME, Database.STORE_DEFAULT, new DocumentEvents() {
-			@Override
-			public void queryNewDocument(Store store, String unid) throws JsonException {
-				Platform.log("QueryNewDocument, Database={0}, Store={1}, Unid={2}",store.getDatabase().getId(),store.getId(),unid);
-			}
+An handler can be registered at anytime to the registry:
+
+    // Add here the database events to register to the JSON store
+    registerDocumentEvents(AppDatabaseDef.DATABASE_NAME, 
+                           Database.STORE_DEFAULT, 
+                           new DocumentEvents() {
+        @Override
+        public void queryNewDocument(Store store, String unid) 
+                throws JsonException {
+            Platform.log("QueryNewDocument, Database={0}, 
+            Store={1}, Unid{2}",
+            store.getDatabase().getId(),store.getId(),unid);
+        }
