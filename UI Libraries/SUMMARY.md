@@ -2,6 +2,7 @@
 * [Darwino libraries](2. Darwino Libraries.md)
 * [Building React/Boostrap applications](4. Building React Boostrap Applications.md)
 * [The contacts-react sample application.md](5. The contacts-react Sample Application.md)
+	* [Preparing the application](SMPL - Preparing the Application.md)
 	* [Adding a view](5.1. Adding a View.md)
 		* [Defining the query](5.1.1. Defining the Query Condition.md)
 		* [Defining the view columns](5.1.2. Defining the View Columns.md)
