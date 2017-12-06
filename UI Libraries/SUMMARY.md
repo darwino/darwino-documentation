@@ -18,6 +18,7 @@
 		* [Sub forms](5.2.7. Subforms.md)
 	* [Configuring the navigator](5.3. Configuring the Navigator.md)
 	* [Actions and action bars](SMPL - Actions.md)
+	* [Notifications and messages](SMPL - Notifications and Messages.md)	
 * [Interacting with the server](SRV - Interacting with the Server.md)
 	* [REST services](SRV - REST Services.md)
 	* [Micro services](SRV - Micro Services.md)
