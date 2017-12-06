@@ -1,50 +1,52 @@
-# Scheduled tasks
+# Running database triggers
 
-Darwino features a mechanism to run scheduled, or on demand, tasks on the server. A task is a Java class with an `execute()` method that is called asynchronously by the Darwino runtime.
+Darwino can monitor, asynchronously, the changes that happen in a database. Then, it can execute an action like a notification for every single change. It can be used, for example, to execute some workflow.
 
-## Defining a task
-A task should inherit from the class `com.darwino.commons.tasks.Task`. It should implement the method 'execute()' to execute the task:
+The event being detected is called a trigger. The action to execute from a trigger is called an handler.
 
-	public Void execute(TaskExecutorContext context) throws TaskException {
-		Platform.log("Task scheduled, time:{0}",
-		    DateFormatter.Standard.LONG_DATETIME.getFormat().format(new Date()));
-		return null;
-	}
+## Darwino triggers
+All the triggers inhertot from the same EventTrigger class. There are multiple, JSON store related, pre-defined trigger classes provided by the platform:
 
-Tasks can be used in a wider context and thus also return a value. When running schduled tasks, the return value is ignored so better to define the task as returning an object of type `Void` with the value `null`.
+- JsonStoreDocumentQueryTrigger
 
-See: `LogTask.java`
+  Executes a query and triggers an handler for every single document returned by the query. The check is executed on a regular basis through a scheduled task.
+- JsonStoreEventTrigger
 
-## Scheduling a task
-The Darwino platform has a background task scheduler provided as a service. Tasks can be scheduled at any time, and also removed from the scheduler.
+  Check, on a regular basis, if some changes happened in a database (document created, updated or deleted). It then triggers the handler for every single change
 
-Example:
+They are more triggers, like for example Notes/Domino triggers, but they are out of scope for this tutorial.
 
-    protected void initTasks(ServletContext servletContext, 
-        TaskProgress progress) throws JsonException {
-	final TaskScheduler scheduler = Platform.getService(TaskScheduler.class);
-	// Install the tasks
-	// This tasks logs a string every 1 minute
-	scheduler.scheduleTask(
-		new LogTask(),
-		new IntervalScheduler().interval("1m"));
+## Create a trigger and associate an handler
+
+The handler class is related to the trigger it self. Here is an example of an handler that checks for database changes:
+
+    public class LogHandler implements JsonStoreChangesTrigger.DocHandler {
+	@Override
+	public void handle(Document doc) throws JsonException {
+	    Platform.log("Handling document, store={0}, id={1},
+	        document form{2}",doc.getStore().getId(),
+	        doc.getUnid(), doc.get("form"));
+        }
     }
 
-As a task executes in the background, and not from an HTTP request, it does not have a DarwinoContext object available. Thus, if the task needs to access the database, the task should create a temporary session with using a predefined user object, or as a system admin. The session should be closed when the task is executed, to not hold any physical connection to the database.
+Then the handler shoud be associated to a trigger, like this:
+    StaticEventBuilder triggerList = new StaticEventBuilder();
+    triggerList.add(new JsonStoreChangesTrigger()
+	.scheduler("10s")
+	.database(AppDatabaseDef.DATABASE_NAME)
+	//.store(Database.STORE_DEFAULT)
+	.maxEntries(10) // For demo purposes, only process the last 10 docs...
+	.handler(new LogHandler())
+    );		
+    JsonStorePersistenceService svc = new JsonStorePersistenceService()
+	.database(AppDatabaseDef.DATABASE_NAME)
+	.category("trigger");
+    triggers = new EventBuilderFactory(triggerList,svc);
+    triggers.install();
 
-Example:
+As the trigger needs to store what was the last time it checked for changes, it uses a `PersistenceStore` for this purpose. This implementation stores the data in the `local` store (not replicated) of the database. Other `PersistenceStore` implementations can be used if necessary,
 
-    public Void execute(TaskExecutorContext context) throws TaskException {
-        LocalJsonDBServer srv = DarwinoApplication.get().getLocalJsonDBServer();
-	Session session = srv.createSystemSession(null);
-	try {
-	    ...
-	} finally {
-	    StreamUtil.close(session);
-	}
-	return null;
-    }
+See: `LogHandler.java`
 
-
-See: `AppContextListener.java`
-
+## Other examples
+The Darwino discussion database also shows how to use query triggers, calling the IBM Watson APIs when new documents are created.
