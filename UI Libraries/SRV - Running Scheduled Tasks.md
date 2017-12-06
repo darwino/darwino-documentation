@@ -20,15 +20,31 @@ The Darwino platform has a background task scheduler provided as a service. Task
 
 Example:
 
-	protected void initTasks(ServletContext servletContext, TaskProgress progress) throws JsonException {
-		final TaskScheduler scheduler = Platform.getService(TaskScheduler.class);
-		
-		// Install the tasks
-		// This tasks logs a string every 1 minute
-		scheduler.scheduleTask(
-				new LogTask(),
-				new IntervalScheduler().interval("1m"));
+    protected void initTasks(ServletContext servletContext, 
+        TaskProgress progress) throws JsonException {
+	final TaskScheduler scheduler = Platform.getService(TaskScheduler.class);
+	// Install the tasks
+	// This tasks logs a string every 1 minute
+	scheduler.scheduleTask(
+		new LogTask(),
+		new IntervalScheduler().interval("1m"));
+    }
+
+As a task executes in the background, and not from an HTTP request, it does not have a DarwinoContext object available. Thus, if the task needs to access the database, the task should create a temporary session with using a predefined user object, or as a system admin. The session should be closed when the task is executed, to not hold any physical connection to the database.
+
+Example:
+
+    public Void execute(TaskExecutorContext context) throws TaskException {
+        LocalJsonDBServer srv = DarwinoApplication.get().getLocalJsonDBServer();
+	Session session = srv.createSystemSession(null);
+	try {
+	    ...
+	} finally {
+	    StreamUtil.close(session);
 	}
+	return null;
+    }
+
 
 See: `AppContextListener.java`
 
