@@ -45,7 +45,7 @@ Darwino supports a similar security model to Notes/Domino.
 - Document based security
 
   Darwino supports readers and authors fields, although the standard Darwino behavior is a little bit different from Notes/Domino. Fortunately, Darwino features n options that emulates the Notes/Domino one:
-  
-    db.setDocumentSecurity(Database.DOCSEC_INCLUDE|Database.DOCSEC_NOTESLIKE);
+
+        db.setDocumentSecurity(Database.DOCSEC_INCLUDE|Database.DOCSEC_NOTESLIKE);
 
 See: the discussion database demo application, `AppDatabaseDef`
