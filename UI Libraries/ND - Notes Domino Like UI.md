@@ -4,7 +4,7 @@ The Darwino UI library can be used to create UIs closed to Notes/Domino ones. Th
 More features will be provided other time in these classes to fulfill the needs of migration projects.
 
 ## Specific library
-Some Notes/Domino like features are provider in a specific library `@darwino/darwino-react-bootstrap-notes`. You should include this library to get access to these features
+Darwino provides a specific library, `@darwino/darwino-react-bootstrap-notes`, with some ready to use Notes/Domino like behaviors. You should include this library to get access to these features
 
 ## Forms and subforms
 The library provides some Notes/Domino specific classes for forms and subforms.
