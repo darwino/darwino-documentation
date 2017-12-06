@@ -1,4 +1,4 @@
-# Matching Notes & Domino
+# Notes/Domino like UI
 
 The Darwino UI library can be used to create UIs closed to Notes/Domino ones. They help with the migration of existing applications.
 More features will be provided other time in these classes to fulfill the needs of migration projects.
