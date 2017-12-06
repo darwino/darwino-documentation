@@ -6,4 +6,4 @@ If a database can be deployed without a definition for these options, it is advi
 
 The database definition file is also deployed on te mobile devices.
 
-See: `AppDBBusinessLogic`
+See: `AppDatabaseDef`
