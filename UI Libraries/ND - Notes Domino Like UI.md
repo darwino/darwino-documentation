@@ -16,3 +16,19 @@ The library provides some Notes/Domino specific classes for forms and subforms.
 ## ViewPage & ViewGrid
 Base class for displaying views that can even be embedded within a form. In that case, such an 'embedded view' can contribute to the form action bar.
 
+## Dynamic routing
+In Notes/Domino, the form associated with a document is deduced from the FORM field. To emulate this behavior, the ViewGrid features a `dynamicRoute` property pointing to a function. This function should return the route path for a view entry. Here is an implementation reading the form field and deducing the path:
+
+    function RouteForm(entry) {
+        let form = entry && entry.form;
+        if(!form) return null;
+        let id = entry ? entry.__meta.unid : "";
+        switch(form) {
+            case "Contact":     return "/app/contact/"+id;
+            case "Company":     return "/app/company/"+id;
+        }
+        return null;
+    }
+
+See: `notes/AllContacts.jsx`
+See: `RouteForm.jsx`
