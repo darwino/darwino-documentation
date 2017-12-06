@@ -2,6 +2,8 @@
 
 The ViewPage, as well as the DocumentForm class can gather actions and eventually display them in an action bar. These actions are contributed through a `contributeActionBar()` function, implemented by the form, subform, viewgrid object.
 
+![](sampleactionbar.png)
+
 ## Displaying the action bar
 
 The pages don't automatically create the actionbar as it cannot preclude the desired UI and its location. That actionbar should be explicitly created by the page, in its render method:
