@@ -17,6 +17,7 @@
 * [Interacting with the server](SRV - Interacting with the Server.md)
 	* [REST services](SRV - REST Services.md)
 	* [Micro services](SRV - Micro Services.md)
+	* [Running scheduled tasks](SRV - Running Scheduled Tasks.md)
 * [Advanced capabilities](7. Advanced Capabilities.md)
 	* [Custom query functions](7.1. Custom Query Functions.md)
 * [Matching Notes Domino](ND - Matching Notes Domino.md)
