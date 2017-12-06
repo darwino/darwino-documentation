@@ -22,4 +22,4 @@
 	* [Handling database events](SRV - Handling Database Events.md)
 * [Advanced capabilities](7. Advanced Capabilities.md)
 	* [Custom query functions](7.1. Custom Query Functions.md)
-* [Matching Notes Domino](ND - Matching Notes Domino.md)
+* [Notes/Domino like UI](ND - Notes Domino Like UI.md)
