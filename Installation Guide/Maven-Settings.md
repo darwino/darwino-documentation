@@ -24,7 +24,7 @@ If the file does not yet exist, this link will be absent. In that case, create a
 					<repository>
 						<id>darwino-repository</id>
 						<name>Darwino Platform</name>
-						<url>https://maven.darwino.com/darwino-enterprise-edition</url>
+						<url>https://maven.darwino.com/darwino-community-edition</url>
 					</repository>
 					<repository>
 						<id>openntf-repository</id>
