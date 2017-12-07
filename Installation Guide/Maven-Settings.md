@@ -43,7 +43,7 @@ If the file does not yet exist, this link will be absent. In that case, create a
 	                                </snapshots>
 	                                <id>bintray-repository</id>
 	                                <name>bintray</name>
-	                                <url>https://dl.bintray.com/multi-os-engine/maven-dev</url>
+	                                <url>https://dl.bintray.com/multi-os-engine/maven</url>
 	                        </repository>
 	                </repositories>
 	                <pluginRepositories>
@@ -53,7 +53,7 @@ If the file does not yet exist, this link will be absent. In that case, create a
 	                                </snapshots>
 	                                <id>bintray-repository</id>
 	                                <name>bintray-plugins</name>
-	                                <url>https://dl.bintray.com/multi-os-engine/maven-dev</url>
+	                                <url>https://dl.bintray.com/multi-os-engine/maven</url>
 	                        </pluginRepository>
 	                </pluginRepositories>
 	        </profile>
