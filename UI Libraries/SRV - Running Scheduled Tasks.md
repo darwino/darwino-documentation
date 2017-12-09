@@ -11,7 +11,7 @@ A task should inherit from the class `com.darwino.commons.tasks.Task`. It should
 		return null;
 	}
 
-Tasks can be used in a wider context and thus also return a value. When running schduled tasks, the return value is ignored so better to define the task as returning an object of type `Void` with the value `null`.
+Tasks can be used in a wider context and can return a value. When running scheduled tasks, the return value is ignored so better to define the task as returning an object of type `Void` with the returned value being `null`.
 
 See: `LogTask.java`
 
