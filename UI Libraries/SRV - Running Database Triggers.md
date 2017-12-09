@@ -1,6 +1,6 @@
 # Running database triggers
 
-Darwino can monitor, asynchronously, the changes that happen in a database. Then, it can execute an action like a notification for every single change. It can be used, for example, to execute some workflow.
+Darwino can monitor, asynchronously, the changes that happen in a database. Then, it can execute an action for every single change. It can be used, for example, to execute some workflow.
 
 The event being detected is called a trigger. The action to execute from a trigger is called an handler.
 
