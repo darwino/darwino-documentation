@@ -1,13 +1,14 @@
 # Micro services
-Micro services are a simplified form of stateless services. A micro service consumes some JSON content as parameters and also produces JSON as a result. This is that simple.
-Micro services can be written in different languages, although the contacts-react sample shows how to write them in Java.
+Micro services are a simplified form of REST services. A micro service consumes some JSON content as parameters and also produces JSON as a result. This is that simple.
+
+Micro services can be written in different languages, although the `contacts-react` sample shows how to write them in Java.
 
 For more information: https://playground.darwino.com/playground.nsf/ServicesSnippets.xsp
 
 ## Creating a micro service
-A micro service implements a Java interface called `JsonMicroService`. This interface has one method called when the service is invoked. It has a context parameter that contains all the request information.
+A micro service implements a Java interface called `JsonMicroService`. This interface has one method called when the service is invoked. It features a context argument that contains the information from the requester.
 
-Here is a basic `HelloWorld` service, that takes a greetings parameter and returns a formatted message:
+Here is a basic `HelloWorld` service, that takes a greetings parameter and returns a formatted message consuming the parameter:
 
 	public void execute(JsonMicroServiceContext context) throws JsonException {
 		Session session = DarwinoContext.get().getSession();
