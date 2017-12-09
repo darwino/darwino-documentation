@@ -1,5 +1,5 @@
 # REST Services
-Of course, any existing JavaScript capability can be used to call REST services. In particular, the new `Fetch` capability. But Darwino makes it both easy to create a service on the server side, and to call it from the client.
+Of course, standard, straight JavaScript capabilities can be used to call REST services (`XMLHttRequest`, `Fetch`, ...). But Darwino makes it both easy to create a service on the server side, and to call it from the client.
 
 ## Calling a REST service
 Darwino provides some utility in `Fetch.js`. This utility is a thin wrapper on top of the browser `Fetch` function that:
