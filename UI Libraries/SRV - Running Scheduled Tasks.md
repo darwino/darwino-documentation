@@ -30,7 +30,7 @@ Example:
 		new IntervalScheduler().interval("1m"));
     }
 
-As a task executes in the background, and not from an HTTP request, it does not have a DarwinoContext object available. Thus, if the task needs to access the database, the task should create a temporary session with using a predefined user object, or as a system admin. The session should be closed when the task is executed, to not hold any physical connection to the database.
+As a task executes in the background, and not from an HTTP request, it does not have a `DarwinoContext` object available. Thus, if the task needs to access the database, it should create a temporary session with using a predefined user object, or as a system admin. The session should be closed when the task is completed, to not hold any physical connection to the database.
 
 Example:
 
@@ -46,4 +46,3 @@ Example:
     }
 
 See: `AppContextListener.java`
-
