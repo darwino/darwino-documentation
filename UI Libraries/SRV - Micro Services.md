@@ -38,8 +38,8 @@ Micro services have to be registered using a factory. A unique name has to be as
 
 See: `AppMicroServicesFactory.java`
 
-## Consuming a micro service
-Darwino provides a very convenient helper `MicroServices`, to invoke the services. Simply pass the name, the parameters and fetch the result. Then, either get the result or handle the error
+## Consuming a micro service in JavaScript
+Darwino provides a very convenient helper `MicroServices`, to invoke the services. Simply pass the name, the parameters and fetch the result. Then, either get the result or handle the error:
 
     new MicroServices()
       .name(valid?"HelloWorld":"fake")
