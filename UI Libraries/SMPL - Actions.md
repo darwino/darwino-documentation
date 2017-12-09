@@ -1,6 +1,6 @@
 # Actions and action bars
 
-The ViewPage, as well as the DocumentForm class can gather actions and eventually display them in an action bar. These actions are contributed through a `contributeActionBar()` function, implemented by the form, subform, viewgrid object.
+The `ViewPage`, as well as the `DocumentForm` class, can gather actions and eventually display them in an action bar. These actions are contributed through a `contributeActionBar()` function, implemented within a form, subform, or a viewgrid object.
 
 ![](sampleactionbar.png)
 
