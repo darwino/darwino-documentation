@@ -23,3 +23,4 @@ call build
 call build-pdf
 cd ..
 
+pause
