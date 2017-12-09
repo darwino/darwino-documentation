@@ -33,7 +33,7 @@ See: `ByDate.jsx` for the date formatting
 See: `ByState.jsx` for displaying an image in a cell
 
 ## Custom row rendering
-The whole row rendering can also be customized by assigned a `CursorGridRowRenderer` class to the ViewGrid `rowRenderer` property:
+The whole row rendering can also be customized by assigning a `CursorGridRowRenderer` class to the ViewGrid `rowRenderer` property:
 
     class CustomRenderer extends CursorGridRowRenderer {   
     }    
@@ -43,15 +43,15 @@ The whole row rendering can also be customized by assigned a `CursorGridRowRende
 See: `ByState.jsx`    
 
 ## Customizing a category
-A category entry can be customized by providing a formatter to a groupBy entry in the ViewGrid properties:
+A category entry can be customized by providing a formatter to a `groupBy` entry in the ViewGrid properties:
 
     groupBy: [{column: "State", formatter: formatGroup}],
 
-See: `ByState.jsx` where each category displays the number of documents it contains
+See: `ByState.jsx` where each category displays the number of documents it contains.
 
 ## Adding extra rows
-That migh seems strange at the begining, but it is useful to display totalization and other extra data calculated out of the data in the grid.
-Everytime the ViewGrid reads data from the server, it gives to the developer an opportunity to process the entries and, eventually, insert or remove rows (filter)
+That might seems strange at the begining, but it is useful to display totalization and other extra data calculated out of the data in the grid.
+Everytime the ViewGrid reads data from the server, it gives to the developer an opportunity to process the entries and, eventually, insert or remove rows.
 This is done using the `processEntries` property.
 
 See: `ByState.jsx` for the totalization of the male and female entries
