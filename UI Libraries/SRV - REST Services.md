@@ -11,12 +11,13 @@ Darwino provides some utilities in `Fetch.js`. These utilities ate a thin wrappe
 See: `extras/ServicesRest.jsx`
 
 ## Developing a REST service
-Darwino comes with a whole set of prefdefined REST sericev, see: [https://playground.darwino.com/playground.nsf/OpenApiExplorer.xsp](https://playground.darwino.com/playground.nsf/OpenApiExplorer.xsp)
-Such a REST service has to be done in Java on the server side. There are a few classes to define:
+Darwino comes with a whole set of predefined REST services, see: [https://playground.darwino.com/playground.nsf/OpenApiExplorer.xsp](https://playground.darwino.com/playground.nsf/OpenApiExplorer.xsp)
+
+But an application can also provide custom rest services. Such REST services have to be done in Java on the server side. There are a few classes to define:
 
 ### The REST service class
-This is the class that implements the actual service. The service() function gets a context and should return a value, or an error, on execution.
-One instance of this class will be created per service execution. The instance will be discarded after the service is executed.
+This is the class that implements the actual service. The `service()` function gets a context and returns a value, or an error, when executed.
+One instance of this class will be created per service execution, so it can store transient data as object members. This instance will be discarded after the service is executed.
 
 see: `contacts-react-shared/../AppInformationRest.java`
 
