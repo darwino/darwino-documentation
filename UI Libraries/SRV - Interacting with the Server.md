@@ -36,7 +36,7 @@ To support a data server different from the UI one, the CORS filter has to be en
     	<dispatcher>FORWARD</dispatcher>
     </filter-mapping>
 
-Moreover, as the JEE path is different, that path must be initialized using the DEV_OPTIONS class. The Darwino runtime will then query that class for the URL. The initialization happens very early, in `client.jsx`:
+Moreover, as the JEE path is different, that path must be initialized using the `DEV_OPTIONS` class. The Darwino runtime will then query that class for the URL. The initialization happens very early, in `client.jsx`:
 
     // App rendering
     import {DEV_OPTIONS,initDevOptions} from '@darwino/darwino';
