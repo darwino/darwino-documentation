@@ -8,11 +8,10 @@ The event being detected is called a trigger. The action to execute from a trigg
 All the triggers inhertit from the same `EventTrigger` class. There are multiple, JSON store related, predefined trigger classes provided by the platform:
 
 - JsonStoreDocumentQueryTrigger
-
   Executes a query and triggers an handler for every single document returned by the query. The check is executed on a regular basis through a scheduled task.
+  
 - JsonStoreEventTrigger
-
-  Check, on a regular basis, if some changes happened in a database (document created, updated or deleted). It then triggers the handler for every single change
+  Check, on a regular basis, if some changes happened in a database (document created, updated or deleted). It then triggers the handler for every single change.
 
 They are more triggers, like for example Notes/Domino triggers, but they are out of scope for this tutorial.
 
