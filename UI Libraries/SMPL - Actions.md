@@ -6,7 +6,7 @@ The `ViewPage`, as well as the `DocumentForm` class, can gather actions and even
 
 ## Displaying the action bar
 
-The pages don't automatically create the actionbar as it cannot preclude the desired UI and its location. That actionbar should be explicitly created by the page, in its render method:
+The pages don't automatically create the actionbar as it cannot preclude the desired UI and its location. As such, the actionbar should be explicitly created by the page, in its render method:
 
     render() {
       return (
