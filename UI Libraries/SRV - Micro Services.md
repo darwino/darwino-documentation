@@ -10,16 +10,18 @@ A micro service implements a Java interface called `JsonMicroService`. This inte
 
 Here is a basic `HelloWorld` service, that takes a greetings parameter and returns a formatted message consuming the parameter:
 
-	public void execute(JsonMicroServiceContext context) throws JsonException {
-		Session session = DarwinoContext.get().getSession();
-		JsonObject req = (JsonObject)context.getRequest();
-		String greetings = req.getString("greetings"); 
-		JsonObject result = JsonObject.of("message",StringUtil.format("Hello, {0}. {1}. It is {2} here, on the server!",
-					session.getUser().getCn(),
-					greetings,
-					DateFormatter.getFormat("DEFAULT_TIME").format(new Date())));
-		context.setResponse(result);
-	}
+    public void execute(JsonMicroServiceContext context) throws JsonException {
+        Session session = DarwinoContext.get().getSession();
+        JsonObject req = (JsonObject)context.getRequest();
+        String greetings = req.getString("greetings"); 
+        JsonObject result = JsonObject.of("message",StringUtil.format(
+            "Hello, {0}. {1}. It is {2} here, on the server!",
+            session.getUser().getCn(),
+            greetings,
+            DateFormatter.getFormat("DEFAULT_TIME").format(new Date())));
+        context.setResponse(result);
+    }
+	
 - `Session session = DarwinoContext.get().getSession()`
 Get the session database for the current user. With this session, the developer can access the data on the behalf of the user.
 - `String greetings = req.getString("greetings")`
