@@ -19,10 +19,10 @@ But an application can also provide custom rest services. Such REST services hav
 This is the class that implements the actual service. The `service()` function gets a context and returns a value, or an error, when executed.
 One instance of this class will be created per service execution, so it can store transient data as object members. This instance will be discarded after the service is executed.
 
-see: `contacts-react-shared/../AppInformationRest.java`
+See: `contacts-react-shared/../AppInformationRest.java`
 
 ### The REST service factory class
 This class creates the REST service instance for a particular request, by matching the URL parts. A typical factory will match multiple services with multiple URLs.
 A factory has to be registered at the application level, see: `AppBasePlugin.java`
 
-see: `contacts-react-shared/../AppRestServiceFactory.java`
+See: `contacts-react-shared/../AppRestServiceFactory.java`
