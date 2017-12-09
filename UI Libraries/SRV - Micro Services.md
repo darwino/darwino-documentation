@@ -23,11 +23,13 @@ Here is a basic `HelloWorld` service, that takes a greetings parameter and retur
     }
 	
 - `Session session = DarwinoContext.get().getSession()`
-Get the session database for the current user. With this session, the developer can access the data on the behalf of the user.
+  Get the session database for the current user. With this session, the developer can access the data on the behalf of the user.
+  
 - `String greetings = req.getString("greetings")`
-Read a parameter from the the requester. In that case, the request is made of a JSON object with on attribute called 'greetings'
+  Read a parameter from the the requester. In that case, the request is made of a JSON object with on attribute called 'greetings'
+  
 - `context.setResponse(result)`
-Send the JSON result to the caller
+  Send the JSON result to the caller
 
 See: `HelloWorld.java`
 
