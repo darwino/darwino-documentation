@@ -54,4 +54,4 @@ That might seems strange at the begining, but it is useful to display totalizati
 Everytime the ViewGrid reads data from the server, it gives to the developer an opportunity to process the entries and, eventually, insert or remove rows.
 This is done using the `processEntries` property.
 
-See: `ByState.jsx` for the totalization of the male and female entries
+See: `ByState.jsx` for the totalization of the male and female entries. This totalization happens both globally and at the category level.
