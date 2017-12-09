@@ -3,7 +3,7 @@
 Darwino features a mechanism to run scheduled, or on demand, tasks on the server. A task is a Java class with an `execute()` method that is called asynchronously by the Darwino runtime.
 
 ## Defining a task
-A task should inherit from the class `com.darwino.commons.tasks.Task`. It should implement the method 'execute()' to execute the task:
+A task should inherit from the class `com.darwino.commons.tasks.Task`. It should implement the method 'execute()' as bellow:
 
 	public Void execute(TaskExecutorContext context) throws TaskException {
 		Platform.log("Task scheduled, time:{0}",
