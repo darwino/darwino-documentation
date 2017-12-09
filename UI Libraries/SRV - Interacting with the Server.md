@@ -2,14 +2,16 @@
 The Darwino UI library provides a few built-in capabilities to interact with the server side.
 
 ## Darwino service URLs
-Darwino has a very convenient capability that make the use of service URLs a lot easier.
+Darwino has a very convenient capability that makes the use of service URLs a lot easier to consume.
+
 By default, when a service path starts with `.darwino-`, it can also be called using `$darwino-`. In the later case, the URL is transformed back to `/.darwino-`, regardless of the relative position of `$darwino-`. This means that `$darwino-` can be used without worrying about the current browser URL.
-On other words, `/$darwino-`, `/x/y/$darwino-`, `/a/b/c/$darwino-` are all equivalent when calling the server, and reach the exact same service.
+
+On other words, `/$darwino-`, `/x/y/$darwino-`, `/a/b/c/$darwino-` are all equivalent when calling the server, and reach the exact same service. The developer does not have to worry about the relative paths when calling a service.
 
 ## Resources and data servers
-In a normal production mode, the UI elements (JS files...) and the data will be served by the same JEE application. But, during development, while the data will still be served by the J2EE server, we'd like to use a Webpack development server. Even if the 2 servers run on the same machine, they will be using a different port and thus will not share the authentication, while AJAXA calls will faces cross domain issues.
+In a normal production mode, both the UI elements (JS files...) and the data will be served by the same JEE application. But, during development, while the data will still be served by the J2EE server, we'd like to use a Webpack development server for the UI. Even if the 2 servers run on the same machine, they will be using a different port and thus will not share the authentication, while AJAX calls will face cross domain issues.
 
-When developing using TOMCAT, the JEE serverport is 8080 while the Webpack server port is 8008 (defined in `webpack.config.js`)
+When developing using TOMCAT, the JEE server port is 8080 while the Webpack server port is 8008 (defined in `webpack.config.js`)
 
 ### Authentication
 The Webpack dev server does not authenticate users, while the real JEE server might. To make it work, the user will have to manually authenticate in another browser tab. Under the hood, the Darwino library ensures that his authentication is used by setting the request credentials to "include" (see dev.js) when it detects the development server.
