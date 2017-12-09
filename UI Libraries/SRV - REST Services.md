@@ -22,7 +22,6 @@ One instance of this class will be created per service execution, so it can stor
 See: `contacts-react-shared/../AppInformationRest.java`
 
 ### The REST service factory class
-This class creates the REST service instance for a particular request, by matching the URL parts. A typical factory will match multiple services with multiple URLs.
-A factory has to be registered at the application level, see: `AppBasePlugin.java`
+A factory creates the REST service instance for a particular request, by matching the URL parts. It has to be registered at the application level, see: `AppBasePlugin.java`
 
 See: `contacts-react-shared/../AppRestServiceFactory.java`
