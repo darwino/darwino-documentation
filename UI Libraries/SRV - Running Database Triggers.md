@@ -5,7 +5,7 @@ Darwino can monitor, asynchronously, the changes that happen in a database. Then
 The event being detected is called a trigger. The action to execute from a trigger is called an handler.
 
 ## Darwino triggers
-All the triggers inhertot from the same EventTrigger class. There are multiple, JSON store related, pre-defined trigger classes provided by the platform:
+All the triggers inhertit from the same `EventTrigger` class. There are multiple, JSON store related, predefined trigger classes provided by the platform:
 
 - JsonStoreDocumentQueryTrigger
 
