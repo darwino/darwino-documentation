@@ -17,7 +17,7 @@ They are more triggers, like for example Notes/Domino triggers, but they are out
 
 ## Create a trigger and associate an handler
 
-Here is an example of an handler that checks for database changes. Note that an `Handler` is a callback
+Here is an example of an handler that checks for database changes. Note that an `Handler` is a callback that generally depends on the trigger class:
 
     public class LogHandler implements JsonStoreChangesTrigger.DocHandler {
 	@Override
@@ -28,7 +28,7 @@ Here is an example of an handler that checks for database changes. Note that an 
         }
     }
 
-Then the handler should be associated to a trigger, like this:
+Then the handler should be associated to a trigger, and the trigger configured using code like:
 
     StaticEventBuilder triggerList = new StaticEventBuilder();
     triggerList.add(new JsonStoreChangesTrigger()
@@ -44,7 +44,7 @@ Then the handler should be associated to a trigger, like this:
     triggers = new EventBuilderFactory(triggerList,svc);
     triggers.install();
 
-As the trigger needs to store what was the last time it checked for changes, it uses a `PersistenceStore` for this purpose. This implementation stores the data in the `local` store (not replicated) of the database. Other `PersistenceStore` implementations can be used if necessary,
+As the trigger above needs to store the last time it checked for changes, it uses a `PersistenceStore` for this purpose. This implementation stores the data in the `local` store (not replicated) of the database. Other `PersistenceStore` implementations can be used if necessary,
 
 See: `LogHandler.java`
 See: `AppContextListener.java`
