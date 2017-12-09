@@ -1,6 +1,6 @@
 # Handling database events
 
-An application can hook on the database access an provide its own business logic. The handlers have to be registered in the registry of the database server level (LocalJsonServer). They can apply to any transaction, to transactions specific to a database, or even transaction specific to a store.
+An application can hook on the database access and provide its own business logic through event handlers. These handlers have to be registered in the registry of the database server level (`LocalJsonServer`). They can apply to any document, or documents specific a a database or a store.
 
 Here are the available events:
 
