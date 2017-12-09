@@ -12,12 +12,11 @@ The view grid can be made responsive to adapt to different screen size by settin
 Note: due to some `react-data-grid` limitations, this is still a preview function.
 
 ## Custom column rendering
-The content of a column is generally the row content of a JSON field, converted to a string.
-But this content can be formatte using a grid column property:
+The content of a column is generally the row content of a JSON field, converted to a string. This content can be formatted using a grid column property:
 
     {name: "Date", key: "Date", resizable:true, formatter: DateFormatter, width:150},
 
-This formatter is a function that returns a piece of markup. In the example bellow, it uses `FormattedDate` from `react-intl` to format the date:
+This formatter is a function that returns a piece of markup to be displayed in the grid cell. In the example bellow, it uses `FormattedDate` from `react-intl` to format the date:
 
     export const DateFormatter = function(props) {
       const date = props.value;
