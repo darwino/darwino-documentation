@@ -17,7 +17,7 @@ They are more triggers, like for example Notes/Domino triggers, but they are out
 
 ## Create a trigger and associate an handler
 
-The handler class is related to the trigger it self. Here is an example of an handler that checks for database changes:
+Here is an example of an handler that checks for database changes. Note that an `Handler` is a callback
 
     public class LogHandler implements JsonStoreChangesTrigger.DocHandler {
 	@Override
