@@ -14,10 +14,11 @@ In a normal production mode, both the UI elements (JS files...) and the data wil
 When developing using TOMCAT, the JEE server port is 8080 while the Webpack server port is 8008 (defined in `webpack.config.js`)
 
 ### Authentication
-The Webpack dev server does not authenticate users, while the real JEE server might. To make it work, the user will have to manually authenticate in another browser tab. Under the hood, the Darwino library ensures that his authentication is used by setting the request credentials to "include" (see dev.js) when it detects the development server.
+The Webpack dev server does not require authenticated users, while the real JEE server might. To make it work, the user will have to manually authenticate in another browser tab. Under the hood, the Darwino library ensures that his authentication is used by setting the request credentials to "include" (see dev.js) when it detects the development server.
+Another solution is to temporarily disable the authentication on the TOMCAT server.
 
 ### Cross domain requests
-To support this mode, the CORS filter have to be enabled in the JEE `web.xml` (this is the default when using the Darwino Studio wizard):
+To support a data server different from the UI one, the CORS filter has to be enabled in the JEE `web.xml` (this is the default when using the Darwino Studio wizard):
 
     <!-- CORS should be applied before the authentication else the OPTIONS preflight can be blocked -->
     <filter>
