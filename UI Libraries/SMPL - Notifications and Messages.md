@@ -33,5 +33,3 @@ Darwino features a series of dialogs displaying read-only notifications, alerts,
 See: `CodeMessages.jsx`
 
 ![](sampledialogs.png)
-
-
