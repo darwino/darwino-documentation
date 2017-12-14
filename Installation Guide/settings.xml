@@ -11,6 +11,8 @@
 				<repository>
 					<id>darwino-repository</id>
 					<name>Darwino Platform</name>
+					<!-- Use the community edition by default or switch to the enterprise one -->
+					<!-- <url>https://maven.darwino.com/darwino-enterprise-edition</url> -->
 					<url>https://maven.darwino.com/darwino-community-edition</url>
 				</repository>
 				<repository>
@@ -52,7 +54,10 @@
 	<servers>
 		<server>
 		    <id>darwino-repository</id>
+			<!-- Add the Darwino user name here -->
+			<!-- You can get much safer, hash password from https://maven.darwino.com/webapp/#/home after clicking on your user name -->
 		    <username>[username]</username>
+			<!-- Add the Darwino password here -->
 		    <password>[password]</password>
 		</server>
 	</servers>
