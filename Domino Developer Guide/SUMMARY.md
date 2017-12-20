@@ -2,4 +2,7 @@
     * [Installing Darwino on a Domino Server](Synchronizing Domino Data 1. Installing Darwino on a Domino Server.md)
     * [Creating and Configuring the Synchronization Database](Synchronizing Domino Data 2. Creating and configuring the Synchronization database.md)
     * [Customizing the Data Transformation](Synchronizing Domino Data 3. Customizing the data transformation.md)
+    	* [Introduction to the Groovy DSL](Synchronizing Domino Data 3.1. Introduction to the Groovy DSL.md)
+    	* [Boolean Fields](Synchronizing Domino Data 3.2. Boolean Fields.md)
+    	* [Array Fields](Synchronizing Domino Data 3.3. Array Fields.md)
 * [Building and deploying Darwino applications]()
