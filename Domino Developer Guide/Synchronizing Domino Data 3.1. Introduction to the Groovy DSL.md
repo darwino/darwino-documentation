@@ -27,14 +27,3 @@ This generated code shows off the primary elements of the DSL:
 		* `NONSUMMARY` to denote fields that should have their summary flag un-set in Domino, to allow for storing larger data
 		* `TAGS` to denote a single field per document that will be stored in the `_tags` field in JSON, which is treated specially in Darwino
 		* `DISABLED` to mark a field as ignored on a per-field basis
-
-## Item and Document Matching
-
-Though the DSL generator generates definitions for every form and field, the DSL is not, by default, an exclusive descriptor of the data being transferred between the systems. In the absence of additional options, forms and items that are not defined in the DSL are transferred over in a "best match" way and are not coaxed into consistent data types. Because of this, an adapter DSL could contain nothing other than the `nsfName` line and would act as a basic data replicator on its own.
-
-What the form and field definitions provide is a way to ensure that the app's data is in a consistent format when transferred to Darwino (and, as a side effect, cleaned up when sent back to Domino). Due to the nature of Notes development, many apps have inconsistent data types for the same field across documents, such as a value being a string in one field and a number in another. By specifying a defined type in the DSL, you avoid the necessity to write data-type checks into the Darwino app for every field.
-
-There are two options to alter this behavior:
-
-- `restrictToDefinedForms true` at the top level of the DSL will cause replication to ignore any documents in either direction that don't have a matching converter block. These documents are left untouched
-- `restrictToDefinedFields true` within a document converter block will cause conversion to ignore any fields on matching documents that aren't explicitly defined. These fields are left untouched in replicated documents

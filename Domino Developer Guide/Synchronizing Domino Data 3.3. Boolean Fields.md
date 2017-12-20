@@ -4,7 +4,7 @@ Because Domino doesn't have the concept of boolean field storage, developers hav
 
 These values can be strings or numbers. For example:
 
-```
+```groovy
 form("StringBoolean") {
 	field "SomeField", type:BOOLEAN, trueValue: "Y", falseValue: "N"
 }

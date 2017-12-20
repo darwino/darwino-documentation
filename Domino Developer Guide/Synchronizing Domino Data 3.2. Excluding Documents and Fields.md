@@ -1,0 +1,55 @@
+# Excluding Documents and Fields
+
+Though the DSL generator generates definitions for every form and field, the DSL is not, by default, an exclusive descriptor of the data being transferred between the systems. In the absence of additional options, forms and items that are not defined in the DSL are transferred over in a "best match" way and are not coaxed into consistent data types. Because of this, an adapter DSL could contain nothing other than the `nsfName` line and would act as a basic data replicator on its own.
+
+What the form and field definitions provide is a way to ensure that the app's data is in a consistent format when transferred to Darwino (and, as a side effect, cleaned up when sent back to Domino). Due to the nature of Notes development, many apps have inconsistent data types for the same field across documents, such as a value being a string in one field and a number in another. By specifying a defined type in the DSL, you avoid the necessity to write data-type checks into the Darwino app for every field.
+
+There are three options to alter this behavior:
+
+## Restrict to Defined Forms
+
+In the top level of the DSL, you can specify `restrictToDefinedForms true` to only include documents whose form is included in the list of definitions. For example:
+
+```groovy
+nsfName "db.nsf"
+restrictToDefinedForms true
+
+form("Foo") { /* fields here */ }
+```
+
+Only documents with a form value of `"Foo"` will be included - all other documents will be left untouched by replication.
+
+## Restrict to Defined Fields
+
+Document converter blocks can be similarly configured to only include fields that are explicitly enumerated. For example:
+
+```groovy
+nsfName "db.nsf"
+
+form("Foo") {
+    field "FirstName"
+    restrictToDefinedFields true
+}
+form("Bar") {
+    field "LastName"
+}
+```
+
+In this case, documents with the form `"Foo"` will only include the value from the `"FirstName"` field (as well as `"Form"` inherently and several system fields) and all other items in those documents will be left alone and not transferred or written back. Documents using form `"Bar"` or - because `restrictToDefinedForms` is not defined - will transfer over any field.
+
+## Excluding Individual Field Names
+
+Individual fields can also be excluded per-document via the `excludeFields` command:
+
+```groovy
+form("Foo") {
+    field "FirstName"
+    excludeFields "LastName"
+}
+form("Bar") {
+    field "FirstName"
+    excludeFields ["LastName", "MiddleName"]
+}
+```
+
+Fields can be specified either individually, as in the `"Foo"` form, or via an array, as in the `"Bar"` form.
