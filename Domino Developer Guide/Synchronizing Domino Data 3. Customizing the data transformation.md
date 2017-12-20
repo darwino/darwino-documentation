@@ -6,11 +6,11 @@ There are several benefits to using Groovy for the adapter definitions:
 
 ```
 def commonDoc = {
-  field “from”, type:NAMES
-  field “text”, flags:MULTIPLE
-  field “body”, type:RICHTEXT
+  field "from", type:NAMES
+  field "text", flags:MULTIPLE
+  field "body", type:RICHTEXT
 }
-form(“Topic”, commonDoc)
+form("Topic", commonDoc)
 ```
 
 
