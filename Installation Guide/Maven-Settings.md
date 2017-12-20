@@ -7,71 +7,7 @@ If you're using Eclipse and this file already exists, you can open it for editin
 
 ![](eclipse-mavenopenfile.png)
 
-If the file does not yet exist, this link will be absent. In that case, create a new file in a text editor and, when saving, browse to your home directory (e.g. `C:\Users\yourname` on Windows, `~/` on a mac), create a folder named ".m2" (with the leading dot), and save the file as "settings.xml":
-
- If it is a new file, use the following content or merge it with the existing file:
-
-	<?xml version="1.0"?>
-	<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
-		<profiles>
-			<profile>
-				<id>darwino-repository-profile</id>
-				<properties>
-					<!-- Enter the filesystem path to the Android SDKs folder here -->
-					<android.sdk.path></android.sdk.path>
-				</properties>
-				<repositories>
-					<repository>
-						<id>darwino-repository</id>
-						<name>Darwino Platform</name>
-						<url>https://maven.darwino.com/darwino-community-edition</url>
-					</repository>
-					<repository>
-						<id>openntf-repository</id>
-						<name>OpenNTF</name>
-						<url>https://artifactory.openntf.org/openntf</url>
-					</repository>
-				</repositories>
-			</profile>
-		
-			<profile>
-	                <id>bintray-moe</id>
-	                <repositories>
-	                        <repository>
-	                                <snapshots>
-	                                        <enabled>false</enabled>
-	                                </snapshots>
-	                                <id>bintray-repository</id>
-	                                <name>bintray</name>
-	                                <url>https://dl.bintray.com/multi-os-engine/maven</url>
-	                        </repository>
-	                </repositories>
-	                <pluginRepositories>
-	                        <pluginRepository>
-	                                <snapshots>
-	                                        <enabled>false</enabled>
-	                                </snapshots>
-	                                <id>bintray-repository</id>
-	                                <name>bintray-plugins</name>
-	                                <url>https://dl.bintray.com/multi-os-engine/maven</url>
-	                        </pluginRepository>
-	                </pluginRepositories>
-	        </profile>
-		</profiles>
-		<activeProfiles>
-			<activeProfile>darwino-repository-profile</activeProfile>
-			<activeProfile>bintray-moe</activeProfile>
-		</activeProfiles>
-		<servers>
-			<server>
-			    <id>darwino-repository</id>
-			    <username>[username]</username>
-			    <password>[password]</password>
-			</server>
-		</servers>
-	</settings>
-
-This example file can be [downloaded here](settings.xml).
+If the file does not yet exist, this link will be absent. In that case, create a new file in a text editor and, when saving, browse to your home directory (e.g. `C:\Users\yourname` on Windows, `~/` on a mac), create a folder named ".m2" (with the leading dot), and save the file as "settings.xml". If it is a new file, use the following content or merge it with the existing file. This  file can be [downloaded here](settings.xml).
 
 Of course, you have to set your own user and password and, depending on the edition you are
 willing to use, set the repository URL to:
