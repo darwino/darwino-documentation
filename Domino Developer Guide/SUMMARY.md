@@ -7,4 +7,5 @@
     	* [Boolean Fields](Synchronizing Domino Data 3.3. Boolean Fields.md)
     	* [Array Fields](Synchronizing Domino Data 3.4. Array Fields.md)
         * [Closures and Re-Opening Converters](Synchronizing Domino Data 3.5. Closures and Re-Opening Converters.md)
+        * [Converting Data](Synchronizing Domino Data 3.6. Converting Data.md)
 * [Building and deploying Darwino applications]()
