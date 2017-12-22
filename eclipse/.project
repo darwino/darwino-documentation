@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>darwino-documentation</name>
+	<comment></comment>
+	<projects>
+	</projects>
+	<buildSpec>
+	</buildSpec>
+	<natures>
+	</natures>
+	<linkedResources>
+		<link>
+			<name>Developer Guide</name>
+			<type>2</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Developer%20Guide</locationURI>
+		</link>
+		<link>
+			<name>Domino Developer Guide</name>
+			<type>2</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Domino%20Developer%20Guide</locationURI>
+		</link>
+		<link>
+			<name>How To</name>
+			<type>2</type>
+			<locationURI>PARENT-1-PROJECT_LOC/How%20To</locationURI>
+		</link>
+		<link>
+			<name>Installation Guide</name>
+			<type>2</type>
+			<locationURI>PARENT-1-PROJECT_LOC/Installation%20Guide</locationURI>
+		</link>
+		<link>
+			<name>UI Libraries</name>
+			<type>2</type>
+			<locationURI>PARENT-1-PROJECT_LOC/UI%20Libraries</locationURI>
+		</link>
+	</linkedResources>
+</projectDescription>
