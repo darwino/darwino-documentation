@@ -6,7 +6,8 @@
       * [Excluding Documents and Fields](1.3.2. Excluding Documents and Fields.md)
       * [Boolean Fields](1.3.3. Boolean Fields.md)
       * [Array Fields](1.3.4. Array Fields.md)
-        * [Closures and Re-Opening Converters](1.3.5. Closures and Re-Opening Converters.md)
-        * [Converting Data](1.3.6. Converting Data.md)
+      * [Closures and Re-Opening Converters](1.3.5. Closures and Re-Opening Converters.md)
+      * [Converting Data](1.3.6. Converting Data.md)
+      * [Deploying DSL Adapters via Plugins](1.3.7. Deploying DSL Adapters Via Plugins.md)
 * [Building and deploying Darwino applications](2. Building and Deploying Darwino Applications.md)
 
