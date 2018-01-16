@@ -20,7 +20,7 @@
     * [Readonly forms](5.2.5. Readonly Forms.md)
     * [Validation](5.2.6. Validation.md)
     * [Sub forms](5.2.7. Subforms.md)
-    * [Select \(Combobox\)](Select %28combobox%29.md)
+    * [Select \(Combobox\)](5.2.8 Select %28combobox%29.md)
   * [Configuring the navigator](5.3. Configuring the Navigator.md)
   * [Actions and action bars](SMPL - Actions.md)
   * [Notifications and messages](SMPL - Notifications and Messages.md)
