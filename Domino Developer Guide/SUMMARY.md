@@ -9,5 +9,7 @@
       * [Closures and Re-Opening Converters](1.3.5. Closures and Re-Opening Converters.md)
       * [Converting Data](1.3.6. Converting Data.md)
       * [Deploying DSL Adapters via Plugins](1.3.7. Deploying DSL Adapters Via Plugins.md)
+      * [JSON Fields](1.3.8. JSON Fields.md)
+    * [Data Conversion Considerations](1.4. Data Conversion Considerations.md)
 * [Building and deploying Darwino applications](2. Building and Deploying Darwino Applications.md)
 
