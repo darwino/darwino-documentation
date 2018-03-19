@@ -67,7 +67,16 @@ This module checks your environment and gives you guidance on the next actions:
 - Having Maven settings.xml properly configured
 - Having the Darwino configuration files at the right place
 - Making sure that the Eclipse dependencies are installed
-- ...
+
+## Windows Eclipse JRE/JDK
+
+On Windows, Eclipse will sometimes pick up on an installed JRE instead of the full JDK, which will manifest during a Maven build with a error about not finding a Java compiler. To rectify this, go to Eclipse's preferences, then `Java → Installed JREs`:
+
+![Eclipse JREs](eclipse-jres.png)
+
+Select the currently-active one, click "Edit…" and point it at a "jdk" directory, usually within "C:\Program Files\Java":
+
+![Eclipse JDK fix](eclipse-jdk-fix.png)
 
 Manually Configuring Eclipse
 ----------------------------
@@ -76,11 +85,11 @@ The configuration validator exposed above should give you all the necessary info
 
 Darwino requires some extra plug-ins bellow to be installed on top of the
 version of Eclipse. These plug-ins can generally be installed from the Eclipse
-Marketplace or by selecting `Help->Install New Software...`, then use the
+Marketplace or by selecting `Help → Install New Software...`, then use the
 provided update site URL
 
 -   If Android is a desired target platform:
-    -   Andmore (successor to Google's ADT), Select `Help->Eclipse->Marketplace...` and search for `andmore`. It will be called something like "Andmore: Development Tools for Android"
+    -   Andmore (successor to Google's ADT), Select `Help → Eclipse → Marketplace...` and search for `andmore`. It will be called something like "Andmore: Development Tools for Android"
 	-   Note: during the process for installing m2e adapters (as with Tycho below), the m2e adapter for Android may prompt you to install the earlier Android Development Toolkit. If so, and you already have Andmore installed, deselect those plugins during the m2e setup.
 
 -   If iOS is a desired target platform:
