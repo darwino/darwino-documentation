@@ -46,11 +46,11 @@ Here is an example of a complete settings.xml containing the remote repository u
 		<profiles>
 			<profile>
 				<id>darwino-repository-profile</id>
-                <properties>
-                	<notes-platform>
-                    	file:///*path to Java installation*/DominoBuildManagementUpdateSite/UpdateSite
-                	</notes-platform>
-            	</properties>
+	            <properties>
+	            	<notes-platform>
+	                	file:///*path to Java installation*/DominoBuildManagementUpdateSite/UpdateSite
+	            	</notes-platform>
+	        	</properties>
 				<repositories>
 					<repository>
 						<id>darwino-repository</id>
@@ -58,6 +58,13 @@ Here is an example of a complete settings.xml containing the remote repository u
 						<url>https://maven.darwino.com/darwino-enterprise-edition</url>
 					</repository>
 				</repositories>
+				<pluginRepositories>
+					<pluginRepository>
+						<id>darwino-repository</id>
+						<name>Darwino Platform</name>
+						<url>https://maven.darwino.com/darwino-enterprise-edition</url>
+					</pluginRepository>
+				</pluginRepositories>
 			</profile>
 		</profiles>
 		<activeProfiles>
