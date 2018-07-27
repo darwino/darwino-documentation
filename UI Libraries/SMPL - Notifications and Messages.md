@@ -1,8 +1,14 @@
 # Notifications and messages
 
+
 ## Messages
-Error messages can be added using the `Messages.add()` method. It assumes that a Messages component has been properly instantiated at the page level (See: Preparing the application).
-Each message has an id so if a message with the same id is already displayed, then it is replaced by the new one. Else a new message is added to the stack.
+Messages are error, warning or information block display on the page to notify the use.
+
+![](messages.png)
+
+Error messages can be added using the `Messages.add()` method. It assumes that a `Messages` component has been properly instantiated at the page level (See: Preparing the application).
+
+Each message has an `id`. If a message with the same id is already displayed, then it is replaced by the new one. If not, a new message is added to the stack.
 
     <Button bsStyle="primary" onClick={()=>
         mainForm.getMessages().add({
@@ -27,5 +33,3 @@ Darwino features a series of dialogs displaying read-only notifications, alerts,
 See: `CodeMessages.jsx`
 
 ![](sampledialogs.png)
-
-

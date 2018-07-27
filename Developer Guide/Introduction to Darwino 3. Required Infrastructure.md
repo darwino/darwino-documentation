@@ -4,6 +4,8 @@
 
 * Postgres DB 9.4+
 * IBM DB2 10.5 +
+* Microsoft SQL Server 2016+
+* Oracle Database 12c+
 * SQLite (for mobile, provided by Darwino)
 
 **Webserver**
