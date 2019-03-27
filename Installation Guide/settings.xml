@@ -55,9 +55,9 @@
 		<server>
 		    <id>darwino-repository</id>
 			<!-- Add the Darwino user name here -->
-			<!-- You can get much safer, hash password from https://maven.darwino.com/webapp/#/home after clicking on your user name -->
 		    <username>[username]</username>
 			<!-- Add the Darwino password here -->
+			<!-- See https://maven.apache.org/guides/mini/guide-encryption.html for information about encrypting this password -->
 		    <password>[password]</password>
 		</server>
 	</servers>
