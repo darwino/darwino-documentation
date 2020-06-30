@@ -30,15 +30,7 @@ To complete the MS Visual Studio installation, please install the following plug
 
 ## Setting up the repository
 
-The Darwino JavaScript assets are distributed through a private npm server serving all the packages scoped by @darwino (see: [https://docs.npmjs.com/private-modules/intro](https://docs.npmjs.com/private-modules/intro)).
-
-To be able to consume them, you should instruct your local npm to use that server for all @darwino libraries. This is done by running the following command from the command line:
-
-```
-npm adduser --registry https://npm.darwino.com --scope @darwino
-```
-
-It will ask you for your Darwino user/password and your email. Once done, you'll be able to consume all the darwino packages as described at: [https://npm.darwino.com](https://npm.darwino.com)
+The Darwino JavaScript assets are distributed through a private npm server serving all the packages scoped by @darwino (see: [https://docs.npmjs.com/private-modules/intro](https://docs.npmjs.com/private-modules/intro)) and hosted in the main NPM registry.
 
 ## Consuming the code
 
